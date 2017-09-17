@@ -1,4 +1,4 @@
 require "spec_helper"
 
-describe Lita::Handlers::Cuslacking, lita_handler: true do
+describe Lita::Handlers::CUSlacking, lita_handler: true do
 end
