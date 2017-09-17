@@ -1,6 +1,6 @@
 module Lita
   module Handlers
-    class Cuslacking < Handler
+    class CUSlacking < Handler
       # insert handler code here
       route(/call everyone nerds/, :call_everyone_nerds)
 

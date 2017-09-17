@@ -8,7 +8,7 @@ the same app.
 
 # Setup!
 
-To set up CUSlacking, start by installing Ruby using your friendly 
+To set up CUSlacking, start by installing Ruby using your friendly
 neighbourhood Mac package manager, `brew`, and installing one of Ruby's
 more popular packaging tools `bundler`:
 
