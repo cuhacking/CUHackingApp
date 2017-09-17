@@ -2,7 +2,7 @@ require_relative 'lib/secrets.rb'
 
 Lita.configure do |config|
   # The name your robot will use.
-  config.robot.name = "Lita"
+  config.robot.name = "cuslacking"
 
   # The locale code for the language to use.
   # config.robot.locale = :en
