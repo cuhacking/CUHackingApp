@@ -6,6 +6,10 @@ module Lita
         "call everyone nerds" => "Calls everyone nerds!"
         })
 
+      route(/what time is it?/, :get_time, command: true, help: {
+        "what time is it?" => "Tells you to check the time yourself"
+        })
+
       def call_everyone_nerds(response)
           if response.private_message?
             response.reply "You're the only nerd here..."
@@ -16,6 +20,10 @@ module Lita
 
             response.reply "Sup nerds #{users.join(' ')}!"
           end
+      end
+
+      def get_time(response)
+        response.reply "Just look up or #{Time.now}"
       end
 
       Lita.register_handler(self)
