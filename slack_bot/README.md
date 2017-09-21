@@ -15,6 +15,8 @@ more popular packaging tools `bundler`:
 ```bash
 brew install ruby
 gem install bundler
+brew install redis
+brew services start redis
 ```
 
 Then clone the repo (hopefully you've already done this):
