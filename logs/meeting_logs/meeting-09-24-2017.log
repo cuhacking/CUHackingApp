@@ -1,0 +1,160 @@
+---
+Meeting #3
+Date: September 24, 2017
+Time: 6:20pm - 9:00pm
+Attendees: Elisa, Elisa, Jack, Forest
+---
+
+- discussed different views
+  - map
+    *image with:
+      ->legend (only items relevent to that view are displayed)
+      ->floater button to change between buildings
+    *outdoor campus
+    *per building
+    *per floor
+    *spaces to note: (hacking, bathrooms, workshops, sponsors, stairs/elevators, food/snack, volunteer lounge, mentor lounge)
+    *capabilities: zoom, scroll and tap(phase 2)
+  - schedule
+    *list view (not expandable initially)
+      -> click to bring to new (fragment) details
+    *included items:
+      ->title, start/End, description, location, sponsor, category(colour coded-workshop, food etc)
+    *scrolls to current event
+    *events:
+      ->opening cerimonies
+      ->breakfast
+      ->lunch
+      ->dinner
+      ->Workshop X
+      ->registration
+      -> demos
+      -> judging
+      ->deadlines (dev post, hacking beggins/ends, team formation)
+      ->fun activities
+  - notifications - red dot when unread notification
+  - mentor matching
+    *no request
+      ->hacker form (name, location, problem)
+    *+1 request
+      ->waiting
+      ->mentor on way (phase 2)
+      ->fulfilled
+  - links
+    *devpost
+    *slack
+    *website
+    *twitter
+    *code ofconduct
+    *snap chat
+    *facebook
+
+  -sponsors
+    *image logos list
+    *click logo, redirect to website
+    *mock sponsors
+  - home
+    *pre event-> countdown
+    *during event-> annoucements (list view)
+
+-seperate the links activity into two seperate pages (sponsors, links)
+-have config file
+-back end
+  - objects
+    - companies
+      - name
+      - tier
+      - website_url
+      - logo
+    - link
+      - name
+      - url
+      - logo
+    - users
+      - unique ids
+      - help_request
+      - name (blank until)
+    - help request
+      - help request id
+      - hacker_id
+      - hacker_name
+      - hacker_location
+      - problem
+      - mentors {}
+      - status
+    - Building
+      - name
+      - shorthand initials
+      - rooms
+    - rooms
+      - type
+      - number
+    - event
+      - Date (dd-mm-yyyy)
+      - start time
+      - end time
+      - type
+      - description
+      - room
+      - company
+    - company
+      - name
+    - notifications
+      - title
+      - description
+      - time_sent
+
+  - ROUTES (CRUD)
+    - link
+      - GET
+      - POST
+      - PATCH
+    - users
+      - GET
+      - POST
+    - help request
+      - GET
+      - POST
+      - PATCH
+    - building
+      - GET
+      - POST
+      - PATCH
+    - rooms
+      - GET
+      - POST
+      - PATCH
+    - event
+      - GET
+      - POST
+      - PATCH
+      - DELETE
+    - company
+      - GET
+      - POST
+      - PATCH (update)
+      - DELETE
+    - notifications (immutable)
+      - GET
+      - POST
+
+  - WE'LL USE JSON
+
+  -NICE TO HAVES/To look into:
+    - feedback form on mentor quality
+    - tap for map
+    - schedule with fancy layout
+    - view past help requests (request history)
+    - more detaisl for sponsors (challenge, twitter, website, mentor list)
+    - colour rooms based on database or have them already coloured??
+    - store images on AWS?
+    - notifications bringing you into the app (metadata)
+    - users second + help request name will be auto populated
+
+TODO:
+- figure out flow for after filling out help request
+- forest- rewrite CRUD operations to differencaite between admin UI and mobile
+- dev logs
+- elisa - rewrite routes in nice table in API Documentation google doc
+- esti - start front end UI
+- jack - send Esti android Hamberger menu code
