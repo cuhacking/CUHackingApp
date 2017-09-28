@@ -4,15 +4,15 @@ Forest Anderson
 101009514
 --------------
 What I did this week:
-- 
-- 
+- Team meeting (1h)
+- Team work session (4h)
+- Planned out all of the tables needed for the database, and how they are related
 
 What I hope to do next week:
-- 
-- 
+- Team meeting
+- Setup the database foundation 
 
 What I struggled with:
-- 
-- 
+- Learning the rails required to get started with the database
 
 --------------
