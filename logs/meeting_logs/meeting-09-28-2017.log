@@ -1,7 +1,7 @@
 ---
 Meeting #4
 Date: September 28, 2017
-Time: 11:40am - X:XXpm
+Time: 11:40am - 1:30pm
 Attendees: Elisa, Esti, Jack, Forest
 ---
 
@@ -9,5 +9,13 @@ Attendees: Elisa, Esti, Jack, Forest
 What occured:
 
   - Elisa looked through hamburger menu from another app to reuse coded-workshop
-  - Forrest reviewed app icon pull request
-  -
+  - Forest reviewed app icon pull request
+  - Earlier, Jack gave Esti access to the android hamburger menu code
+  - Elisa, rewrite route CRUD Operations in nice table in API Documentation google doc
+  - Forest create tables for back end
+  - Forest noticed and corrected API Documentation on google Doc
+  - Elisa set up android studio
+
+TODO:
+  - figure out flow for after filling out help request
+  - forest- rewrite CRUD operations to differencaite between admin UI and mobile
