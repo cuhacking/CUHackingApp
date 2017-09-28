@@ -1,0 +1,18 @@
+--------------
+Week 1 - September 19 - 26
+Esti Tweg
+101005024
+--------------
+What I did this week:
+- mock ups for 10 different app views
+- met with group to discuss 
+
+What I hope to do next week:
+- start creating android activities for
+-
+
+What I struggled with:
+- designing an android app when most familiar with iOS Material design and not Android
+-
+
+--------------
