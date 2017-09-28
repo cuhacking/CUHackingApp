@@ -1,0 +1,19 @@
+--------------
+Week 1 - September 19 - 26
+<First Last>
+<Student Number>
+--------------
+What I did this week:
+- Floated around in work period helping
+- Helped Elisa with setting up Android Studio
+- Helped Esti with setting up splash page
+- Helped Forest with database and controllers for backend
+
+What I hope to do next week:
+- Do a little bit more focused development: create routes that we will
+  use for mobile app
+
+What I struggled with:
+- Busy week outside 3004
+
+--------------

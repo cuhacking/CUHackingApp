@@ -1,0 +1,18 @@
+--------------
+Week 1 - September 19 - 26
+<First Last>
+<Student Number>
+--------------
+What I did this week:
+- Set up Rails backend scaffold
+- Set up Android Studio project
+- Set up Slack integration and add some dummy commands
+
+What I hope to do next week:
+- Work with Forest to create Rails backend models and controllers
+- Send Esti old app with hamburger menu
+
+What I struggled with:
+- Learning Lita bot framework
+
+--------------
