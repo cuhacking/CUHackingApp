@@ -1,5 +1,5 @@
 --------------
-Week 2 - September 27 - 4
+Week 2 - September 27 - Oct 4
 Esti Tweg
 101005024
 --------------
@@ -7,6 +7,9 @@ What I did this week:
 - got CUHacking background for logo from Jackie
 - created more image assets
 - created splash page for app and made pull request
+- request was reviewed & merged
+- added more image assets of varying sizes to android studio project
+- reminded Jack to add Amir to repo
 
 What I hope to do next week:
 - continue working on UI for android app
