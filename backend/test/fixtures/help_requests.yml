@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  problem: MyString
+  mentors: MyString
+  status: MyString
+
+two:
+  location: MyString
+  problem: MyString
+  mentors: MyString
+  status: MyString

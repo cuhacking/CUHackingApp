@@ -1,0 +1,2 @@
+class ReferenceLink < ApplicationRecord
+end
