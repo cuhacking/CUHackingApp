@@ -1,0 +1,20 @@
+--------------
+Week 3 - Oct. 5 - Oct 11
+Esti Tweg
+101005024
+--------------
+
+What I did this week:
+- added activities for Notifications, schedule, map, links, sponsors and request help
+- updated colour scheme with CUHacking red instead of android blue
+
+What I hope to do next week:
+- add widgets with constraints to a few activities
+- add icons to hamburger menu after Elisa adds it to app
+- connect activities to menu and remove temp buttons after menu is added
+
+What I struggled with:
+- creating directories within the app to be more organized (Java: model, view, controller - XML: activities, content)
+
+
+--------------

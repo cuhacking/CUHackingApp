@@ -1,0 +1,20 @@
+---
+Meeting #5
+Date: October 5, 2017
+Time: 11:40am - 1:00pm
+Attendees: Esti, Forest
+---
+
+
+What occured:
+
+  - Amir and Olga were added to git project
+  - made buttons no main activity to go to different activiteis while waiting for hamburger menu
+  - added activities for Notifications, schedule, map, links, sponsors and request help
+  - Forest created objects in rails DB
+
+
+TODO:
+  - figure out flow for after filling out help request
+  - forest- rewrite CRUD operations to differencaite between admin UI and mobile
+  - members to review pull requests
