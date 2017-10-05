@@ -12,9 +12,11 @@ What occured:
   - made buttons no main activity to go to different activiteis while waiting for hamburger menu
   - added activities for Notifications, schedule, map, links, sponsors and request help
   - Forest created objects in rails DB
+  - discussed removing code (android/backend) from logs branch
 
 
 TODO:
   - figure out flow for after filling out help request
   - forest- rewrite CRUD operations to differencaite between admin UI and mobile
   - members to review pull requests
+  - fix logs branch after discussing with everyone
