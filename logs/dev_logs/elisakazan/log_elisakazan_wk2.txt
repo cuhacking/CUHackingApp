@@ -4,8 +4,9 @@ Elisa Kazan
 100965140
 --------------
 What I did this week:
-- 
-- 
+- update Android Studio 
+- made the routes a table in the google doc
+- worked on hamburger menu 
 
 What I hope to do next week:
 - 
