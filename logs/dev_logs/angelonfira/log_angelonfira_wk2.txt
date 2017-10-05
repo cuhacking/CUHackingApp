@@ -1,0 +1,17 @@
+--------------
+Week 2 - September 26 - October 2
+Forest Anderson
+101009514
+--------------
+What I did this week:
+- Team meeting (1h)
+- Setup the tables for the database
+
+What I hope to do next week:
+- Run tests on the database
+- Prepare the database for requests
+
+What I struggled with:
+- Learning the rails required to get started with the database
+
+--------------
