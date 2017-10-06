@@ -13,6 +13,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class LinksActivity extends AppCompatActivity {
@@ -25,6 +26,10 @@ public class LinksActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        ImageView fbImageView =(ImageView) findViewById(R.id.fbImage);
+        ImageView slackImageView =(ImageView) findViewById(R.id.slackImage);
+        ImageView twitterImageView =(ImageView) findViewById(R.id.twitterImage);
+        ImageView snapImageView =(ImageView) findViewById(R.id.snapImage);
         TextView fbLink =(TextView) findViewById(R.id.fbLinkText);
         TextView slackLink =(TextView) findViewById(R.id.slackLinkText);
         TextView twitterLink =(TextView) findViewById(R.id.twitterLinkText);
@@ -33,35 +38,55 @@ public class LinksActivity extends AppCompatActivity {
         SpannableString content = new SpannableString("cuhacking");
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         snapLink.setText(content);
+        snapLink.setOnClickListener(snapRedirect);//TODO Test with device
 
-
+        snapImageView.setOnClickListener(snapRedirect);
+        /*
+        TODO - test with device and remove below link method
+        fbImageView.setOnClickListener(fbRedirect);
+        twitterImageView.setOnClickListener(twitterRedirect);
+        fbLink.setOnClickListener(fbRedirect);
+        */
         fbLink.setMovementMethod(LinkMovementMethod.getInstance());
         slackLink.setMovementMethod(LinkMovementMethod.getInstance());
         twitterLink.setMovementMethod(LinkMovementMethod.getInstance());
 
-        /*
-        TODO test with device
-        fbLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent facebookIntent = getOpenFacebookIntent(LinksActivity.this);
-                startActivity(facebookIntent);
-            }
-        });
-        */
-
-        snapLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("*/*");
-                intent.setPackage("com.snapchat.android");
-                startActivity(Intent.createChooser(intent, "Open Snapchat"));
-            }
-        });
-
     }
 
+    /*
+    TODO
+    private View.OnClickListener fbRedirect = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent facebookIntent = getOpenFacebookIntent(LinksActivity.this);
+            startActivity(facebookIntent);
+        }
+    });
+
+
+    private View.OnClickListener twitterRedirect = new View.OnClickListener() {
+        public void onClick(View v) {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("twitter://user?screen_name=826509476278702083"));
+                startActivity(intent);
+            }
+            catch (Exception e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://twitter.com/cuhacking")));
+            }
+        }
+     };
+    */
+
+    private View.OnClickListener snapRedirect = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("*/*");
+            intent.setPackage("com.snapchat.android");
+            startActivity(Intent.createChooser(intent, "Open Snapchat"));
+        }
+    };
 
     public static Intent getOpenFacebookIntent(Context context) {
         try {
