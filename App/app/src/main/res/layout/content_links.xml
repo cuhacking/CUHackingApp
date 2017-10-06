@@ -6,6 +6,116 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ca.carleton.three_thousand_chore.comp3004.LinksActivity"
-    tools:showIn="@layout/activity_links">
+    tools:showIn="@layout/activity_links"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/facebook"
+        android:id="@+id/fbImage"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="77dp"
+        android:src="@mipmap/slack"
+        android:id="@+id/slackImage"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/snapImage"
+        app:layout_constraintRight_toRightOf="@+id/fbImage"
+        android:layout_marginTop="87dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="86dp"
+        app:layout_constraintLeft_toLeftOf="@+id/fbImage"
+        app:layout_constraintTop_toTopOf="@+id/fbImage" />
+
+    <TextView
+        android:id="@+id/fbLinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:text="@string/fbLink"
+        android:textSize="18sp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="31dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/fbImage"
+        app:layout_constraintLeft_toRightOf="@+id/fbImage" />
+
+    <TextView
+        android:id="@+id/twitterLinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/twitterLink"
+        android:textSize="18sp"
+        android:layout_marginStart="24dp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="19dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/twitterImage"
+        app:layout_constraintLeft_toRightOf="@+id/twitterImage" />
+
+    <TextView
+        android:id="@+id/slackLinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="@string/slackLink"
+        android:textSize="18sp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/slackImage"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintLeft_toRightOf="@+id/slackImage" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="63dp"
+        android:src="@mipmap/twitter"
+        android:id="@+id/twitterImage"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/snapImage"
+        app:layout_constraintRight_toRightOf="@+id/slackImage"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintLeft_toLeftOf="@+id/slackImage" />
+
+    <TextView
+        android:id="@+id/snapLinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cuhacking"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_marginStart="25dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/snapImage"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/snapImage" />
+
+    <ImageView
+        android:id="@+id/snapImage"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        app:srcCompat="@mipmap/snapchat"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/twitterImage"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="173dp"
+        app:layout_constraintLeft_toLeftOf="@+id/twitterImage" />
 </android.support.constraint.ConstraintLayout>

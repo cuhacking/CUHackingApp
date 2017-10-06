@@ -96,4 +96,8 @@
     <string name="title_sponsors">Sponsors</string>
     <string name="title_links">Links</string>
     <string name="title_request_help">Request Help</string>
+    <string name="fbLink"><a href="https://www.facebook.com/CUHacking/?ref=br_rs">/CUHacking</a></string>
+    <string name="slackLink"><a href="https://cuhacking2017.slack.com/">@CuHacking2017</a></string>
+    <string name="twitterLink"><a href="https://twitter.com/cuhacking">/cuhacking2017</a></string>
+    <string name="snapLink">cuhacking</string>
 </resources>
