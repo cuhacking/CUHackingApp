@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".SplashActivity"
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +19,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NotificationsActivity"
+            android:label="@string/title_notifications"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_map"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScheduleActivity"
+            android:label="@string/title_schedule"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SponsorsActivity"
+            android:label="@string/title_sponsors"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LinksActivity"
+            android:label="@string/title_links"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RequestHelpActivity"
+            android:label="@string/title_request_help"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
