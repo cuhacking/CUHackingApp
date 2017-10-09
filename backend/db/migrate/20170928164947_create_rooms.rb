@@ -4,8 +4,8 @@ class CreateRooms < ActiveRecord::Migration[5.1]
       t.belongs_to :event
       t.belongs_to :building
       
-      t.string :room_type
-      t.integer :room_num
+      t.string :type
+      t.integer :name
 
       t.timestamps
     end
