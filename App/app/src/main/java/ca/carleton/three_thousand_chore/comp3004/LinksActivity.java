@@ -25,7 +25,6 @@ public class LinksActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         ImageView fbImageView =(ImageView) findViewById(R.id.fbImage);
         ImageView slackImageView =(ImageView) findViewById(R.id.slackImage);
         ImageView twitterImageView =(ImageView) findViewById(R.id.twitterImage);
@@ -38,66 +37,64 @@ public class LinksActivity extends AppCompatActivity {
         SpannableString content = new SpannableString("cuhacking");
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         snapLink.setText(content);
-        snapLink.setOnClickListener(snapRedirect);//TODO Test with device
 
-        snapImageView.setOnClickListener(snapRedirect);
-        /*
-        TODO - test with device and remove below link method
+        //On click listeners for image views and text
         fbImageView.setOnClickListener(fbRedirect);
         twitterImageView.setOnClickListener(twitterRedirect);
-        fbLink.setOnClickListener(fbRedirect);
-        */
-        fbLink.setMovementMethod(LinkMovementMethod.getInstance());
-        slackLink.setMovementMethod(LinkMovementMethod.getInstance());
-        twitterLink.setMovementMethod(LinkMovementMethod.getInstance());
+        snapImageView.setOnClickListener(snapRedirect);
 
+        fbLink.setOnClickListener(fbRedirect);
+        twitterLink.setOnClickListener(twitterRedirect);
+        snapLink.setOnClickListener(snapRedirect);
+
+        slackLink.setMovementMethod(LinkMovementMethod.getInstance());//TODO redirect to app once channel created
+        slackImageView.setOnClickListener(slackRedirect);
     }
 
-    /*
-    TODO
+
     private View.OnClickListener fbRedirect = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent facebookIntent = getOpenFacebookIntent(LinksActivity.this);
-            startActivity(facebookIntent);
-        }
-    });
-
-
-    private View.OnClickListener twitterRedirect = new View.OnClickListener() {
-        public void onClick(View v) {
             try {
+                LinksActivity.this.getPackageManager().getPackageInfo("com.facebook.katana", 0); //Checks if FB is installed.
                 Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("twitter://user?screen_name=826509476278702083"));
+                        Uri.parse("fb://page/1446989328648692"));
                 startActivity(intent);
             }
             catch (Exception e) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://twitter.com/cuhacking")));
+                //FB is not installed
+                Intent intent =  new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.facebook.com/CUHacking/")); //catches and opens a url to the desired page
+                startActivity(intent);
             }
         }
+    };
+
+    private View.OnClickListener twitterRedirect = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+            Uri.parse("https://twitter.com/cuhacking"));
+            startActivity(intent);
+        }
      };
-    */
 
     private View.OnClickListener snapRedirect = new View.OnClickListener() {
         public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("*/*");
+            intent.setType("*/*");//TODO redirect to specific profile
             intent.setPackage("com.snapchat.android");
             startActivity(Intent.createChooser(intent, "Open Snapchat"));
         }
     };
 
-    public static Intent getOpenFacebookIntent(Context context) {
-        try {
-            context.getPackageManager().getPackageInfo("com.facebook.katana", 0); //Checks if FB is even installed.
-            return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("fb://profile/1446989328648692")); //Trys to make intent with FB's URI
+    private View.OnClickListener slackRedirect = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://cuhacking2017.slack.com/"));//TODO change to app instead of browser
+            startActivity(intent);
+
         }
-        catch (Exception e) {
-            //FB is not installed
-            return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.facebook.com/CUHacking/")); //catches and opens a url to the desired page
-        }
-    }
+    };
+    
+
 }
