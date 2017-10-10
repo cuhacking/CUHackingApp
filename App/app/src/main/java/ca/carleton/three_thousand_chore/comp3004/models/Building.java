@@ -19,7 +19,7 @@ public class Building {
         return name;
     }
 
-    public String getShorthandInitials() {
+    public String getInitials() {
         return initials;
     }
 

@@ -6,14 +6,14 @@ package ca.carleton.three_thousand_chore.comp3004.models;
 
 public class HelpRequest {
     private int id;
-    private String hackerLocation;
+    private String location;
     private String problem;
     private String[] mentors;
     private String status;
 
-    public HelpRequest(int id, int userId, String hackerLocation, String problem, String[] mentors, String status) {
+    public HelpRequest(int id, String location, String problem, String[] mentors, String status) {
         this.id = id;
-        this.hackerLocation = hackerLocation;
+        this.location = location;
         this.problem = problem;
         this.mentors = mentors;
         this.status = status;
@@ -23,8 +23,8 @@ public class HelpRequest {
         return id;
     }
     
-    public String getHackerLocation() {
-        return hackerLocation;
+    public String getlocation() {
+        return location;
     }
 
     public String getProblem() {
