@@ -8,56 +8,77 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <Button
-        android:id="@+id/notiButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="go to notifications" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- The main content view -->
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <!-- The navigation drawer -->
+        <ListView android:id="@+id/nav_drawer"
+                  android:layout_width="240dp"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="start"
+                  android:choiceMode="singleChoice"
+                  android:divider="@android:color/transparent"
+                  android:dividerHeight="0dp"
+                  android:background="#111"/>
+    </android.support.v4.widget.DrawerLayout>
 
-    <Button
-        android:id="@+id/schedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="go to schedule"
-        android:layout_below="@id/notiButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
 
-    <Button
-        android:id="@+id/mapButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="go to map"
-        android:layout_below="@id/schedButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <!--<Button-->
+        <!--android:id="@+id/notiButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="go to notifications" />-->
 
-    <Button
-        android:id="@+id/helpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="go to request help"
-        android:layout_below="@id/mapButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <!--<Button-->
+        <!--android:id="@+id/schedButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="go to schedule"-->
+        <!--android:layout_below="@id/notiButton"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent" />-->
 
-    <Button
-        android:id="@+id/linksButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="go to links"
-        android:layout_below="@id/helpButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <!--<Button-->
+        <!--android:id="@+id/mapButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="go to map"-->
+        <!--android:layout_below="@id/schedButton"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent" />-->
 
-    <Button
-        android:id="@+id/sponsorsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="go to sponsors"
-        android:layout_below="@id/linksButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <!--<Button-->
+        <!--android:id="@+id/helpButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="go to request help"-->
+        <!--android:layout_below="@id/mapButton"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/linksButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="go to links"-->
+        <!--android:layout_below="@id/helpButton"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/sponsorsButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="go to sponsors"-->
+        <!--android:layout_below="@id/linksButton"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent" />-->
 
 
 
