@@ -1,0 +1,22 @@
+---
+Meeting #6
+Date: October 9, 2017
+Time: 4:15pm - 10:00pm
+Attendees: Esti, Forest, Jack, Elisa
+---
+
+
+What occurred:
+- company object logo will be a url to an image
+- API documentation updated by Forest
+- Jack worked on creating objects for the front end
+- Elisa finished integration of menu
+- Esti paritally finished links activity and tested with device to insure redirect brings into app
+- decided against links for backend object, can be static on front end
+- reminder, Pull requests will be merged by person who made pull request
+- created a meeting todo list
+    - ET: smart links ✅
+    - EK: Hamberger ✅
+    - JM&FA: Backend models and controllers ✅
+    - JM: Front end models ✅
+    - ET: Sponsors✅ and help request placeholders/ layout

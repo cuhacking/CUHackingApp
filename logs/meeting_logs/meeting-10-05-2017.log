@@ -6,10 +6,10 @@ Attendees: Esti, Forest
 ---
 
 
-What occured:
+What occurred:
 
   - Amir and Olga were added to git project
-  - made buttons no main activity to go to different activiteis while waiting for hamburger menu
+  - made buttons no main activity to go to different activities while waiting for hamburger menu
   - added activities for Notifications, schedule, map, links, sponsors and request help
   - Forest created objects in rails DB
   - discussed removing code (android/backend) from logs branch
@@ -17,6 +17,6 @@ What occured:
 
 TODO:
   - figure out flow for after filling out help request
-  - forest- rewrite CRUD operations to differencaite between admin UI and mobile
+  - forest- rewrite CRUD operations to differentiate between admin UI and mobile
   - members to review pull requests
   - fix logs branch after discussing with everyone
