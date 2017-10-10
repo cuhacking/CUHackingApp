@@ -100,4 +100,16 @@
     <string name="slackLink"><a href="https://cuhacking2017.slack.com/">@CuHacking2017</a></string>
     <string name="twitterLink"><a href="https://twitter.com/cuhacking">/cuhacking2017</a></string>
     <string name="snapLink">cuhacking</string>
+    <string name="drawer_open">open drawer</string>
+    <string name="drawer_close">close drawer</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string-array
+        name="activities_array">
+        <item>Notifications</item>
+        <item>Schedule</item>
+        <item>Map</item>
+        <item>Request Help</item>
+        <item>Links</item>
+        <item>Sponsors</item>
+    </string-array>
 </resources>
