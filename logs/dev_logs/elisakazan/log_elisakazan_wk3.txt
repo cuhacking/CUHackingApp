@@ -1,0 +1,17 @@
+--------------
+Week 3 - October 5 - October 12
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- finished the hamburger menu
+- create default fragments for each page
+- 
+
+What I hope to do next week:
+-  
+
+What I struggled with:
+- getting the hamburger menu to work (followed the Android tutorial)
+
+--------------
