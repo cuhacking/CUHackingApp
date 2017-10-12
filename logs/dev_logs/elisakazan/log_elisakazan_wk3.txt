@@ -6,7 +6,6 @@ Elisa Kazan
 What I did this week:
 - finished the hamburger menu
 - create default fragments for each page
-- 
 
 What I hope to do next week:
 -  
