@@ -1,0 +1,13 @@
+---
+Meeting #7
+Date: October 12, 2017
+Time: 11:40am - 1:00pm
+Attendees: Esti, Forest, Jack, Elisa
+---
+
+What occurred:
+
+- add name field to event
+- Forest- clarified controllers and managed connection between app and server
+- Esti - created RequestHelper class and methods per object to get data from back end
+       - updated API doc, event has a name field    
