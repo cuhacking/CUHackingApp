@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class RequestHelper {
 
-    interface CompletionNotifier{
+    public interface CompletionNotifier{
         public void requestCompleted(JSONObject response);
     }
 
