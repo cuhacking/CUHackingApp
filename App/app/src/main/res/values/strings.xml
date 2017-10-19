@@ -33,6 +33,6 @@
     <string name="get_some_help">get some help</string>
     <string name="hr_location">Where are you on campus (room number)?</string>
     <string name="map_of_carleton">A map of Carleton</string>
-    <string name="subtitle_request_help_success">A mentor will be contacting you on Slack soon.</string>
+    <string name="subtitle_request_help_success">A mentor will be contacting you on <a href="https://cuhacking2017.slack.com/">Slack</a> soon.</string>
     <string name="request_help_success_headline">Help is on the way!</string>
 </resources>

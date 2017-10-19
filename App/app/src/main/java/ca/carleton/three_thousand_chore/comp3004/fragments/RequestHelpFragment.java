@@ -66,17 +66,22 @@ public class RequestHelpFragment extends Fragment {
         getHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HelpRequest.createHelpRequest(locationField.getText().toString(), problemField.getText().toString(), userId, nameField.getText().toString(), new JsonRequest.CompletionHandler<HelpRequest>() {
-                    @Override
-                    public void requestSucceeded(HelpRequest object) {
-                        listener.helpRequestSent(object);
-                    }
+                if(locationField.getText().toString().trim().equals("") || problemField.getText().toString().trim().equals("") || nameField.getText().toString().trim().equals("")){
+                    Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    HelpRequest.createHelpRequest(locationField.getText().toString(), problemField.getText().toString(), userId, nameField.getText().toString(), new JsonRequest.CompletionHandler<HelpRequest>() {
+                        @Override
+                        public void requestSucceeded(HelpRequest object) {
+                            listener.helpRequestSent(object);
+                        }
 
-                    @Override
-                    public void requestFailed(String error) {
-                        Toast.makeText(getContext(), "Failed to submit help request: " + error, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void requestFailed(String error) {
+                            Toast.makeText(getContext(), "Failed to submit help request: " + error, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
 

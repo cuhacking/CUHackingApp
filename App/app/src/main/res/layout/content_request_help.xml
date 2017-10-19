@@ -13,24 +13,29 @@
         android:layout_height="wrap_content"
         android:text="@string/need_help_heading"
         style="@style/Base.TextAppearance.AppCompat.Headline"
+        android:paddingLeft="25dp"
+        android:paddingTop="25dp"
         android:paddingBottom="15dp"/>
 
     <EditText
         android:id="@+id/help_request_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
         android:hint="@string/name_question"/>
 
     <EditText
         android:id="@+id/help_request_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
         android:hint="@string/hr_location"/>
 
     <EditText
         android:id="@+id/problem_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
         android:hint="@string/problem_question"
         android:minLines="3"
         android:gravity="bottom"/>

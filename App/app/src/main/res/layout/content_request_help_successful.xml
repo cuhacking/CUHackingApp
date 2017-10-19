@@ -12,6 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/successMessage"
         android:text="@string/subtitle_request_help_success"
         android:gravity="center_horizontal"
         style="@style/Base.TextAppearance.AppCompat.Subhead"/>
