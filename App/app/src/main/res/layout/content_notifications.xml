@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ca.carleton.three_thousand_chore.comp3004.NotificationsActivity"
+    tools:context="ca.carleton.three_thousand_chore.comp3004.MainActivity"
     tools:showIn="@layout/activity_notifications">
 
 </android.support.constraint.ConstraintLayout>

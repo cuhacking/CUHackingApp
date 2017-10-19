@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ca.carleton.three_thousand_chore.comp3004.SponsorsActivity">
+    tools:context="ca.carleton.three_thousand_chore.comp3004.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

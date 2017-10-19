@@ -1,4 +1,4 @@
-class EventController < ApplicationController
+class NotificationsController < ApplicationController
   def index
   end
 

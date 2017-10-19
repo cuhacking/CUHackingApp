@@ -15,6 +15,16 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @user.to_json }
+    end
+  end
+
+  def user_params
+    params
   end
 
   def destroy

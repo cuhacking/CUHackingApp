@@ -2,7 +2,10 @@ package ca.carleton.three_thousand_chore.comp3004;
 
 import android.app.FragmentManager;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,10 +22,13 @@ import ca.carleton.three_thousand_chore.comp3004.fragments.LinksFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.MapFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.NotificationFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.RequestHelpFragment;
+import ca.carleton.three_thousand_chore.comp3004.fragments.RequestHelpSuccessfulFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.ScheduleFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.SponsorsFragment;
+import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
+import ca.carleton.three_thousand_chore.comp3004.models.User;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RequestHelpFragment.HelpRequestSentListener {
 
     // Hamburger menu
     private DrawerLayout drawer;
@@ -31,12 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private String[] activitiesList;
     private CharSequence drawerTitle;
     private CharSequence title;
+    private User user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RequestHelper.getInstance(this);
 
         // Drawer menu
         activitiesList = getResources().getStringArray(R.array.activities_array);
@@ -55,6 +64,30 @@ public class MainActivity extends AppCompatActivity {
         // ActionBar is the part where the title is, enable to allow changes
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
+
+        if (preferences.contains(getString(R.string.user_id_key))) {
+            User.createUser(new JsonRequest.CompletionHandler<User>() {
+                @Override
+                public void requestSucceeded(User user) {
+                    SharedPreferences.Editor editor = preferences.edit();
+
+                    editor.putInt(getString(R.string.user_id_key), user.getId());
+                    editor.apply();
+
+                    MainActivity.this.user = user;
+                }
+
+                @Override
+                public void requestFailed(String errorMessage) {
+                    Toast.makeText(MainActivity.this, "Failed to create user: " + errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else {
+            this.user = new User(preferences.getInt(getString(R.string.user_id_key), -1));
+        }
 
         // Toggle connects the sliding drawer with action bar app icon
         toggle = new ActionBarDrawerToggle(
@@ -106,6 +139,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void helpRequestSent(HelpRequest request) {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new RequestHelpSuccessfulFragment())
+                .commit();
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         // Listens for which option you have selected from the menu
@@ -138,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 // Request Help
-                fragment = new RequestHelpFragment();
+                fragment = RequestHelpFragment.newInstance(user.getId());
                 break;
             case 4:
                 // Links

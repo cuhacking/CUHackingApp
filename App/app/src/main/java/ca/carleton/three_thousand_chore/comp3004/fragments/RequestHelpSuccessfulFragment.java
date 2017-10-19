@@ -1,23 +1,19 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import ca.carleton.three_thousand_chore.comp3004.R;
 
 /**
- * Created by elisakazan on 2017-10-09.
+ * Created by jackmccracken on 2017-10-19.
  */
 
-public class MapFragment extends Fragment {
-    ImageView map;
-
+public class RequestHelpSuccessfulFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +22,8 @@ public class MapFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_map, null);
-
-        map = v.findViewById(R.id.map_image);
+        View v = inflater.inflate(R.layout.content_request_help_successful, null);
 
         return v;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
     }
 }
