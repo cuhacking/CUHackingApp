@@ -5,9 +5,13 @@ Forest Anderson
 --------------
 What I did this week:
 - Team meeting (1.5h)
+- Did research on Rails database management
 
 What I hope to do next week:
+- Multiple meetings and work periods
 
 What I struggled with:
+- Finding time to work on the project
+- Understanding how REST compares to other databases
 
 --------------
