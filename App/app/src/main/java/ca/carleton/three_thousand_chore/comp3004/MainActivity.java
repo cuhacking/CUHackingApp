@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
 
-        if (preferences.contains(getString(R.string.user_id_key))) {
+        if (!preferences.contains(getString(R.string.user_id_key))) {
             User.createUser(new JsonRequest.CompletionHandler<User>() {
                 @Override
                 public void requestSucceeded(User user) {
