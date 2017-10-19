@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class Event {
     private int id;
+    private String name;
     private Date date;
 
     private Date startTime;
@@ -16,8 +17,9 @@ public class Event {
     private String type;
     private String description;
 
-    public Event(int id, Date date, Date startTime, Date endTime, String type, String description, String room, String company) {
+    public Event(int id, String name, Date date, Date startTime, Date endTime, String type, String description, String room, String company) {
         this.id = id;
+        this.name = name;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -27,6 +29,10 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Date getDate() {
