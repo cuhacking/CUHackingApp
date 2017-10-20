@@ -19,8 +19,10 @@ class HelpRequestsController < ApplicationController
     @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem])
     @help_request.save!
 
+    SendHelpRequestToBotJob.perform_later(@help_request)
+
     respond_to do |format|
-      format.json { render json: @help_request.serializable_hash }
+      format.json { render json: @help_request.to_json }
       format.html
     end
   end
