@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#if Rails.env.development?
+forest = User.new(name: "Forest")
+forest.save!
+HelpRequest.new(user: forest, problem: "Plz hlp boxx").save!
+#end
