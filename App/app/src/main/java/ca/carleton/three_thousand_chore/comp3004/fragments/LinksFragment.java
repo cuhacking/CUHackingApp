@@ -1,9 +1,14 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +28,8 @@ import ca.carleton.three_thousand_chore.comp3004.R;
 
 public class LinksFragment extends Fragment {
 
+    int CALL_PERMISSION = 1;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +48,11 @@ public class LinksFragment extends Fragment {
         TextView slackLink =(TextView) v.findViewById(R.id.slackLinkText);
         TextView twitterLink =(TextView) v.findViewById(R.id.twitterLinkText);
         TextView snapLink =(TextView) v.findViewById(R.id.snapLinkText);
+        TextView emergencyLink = (TextView) v.findViewById(R.id.emergencyInfoDetails);
 
-        SpannableString content = new SpannableString("cuhacking");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        snapLink.setText(content);
+        SpannableString snapText = new SpannableString("cuhacking");
+        snapText.setSpan(new UnderlineSpan(), 0, snapText.length(), 0);
+        snapLink.setText(snapText);
 
         //On click listeners for image views and text
         fbImageView.setOnClickListener(fbRedirect);
@@ -54,6 +62,7 @@ public class LinksFragment extends Fragment {
         fbLink.setOnClickListener(fbRedirect);
         twitterLink.setOnClickListener(twitterRedirect);
         snapLink.setOnClickListener(snapRedirect);
+        emergencyLink.setOnClickListener(makeCall);
 
         slackLink.setMovementMethod(LinkMovementMethod.getInstance());
         slackImageView.setOnClickListener(slackRedirect);
@@ -109,4 +118,40 @@ public class LinksFragment extends Fragment {
 
         }
     };
+
+    private View.OnClickListener makeCall = new View.OnClickListener() {
+        public void onClick(View v) {
+            //check if have permission to use phone
+            if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                makeCall();
+            }
+            else{
+                //request permission
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.CALL_PHONE},
+                        CALL_PERMISSION);
+            }
+
+        }
+    };
+
+    public void makeCall(){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:+6135202600"+ PhoneNumberUtils.PAUSE+"#4166"));
+        startActivity(callIntent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //Call permission granted, make call
+            makeCall();
+        }
+        else{
+            // permission denied
+            // sucks
+        }
+    }
 }
