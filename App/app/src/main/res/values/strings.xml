@@ -12,6 +12,7 @@
     <string name="fbLink"><a href="https://www.facebook.com/CUHacking/?ref=br_rs">/CUHacking</a></string>
     <string name="slackLink"><a href="https://cuhacking2017.slack.com/">@CuHacking2017</a></string>
     <string name="twitterLink"><a href="https://twitter.com/cuhacking">/cuhacking2017</a></string>
+    <string name="instaLink"><a href="https://www.instagram.com/cuhacking/ ">cuhacking</a></string>
     <string name="snapLink">cuhacking</string>
     <string name="drawer_open">open drawer</string>
     <string name="drawer_close">close drawer</string>

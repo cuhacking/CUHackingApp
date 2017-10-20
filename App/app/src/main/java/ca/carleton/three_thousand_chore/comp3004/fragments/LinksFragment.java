@@ -44,11 +44,13 @@ public class LinksFragment extends Fragment {
         ImageView slackImageView =(ImageView) v.findViewById(R.id.slackImage);
         ImageView twitterImageView =(ImageView) v.findViewById(R.id.twitterImage);
         ImageView snapImageView =(ImageView) v.findViewById(R.id.snapImage);
+        ImageView instaImageView =(ImageView) v.findViewById(R.id.instaImage);
         TextView fbLink =(TextView) v.findViewById(R.id.fbLinkText);
         TextView slackLink =(TextView) v.findViewById(R.id.slackLinkText);
         TextView twitterLink =(TextView) v.findViewById(R.id.twitterLinkText);
         TextView snapLink =(TextView) v.findViewById(R.id.snapLinkText);
         TextView emergencyLink = (TextView) v.findViewById(R.id.emergencyInfoDetails);
+        TextView instaLink =(TextView) v.findViewById(R.id.instaLinkText);
 
         SpannableString snapText = new SpannableString("cuhacking");
         snapText.setSpan(new UnderlineSpan(), 0, snapText.length(), 0);
@@ -58,10 +60,12 @@ public class LinksFragment extends Fragment {
         fbImageView.setOnClickListener(fbRedirect);
         twitterImageView.setOnClickListener(twitterRedirect);
         snapImageView.setOnClickListener(snapRedirect);
+        instaImageView.setOnClickListener(instaRedirect);
 
         fbLink.setOnClickListener(fbRedirect);
         twitterLink.setOnClickListener(twitterRedirect);
         snapLink.setOnClickListener(snapRedirect);
+        instaLink.setOnClickListener(instaRedirect);
         emergencyLink.setOnClickListener(makeCall);
 
         slackLink.setMovementMethod(LinkMovementMethod.getInstance());
@@ -97,6 +101,14 @@ public class LinksFragment extends Fragment {
         public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://twitter.com/cuhacking"));
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener instaRedirect = new View.OnClickListener() {
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.instagram.com/cuhacking/")); //TODO test with device
             startActivity(intent);
         }
     };

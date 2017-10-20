@@ -12,44 +12,46 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@mipmap/facebook"
         android:id="@+id/fbImage"
-        tools:layout_constraintTop_creator="1"
         android:layout_marginStart="16dp"
+        app:layout_constraintRight_toLeftOf="@+id/fbLinkText"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/slackLinkText"
+        android:layout_marginEnd="13dp"
         android:layout_marginTop="16dp"
         tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="19dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="77dp"
+        android:layout_height="68dp"
         android:src="@mipmap/slack"
         android:id="@+id/slackImage"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/snapImage"
         app:layout_constraintRight_toRightOf="@+id/fbImage"
-        android:layout_marginTop="87dp"
+        app:layout_constraintTop_toBottomOf="@+id/fbImage"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="86dp"
-        app:layout_constraintLeft_toLeftOf="@+id/fbImage"
-        app:layout_constraintTop_toTopOf="@+id/fbImage" />
+        app:layout_constraintLeft_toLeftOf="@+id/fbImage" />
 
     <TextView
         android:id="@+id/fbLinkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="100dp"
         android:text="@string/fbLink"
         android:textSize="18sp"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="20dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintTop_toTopOf="@+id/fbImage"
-        app:layout_constraintLeft_toRightOf="@+id/fbImage" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fbImage" />
 
     <TextView
         android:id="@+id/twitterLinkText"
@@ -57,24 +59,24 @@
         android:layout_height="wrap_content"
         android:text="@string/twitterLink"
         android:textSize="18sp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="13dp"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="16dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintTop_toTopOf="@+id/twitterImage"
-        app:layout_constraintLeft_toRightOf="@+id/twitterImage" />
+        app:layout_constraintLeft_toRightOf="@+id/slackImage" />
 
     <TextView
         android:id="@+id/slackLinkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="13dp"
         android:text="@string/slackLink"
         android:textSize="18sp"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/slackImage"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="105dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="27dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/slackImage" />
 
     <ImageView
@@ -82,15 +84,18 @@
         android:layout_height="63dp"
         android:src="@mipmap/twitter"
         android:id="@+id/twitterImage"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintRight_toLeftOf="@+id/twitterLinkText"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/snapImage"
-        app:layout_constraintRight_toRightOf="@+id/slackImage"
+        app:layout_constraintBottom_toBottomOf="@+id/snapLinkText"
+        android:layout_marginTop="49dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintLeft_toLeftOf="@+id/slackImage" />
+        android:layout_marginBottom="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/slackLinkText" />
 
     <TextView
         android:id="@+id/snapLinkText"
@@ -99,11 +104,11 @@
         android:text="cuhacking"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
-        android:layout_marginStart="25dp"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/snapImage"
+        android:layout_marginStart="20dp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="25dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="24dp"
+        app:layout_constraintTop_toTopOf="@+id/snapImage"
         app:layout_constraintLeft_toRightOf="@+id/snapImage" />
 
     <ImageView
@@ -111,43 +116,73 @@
         android:layout_width="0dp"
         android:layout_height="72dp"
         app:srcCompat="@mipmap/snapchat"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="@+id/twitterImage"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="173dp"
-        app:layout_constraintLeft_toLeftOf="@+id/twitterImage" />
+        app:layout_constraintLeft_toLeftOf="@+id/twitterImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instaLinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instaLink"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_marginStart="18dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/instaImage"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/instaImage" />
+
+    <ImageView
+        android:id="@+id/instaImage"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        app:srcCompat="@mipmap/instagram"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/snapImage"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/snapImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.665" />
 
     <TextView
         android:id="@+id/emergencyInfoHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="111dp"
         android:text="@string/emergency_info_header"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/emergencyInfoDetails"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/emergencyInfoDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="1dp"
         android:text="@string/emergency_info_details"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:clickable="true"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintBottom_creator="1" />
+        android:layout_marginBottom="55dp" />
 </android.support.constraint.ConstraintLayout>
