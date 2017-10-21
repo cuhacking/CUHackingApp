@@ -25,6 +25,7 @@ public class MapFragment extends Fragment {
     FloatingActionButton cu;
     TextView me3Text;
     TextView me4Text;
+    TextView toolbarText;
 
 
     @Override
@@ -43,6 +44,7 @@ public class MapFragment extends Fragment {
         map = v.findViewById(R.id.map_image);
         me3Text = v.findViewById(R.id.meFloor3Text);
         me4Text = v.findViewById(R.id.meFloor4Text);
+        toolbarText = v.findViewById(R.id.toolbarText);
 
         me.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,7 @@ public class MapFragment extends Fragment {
                 me4.hide();
                 me3Text.setVisibility(View.INVISIBLE);
                 me4Text.setVisibility(View.INVISIBLE);
+                toolbarText.setText("Mackenzie 4th Floor");
             }
         });
 
@@ -82,6 +85,7 @@ public class MapFragment extends Fragment {
                 me4.hide();
                 me3Text.setVisibility(View.INVISIBLE);
                 me4Text.setVisibility(View.INVISIBLE);
+                toolbarText.setText("Mackenzie 3rd Floor");
             }
         });
 
@@ -89,6 +93,7 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 map.setImageResource(R.mipmap.exterior_map);
+                toolbarText.setText("Carleton Campus");
 
             }
         });

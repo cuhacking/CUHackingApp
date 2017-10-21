@@ -16,7 +16,20 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:titleTextColor="@color/colorWhite">
+
+
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/toolbarText"
+            android:text="Carleton Campus"
+            android:elevation="6dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorWhite"
+            app:layout_anchor="@id/toolbar"
+            app:layout_anchorGravity="center"/>
+    </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
