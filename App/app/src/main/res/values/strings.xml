@@ -12,6 +12,7 @@
     <string name="fbLink"><a href="https://www.facebook.com/CUHacking/?ref=br_rs">/CUHacking</a></string>
     <string name="slackLink"><a href="https://cuhacking2017.slack.com/">@CuHacking2017</a></string>
     <string name="twitterLink"><a href="https://twitter.com/cuhacking">/cuhacking2017</a></string>
+    <string name="instaLink"><a href="https://www.instagram.com/cuhacking/ ">cuhacking</a></string>
     <string name="snapLink">cuhacking</string>
     <string name="drawer_open">open drawer</string>
     <string name="drawer_close">close drawer</string>
@@ -35,4 +36,6 @@
     <string name="map_of_carleton">A map of Carleton</string>
     <string name="subtitle_request_help_success">A mentor will be contacting you on <a href="https://cuhacking2017.slack.com/">Slack</a> soon.</string>
     <string name="request_help_success_headline">Help is on the way!</string>
+    <string name="emergency_info_header">In Case of Emergencies</string>
+    <string name="emergency_info_details">Contact a volunteer or CUSERT <u>613-520-2600 ext. 4166</u></string>
 </resources>
