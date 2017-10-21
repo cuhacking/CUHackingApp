@@ -20,7 +20,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_map" />
+    <include layout="@layout/content_map"
+        android:id="@+id/include2" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -28,6 +30,92 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:backgroundTint="@color/colorPrimary" />
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="CU"
+        android:elevation="6dp"
+        android:textSize="18dp"
+        android:textColor="#fff"
+        app:layout_anchor="@id/fab"
+        app:layout_anchorGravity="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_margin="@dimen/fab_margin" />
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="HP"
+        android:elevation="6dp"
+        android:textSize="18dp"
+        android:textColor="#fff"
+        app:layout_anchor="@id/fab2"
+        app:layout_anchorGravity="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabME"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_margin="@dimen/fab_margin"/>
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="ME"
+        android:elevation="6dp"
+        android:textSize="18dp"
+        android:textColor="@color/colorWhite"
+        app:layout_anchor="@id/fabME"
+        app:layout_anchorGravity="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMeFloor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:layout_anchor="@id/fabME"
+        app:layout_anchorGravity="top|center"
+        app:fabSize="mini" />
+
+    <TextView android:layout_height="wrap_content"
+        android:id="@+id/meFloor2Text"
+        android:layout_width="wrap_content"
+        android:text="2"
+        android:elevation="6dp"
+        android:textSize="18dp"
+        android:textColor="@color/colorWhite"
+        android:visibility="invisible"
+        app:layout_anchor="@id/fabMeFloor2"
+        app:layout_anchorGravity="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMeFloor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:layout_anchor="@id/fabMeFloor2"
+        app:layout_anchorGravity="top|center"
+        app:fabSize="mini" />
+
+    <TextView
+        android:id="@+id/meFloor1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:text="1"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_anchor="@+id/fabMeFloor1"
+        app:layout_anchorGravity="center"/>
 
 </android.support.design.widget.CoordinatorLayout>
