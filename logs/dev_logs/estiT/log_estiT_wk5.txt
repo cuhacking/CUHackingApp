@@ -5,14 +5,16 @@ Esti Tweg
 --------------
 
 What I did this week:
-- reviews and tested Jacks help request PR
+- reviewed and tested Jacks help request PR
 - updated colour theme and Map fragment theme
 - redesigned map fragment
+- finished links fragment with a textview that has a phone number, dials number on click
+- worked on map fragment, added three floating action buttons for different map views, on click they show more buttons
 
 What I hope to do next week:
 
 
 What I struggled with:
-- 
+- android xml layout, placing widgets where I want them to be and the margins being correct 
 
 --------------
