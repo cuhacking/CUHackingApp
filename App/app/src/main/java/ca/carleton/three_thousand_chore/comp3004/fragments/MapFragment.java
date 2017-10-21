@@ -19,10 +19,12 @@ import ca.carleton.three_thousand_chore.comp3004.R;
 
 public class MapFragment extends Fragment {
     ImageView map;
-    FloatingActionButton me1;
-    FloatingActionButton me2;
-    TextView me1Text;
-    TextView me2Text;
+    FloatingActionButton me;
+    FloatingActionButton me3;
+    FloatingActionButton me4;
+    FloatingActionButton cu;
+    TextView me3Text;
+    TextView me4Text;
 
 
     @Override
@@ -34,28 +36,53 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_map, null);
-        FloatingActionButton me = v.findViewById(R.id.fabME);
-        me1 = v.findViewById(R.id.fabMeFloor1);
-        me2 = v.findViewById(R.id.fabMeFloor2);
+        me = v.findViewById(R.id.fabME);
+        me3 = v.findViewById(R.id.fabMeFloor3);
+        me4 = v.findViewById(R.id.fabMeFloor4);
+        cu = v.findViewById(R.id.fabCU);
         map = v.findViewById(R.id.map_image);
-        me1Text = v.findViewById(R.id.meFloor1Text);
-        me2Text = v.findViewById(R.id.meFloor2Text);
+        me3Text = v.findViewById(R.id.meFloor3Text);
+        me4Text = v.findViewById(R.id.meFloor4Text);
 
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(me1.getVisibility() == View.VISIBLE){
-                    me1.hide();
-                    me2.hide();
-                    me1Text.setVisibility(View.INVISIBLE);
-                    me2Text.setVisibility(View.INVISIBLE);
+                if(me3.getVisibility() == View.VISIBLE){
+                    me3.hide();
+                    me4.hide();
+                    me3Text.setVisibility(View.INVISIBLE);
+                    me4Text.setVisibility(View.INVISIBLE);
                 }
                 else{
-                    me1.show();
-                    me2.show();
-                    me1Text.setVisibility(View.VISIBLE);
-                    me2Text.setVisibility(View.VISIBLE);
+                    me3.show();
+                    me4.show();
+                    me3Text.setVisibility(View.VISIBLE);
+                    me4Text.setVisibility(View.VISIBLE);
                 }
+
+            }
+        });
+
+        me4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                map.setImageResource(R.mipmap.me4);
+
+            }
+        });
+
+        me3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                map.setImageResource(R.mipmap.me3);
+
+            }
+        });
+
+        cu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                map.setImageResource(R.mipmap.exterior_map);
 
             }
         });
