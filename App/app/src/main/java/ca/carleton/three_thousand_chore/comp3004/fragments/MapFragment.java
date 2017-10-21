@@ -67,7 +67,10 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 map.setImageResource(R.mipmap.me4);
-
+                me3.hide();
+                me4.hide();
+                me3Text.setVisibility(View.INVISIBLE);
+                me4Text.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -75,7 +78,10 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 map.setImageResource(R.mipmap.me3);
-
+                me3.hide();
+                me4.hide();
+                me3Text.setVisibility(View.INVISIBLE);
+                me4Text.setVisibility(View.INVISIBLE);
             }
         });
 
