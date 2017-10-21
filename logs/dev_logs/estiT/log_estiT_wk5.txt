@@ -10,8 +10,11 @@ What I did this week:
 - redesigned map fragment
 - finished links fragment with a textview that has a phone number, dials number on click
 - worked on map fragment, added three floating action buttons for different map views, on click they show more buttons
+- Added text to display what map was currently being viewed 
+- merged links and sponsors branch
 
 What I hope to do next week:
+- get map of Herzberg to add the maps fragment 
 
 
 What I struggled with:
