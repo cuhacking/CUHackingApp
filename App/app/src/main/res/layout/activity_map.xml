@@ -79,11 +79,13 @@
         android:id="@+id/fabMeFloor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:adjustViewBounds="false"
         android:visibility="invisible"
         app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="mini"
         app:layout_anchor="@id/fabME"
-        app:layout_anchorGravity="top|center"
-        app:fabSize="mini" />
+        app:layout_anchorGravity="top|center" />
 
     <TextView android:layout_height="wrap_content"
         android:id="@+id/meFloor2Text"
@@ -100,11 +102,12 @@
         android:id="@+id/fabMeFloor1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
         android:visibility="invisible"
         app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="mini"
         app:layout_anchor="@id/fabMeFloor2"
-        app:layout_anchorGravity="top|center"
-        app:fabSize="mini" />
+        app:layout_anchorGravity="top|center" />
 
     <TextView
         android:id="@+id/meFloor1Text"
