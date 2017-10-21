@@ -115,10 +115,8 @@ public class LinksFragment extends Fragment {
 
     private View.OnClickListener snapRedirect = new View.OnClickListener() {
         public void onClick(View v) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("*/*");//TODO redirect to specific profile
-            intent.setPackage("com.snapchat.android");
-            startActivity(Intent.createChooser(intent, "Open Snapchat"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://snapchat.com/add/cuhacking"));
+            startActivity(intent);
         }
     };
 
