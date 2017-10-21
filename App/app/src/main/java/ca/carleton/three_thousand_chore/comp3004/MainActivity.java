@@ -115,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         if (savedInstanceState == null) {
             selectItem(0);
         }
+
+        drawerList.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
