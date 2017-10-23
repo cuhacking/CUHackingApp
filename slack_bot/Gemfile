@@ -7,6 +7,7 @@ gem "json"
 
 gem "lita-cuslacking", :path => "lita-cuslacking"
 gem "byebug"
+gem "httparty"
 
 # Uncomment to use the HipChat adapter
 # gem "lita-hipchat"

@@ -34,6 +34,10 @@ class HelpRequestsController < ApplicationController
     params[:help_request]
   end
 
+  def bot_callback
+      puts params
+  end
+
   def destroy
   end
 end

@@ -20,7 +20,7 @@ import java.util.Map;
  */
 
 public class RequestHelper {
-    public static String BASE_URL = "http://cuhacking.herokuapp.com";
+    public static String BASE_URL = "http://10.0.2.2:3000"; //cuhacking.herokuapp.com";
     private static RequestHelper instance;
     private static int contextHash;
 
