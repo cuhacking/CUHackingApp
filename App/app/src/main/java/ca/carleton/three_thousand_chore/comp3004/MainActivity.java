@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     private String[] activitiesList;
     private CharSequence drawerTitle;
     private CharSequence title;
+
+    // General
     private User user;
 
 
