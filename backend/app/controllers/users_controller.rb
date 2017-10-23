@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new
+    @user.token = params[:token]
     @user.save!
 
     respond_to do |format|
