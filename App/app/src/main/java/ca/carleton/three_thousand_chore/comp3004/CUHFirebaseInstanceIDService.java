@@ -1,7 +1,9 @@
 package ca.carleton.three_thousand_chore.comp3004;
 
 import android.app.Service;
+import android.util.Log;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
@@ -13,5 +15,7 @@ public class CUHFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         // TODO: Talk to the server and say that the token has changed
         super.onTokenRefresh();
+
+        Log.i("tag", FirebaseInstanceId.getInstance().getToken());
     }
 }

@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         if (savedInstanceState == null) {
             selectItem(0);
         }
-
-        Log.i("tag", FirebaseInstanceId.getInstance().getToken());
     }
 
     @Override
