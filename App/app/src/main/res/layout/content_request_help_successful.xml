@@ -16,4 +16,18 @@
         android:text="@string/subtitle_request_help_success"
         android:gravity="center_horizontal"
         style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mentor_profile"
+        android:visibility="invisible"
+        android:gravity="center_horizontal"
+        android:contentDescription="@string/slack_profile_photo"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mentor_done_button"
+        android:gravity="center_horizontal"
+        android:text="@string/mentor_has_arrived"
+        android:visibility="invisible"/>
 </LinearLayout>

@@ -56,9 +56,18 @@ public class HelpRequest {
         return status;
     }
 
-    public static HelpRequest forId(int id) {
-        return null;
+    public static void forId(int id, JsonRequest.CompletionHandler<HelpRequest> handler) {
+        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.GET, RequestHelper.BASE_URL + "/help_requests/" + id, null, objectCreationHandler, handler);
+        RequestHelper rh = RequestHelper.getInstance();
+        rh.getQueue().add(request);
     }
+
+    private static JsonRequest.ObjectCreationHandler<HelpRequest> objectCreationHandler = new JsonRequest.ObjectCreationHandler<HelpRequest>() {
+        @Override
+        public HelpRequest fromJson(JSONObject obj) throws JSONException {
+            return new HelpRequest(obj.getInt("id"), obj.getString("location"), obj.getString("problem"), obj.getString("status"));
+        }
+    };
 
     public static void createHelpRequest(String location, String problem, int userId, String usersName, final JsonRequest.CompletionHandler<HelpRequest> handler) {
         try {
@@ -70,12 +79,7 @@ public class HelpRequest {
             requestParams.put("user_name", usersName);
             requestParams.put("user_id", userId);
 
-            JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.POST, RequestHelper.BASE_URL + "/help_requests", requestParams, new JsonRequest.ObjectCreationHandler<HelpRequest>() {
-                @Override
-                public HelpRequest fromJson(JSONObject obj) throws JSONException {
-                    return new HelpRequest(obj.getInt("id"), obj.getString("location"), obj.getString("problem"), obj.getString("status"));
-                }
-            }, handler);
+            JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.POST, RequestHelper.BASE_URL + "/help_requests", requestParams, objectCreationHandler, handler);
             RequestHelper rh = RequestHelper.getInstance();
 
             rh.getQueue().add(request);
@@ -83,4 +87,5 @@ public class HelpRequest {
             Log.e(HelpRequest.class.getClass().getSimpleName(), "Failed to create help request: " + e.getMessage());
         }
     }
+
 }
