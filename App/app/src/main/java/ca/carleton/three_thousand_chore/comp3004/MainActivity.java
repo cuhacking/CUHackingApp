@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         RequestHelper.getInstance(this);
@@ -116,10 +117,13 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         // Set the drawer toggle as the DrawerListener
         drawer.addDrawerListener(toggle);
 
-        // Opens to Notifications (aka activitiesList[0])
-        if (savedInstanceState == null) {
-            selectItem(0);
+        int drawerPage = 0;
+
+        if (getIntent().getExtras() != null) {
+            drawerPage = Integer.parseInt(getIntent().getExtras().getString("drawer_page"));
         }
+
+        selectItem(drawerPage);
     }
 
     @Override

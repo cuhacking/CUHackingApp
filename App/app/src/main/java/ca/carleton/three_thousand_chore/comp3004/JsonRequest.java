@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 import ca.carleton.three_thousand_chore.comp3004.models.User;
 
 /**
@@ -32,7 +33,7 @@ public class JsonRequest<T> extends JsonObjectRequest {
         T fromJson(JSONObject obj) throws JSONException;
     }
 
-    // For creating objects
+    // For creating/getting objects
     public JsonRequest(int method, String url, JSONObject jsonRequest,
                        final ObjectCreationHandler<T> objectCreationHandler,
                        final CompletionHandler<T> completionHandler) {

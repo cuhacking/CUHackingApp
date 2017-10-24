@@ -20,11 +20,11 @@ module Lita
           # Send to server
           callback_data = {
             help_request_id: request_id,
+            #TODO: Get the mentor's real name?
             mentor_name: payload[:user].mention_name
           }
 
           BackendParty.post('/help_requests/bot_callback', body: callback_data.to_json, headers: {"Content-Type": "application/json"})
-
         end
       end
 
@@ -37,8 +37,6 @@ module Lita
         api_response = robot.send_message(to_location, "#{data["user_name"] || "Someone"} needs help with " \
           "\"#{help_request["problem"] || "something"}\" at \"#{help_request["location"] || "unknown location"}\"." \
           " React :+1: to this message to take it! (request ID #{help_request["id"]})")
-
-        puts api_response
 
         Lita.redis.set(api_response["ts"] + api_response["channel"], help_request["id"])
 

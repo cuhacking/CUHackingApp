@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/secrets"
+
 class HelpRequestsController < ApplicationController
   def index
   end
@@ -35,7 +37,28 @@ class HelpRequestsController < ApplicationController
   end
 
   def bot_callback
-      puts params
+    help_request = HelpRequest.find(params[:help_request_id])
+
+    mentors = help_request.mentors
+    mentors << params[:mentor_name]
+    help_request.mentors = mentors
+
+    help_request.save!
+
+    # Send a notif to the client
+    fcm = FCM.new(Secrets[:server_key])
+
+    tokens = [help_request.user.token] # an array of one or more client registration tokens
+    options = {
+      notification: {
+        title: "Help is on the way!",
+        body: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!"
+      },
+      data: {
+        drawer_page: 3
+      }
+    }
+    response = fcm.send(tokens, options)
   end
 
   def destroy
