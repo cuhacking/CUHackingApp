@@ -1,5 +1,7 @@
 package ca.carleton.three_thousand_chore.comp3004.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -14,7 +16,7 @@ import ca.carleton.three_thousand_chore.comp3004.Requests;
  * Created by jackmccracken on 2017-10-09.
  */
 
-public class HelpRequest {
+public class HelpRequest implements Parcelable{
     private int id;
     private String location;
     private String problem;
@@ -26,6 +28,11 @@ public class HelpRequest {
         this.location = location;
         this.problem = problem;
         this.status = status;
+    }
+
+    public HelpRequest(Parcel p) {
+        this(p.readInt(), p.readString(), p.readString(), p.readString());
+        this.mentors = p.createStringArray();
     }
 
     public int getId() {
@@ -81,5 +88,32 @@ public class HelpRequest {
         } catch (JSONException e) {
             Log.e(HelpRequest.class.getClass().getSimpleName(), "Failed to create help request: " + e.getMessage());
         }
+    }
+
+    public static final Parcelable.Creator CREATOR =
+            new Parcelable.Creator() {
+                public HelpRequest createFromParcel(Parcel in) {
+                    return new HelpRequest(in);
+                }
+
+                public HelpRequest[] newArray(int size) {
+                    return new HelpRequest[size];
+                }
+            };
+
+    @Override
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i)
+    {
+        parcel.writeInt(id);
+        parcel.writeString(location);
+        parcel.writeString(problem);
+        parcel.writeString(status);
+        parcel.writeStringArray(getMentors());
     }
 }

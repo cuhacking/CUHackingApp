@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import ca.carleton.three_thousand_chore.comp3004.R;
+import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 
 /**
  * Created by jackmccracken on 2017-10-19.
@@ -18,7 +19,18 @@ import ca.carleton.three_thousand_chore.comp3004.R;
 public class RequestHelpSuccessfulFragment extends Fragment {
     TextView message;
 
-    @Override
+    public static RequestHelpSuccessfulFragment newInstance(HelpRequest activeHelpRequest) {
+        RequestHelpSuccessfulFragment fragment = new RequestHelpSuccessfulFragment();
+
+        Bundle b = new Bundle();
+        b.putParcelable("help_request", activeHelpRequest);
+        fragment.setArguments(b);
+
+        return fragment;
+    }
+
+
+        @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

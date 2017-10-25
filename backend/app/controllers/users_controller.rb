@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @user.help_requests.not(status: "Completed").first.to_json}
+      format.json {render json: @user.help_requests.where.not(status: "Completed").first.to_json}
     end
   end
 

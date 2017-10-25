@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :help_requests
   resources :notifications
   post "help_requests/bot_callback", "help_requests#bot_callback"
-  post 'users/:id/help_request' => 'users#help_request'
+  get 'users/:id/help_request' => 'users#help_request'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

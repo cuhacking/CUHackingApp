@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     // General
     private User user;
     private HelpRequest activeHelpRequest;
-
-
+    private boolean requestInProgress = false;
+    private boolean loadingHelpRequestFragment = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
 
+        requestInProgress = true;
+
         if (!preferences.contains(getString(R.string.user_id_key))) {
             // New user
             User.createUser(new JsonRequest.CompletionHandler<User>() {
@@ -83,12 +85,14 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                     editor.apply();
 
                     MainActivity.this.user = user;
-                    // Help request is null
+
+                    requestDone();
                 }
 
                 @Override
                 public void requestFailed(String errorMessage) {
                     Toast.makeText(MainActivity.this, "Failed to create user: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    requestInProgress = false;
                 }
             });
         }
@@ -101,12 +105,14 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 public void requestSucceeded(HelpRequest object)
                 {
                     MainActivity.this.activeHelpRequest = object;
+                    requestDone();
                 }
 
                 @Override
                 public void requestFailed(String errorMessage)
                 {
                     Log.e("MainActivity Log", errorMessage);
+                    requestInProgress = false;
                     //TODO: Test if this runs when you don't get a help request or only when fails
                 }
             });
@@ -167,10 +173,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
     @Override
     public void helpRequestSent(HelpRequest request) {
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, new RequestHelpSuccessfulFragment())
-                .commit();
+        this.activeHelpRequest = request;
+        selectItem(3);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -178,6 +182,13 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         // Listens for which option you have selected from the menu
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
+        }
+    }
+
+    private void requestDone() {
+        requestInProgress = false;
+        if (loadingHelpRequestFragment) {
+            selectItem(3);
         }
     }
 
@@ -205,7 +216,20 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 break;
             case 3:
                 // Request Help
-                fragment = RequestHelpFragment.newInstance(user.getId());
+                if (requestInProgress) {
+                    loadingHelpRequestFragment = true;
+                    return;
+                }
+
+                if (this.activeHelpRequest == null) {
+                    // Create new help request
+                    fragment = RequestHelpFragment.newInstance(user.getId());
+                }
+                else {
+                    // Help request either pending mentor or mentor found
+                    fragment = RequestHelpSuccessfulFragment.newInstance(activeHelpRequest);
+                }
+
                 break;
             case 4:
                 // Links
