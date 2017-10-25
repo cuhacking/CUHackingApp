@@ -23,6 +23,7 @@ public class MapFragment extends Fragment {
     FloatingActionButton me3;
     FloatingActionButton me4;
     FloatingActionButton cu;
+    TextView cuText;
     TextView me3Text;
     TextView me4Text;
     TextView toolbarText;
@@ -42,9 +43,20 @@ public class MapFragment extends Fragment {
         me4 = v.findViewById(R.id.fabMeFloor4);
         cu = v.findViewById(R.id.fabCU);
         map = v.findViewById(R.id.map_image);
+        cuText = v.findViewById(R.id.cuText);
         me3Text = v.findViewById(R.id.meFloor3Text);
         me4Text = v.findViewById(R.id.meFloor4Text);
         toolbarText = v.findViewById(R.id.toolbarText);
+
+        cu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cu.hide();
+                cuText.setVisibility(View.INVISIBLE);
+                map.setImageResource(R.mipmap.exterior_map);
+                toolbarText.setText("Carleton Campus");
+            }
+        });
 
         me.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +73,6 @@ public class MapFragment extends Fragment {
                     me3Text.setVisibility(View.VISIBLE);
                     me4Text.setVisibility(View.VISIBLE);
                 }
-
             }
         });
 
@@ -71,6 +82,8 @@ public class MapFragment extends Fragment {
                 map.setImageResource(R.mipmap.me4);
                 me3.hide();
                 me4.hide();
+                cu.show();
+                cuText.setVisibility(View.VISIBLE);
                 me3Text.setVisibility(View.INVISIBLE);
                 me4Text.setVisibility(View.INVISIBLE);
                 toolbarText.setText("Mackenzie 4th Floor");
@@ -83,18 +96,11 @@ public class MapFragment extends Fragment {
                 map.setImageResource(R.mipmap.me3);
                 me3.hide();
                 me4.hide();
+                cu.show();
+                cuText.setVisibility(View.VISIBLE);
                 me3Text.setVisibility(View.INVISIBLE);
                 me4Text.setVisibility(View.INVISIBLE);
                 toolbarText.setText("Mackenzie 3rd Floor");
-            }
-        });
-
-        cu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                map.setImageResource(R.mipmap.exterior_map);
-                toolbarText.setText("Carleton Campus");
-
             }
         });
 

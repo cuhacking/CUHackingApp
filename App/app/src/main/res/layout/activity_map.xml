@@ -36,46 +36,11 @@
     <include layout="@layout/content_map"
         android:id="@+id/include2" />
 
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabCU"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/colorPrimary" />
-
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="CU"
-        android:elevation="6dp"
-        android:textSize="18dp"
-        android:textColor="#fff"
-        app:layout_anchor="@id/fabCU"
-        app:layout_anchorGravity="center"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        app:backgroundTint="@color/colorPrimary"
-        android:layout_margin="@dimen/fab_margin" />
-
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="HP"
-        android:elevation="6dp"
-        android:textSize="18dp"
-        android:textColor="#fff"
-        app:layout_anchor="@id/fab2"
-        app:layout_anchorGravity="center"/>
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabME"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|end"
         app:backgroundTint="@color/colorPrimary"
         android:layout_margin="@dimen/fab_margin"/>
 
@@ -92,13 +57,13 @@
         android:id="@+id/fabMeFloor4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
+        android:layout_gravity="left|center"
         android:adjustViewBounds="false"
         android:visibility="invisible"
         app:backgroundTint="@color/colorPrimaryDark"
         app:fabSize="mini"
         app:layout_anchor="@id/fabME"
-        app:layout_anchorGravity="top|center" />
+        app:layout_anchorGravity="left|center" />
 
     <TextView android:layout_height="wrap_content"
         android:id="@+id/meFloor4Text"
@@ -115,12 +80,12 @@
         android:id="@+id/fabMeFloor3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
+        android:layout_gravity="left|center"
         android:visibility="invisible"
         app:backgroundTint="@color/colorPrimaryDark"
         app:fabSize="mini"
         app:layout_anchor="@id/fabMeFloor4"
-        app:layout_anchorGravity="top|center" />
+        app:layout_anchorGravity="left|center" />
 
     <TextView
         android:id="@+id/meFloor3Text"
@@ -133,5 +98,38 @@
         android:visibility="invisible"
         app:layout_anchor="@+id/fabMeFloor3"
         app:layout_anchorGravity="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/fabME"
+        android:visibility="invisible"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_anchorGravity="center|top" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabCU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/fab"
+        app:layout_anchorGravity="center|top"
+        android:visibility="invisible"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/colorPrimary" />
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/cuText"
+        android:text="CU"
+        android:elevation="6dp"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        android:textColor="#fff"
+        app:layout_anchor="@id/fabCU"
+        app:layout_anchorGravity="center"/>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
