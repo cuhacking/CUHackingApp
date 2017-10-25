@@ -1,6 +1,9 @@
 require "#{Rails.root}/lib/secrets"
 
 class HelpRequestsController < ApplicationController
+  PENDING_MENTOR = "Pending mentor"
+  MENTOR_FOUND = "Mentor found"
+
   def index
   end
 
@@ -18,7 +21,7 @@ class HelpRequestsController < ApplicationController
     user.name = params[:user_name]
     user.save!
 
-    @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem])
+    @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem], state: PENDING_MENTOR)
     @help_request.save!
 
     SendHelpRequestToBotJob.perform_later(@help_request)
@@ -42,6 +45,7 @@ class HelpRequestsController < ApplicationController
     mentors = help_request.mentors
     mentors << params[:mentor_name]
     help_request.mentors = mentors
+    help_request.state = MENTOR_FOUND
 
     help_request.save!
 
@@ -55,7 +59,8 @@ class HelpRequestsController < ApplicationController
         body: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!"
       },
       data: {
-        drawer_page: 3
+        drawer_page: 3,
+        help_request: help_request.serializable_hash
       }
     }
     response = fcm.send(tokens, options)
