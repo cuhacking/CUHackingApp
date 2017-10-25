@@ -21,7 +21,7 @@ class HelpRequestsController < ApplicationController
     user.name = params[:user_name]
     user.save!
 
-    @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem], state: PENDING_MENTOR)
+    @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem], status: PENDING_MENTOR)
     @help_request.save!
 
     SendHelpRequestToBotJob.perform_later(@help_request)
@@ -45,7 +45,7 @@ class HelpRequestsController < ApplicationController
     mentors = help_request.mentors
     mentors << params[:mentor_name]
     help_request.mentors = mentors
-    help_request.state = MENTOR_FOUND
+    help_request.status = MENTOR_FOUND
 
     help_request.save!
 

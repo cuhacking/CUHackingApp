@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def help_request
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @user.help_requests.not(status: "Completed").first.to_json}
+    end
+  end
+
   def new
   end
 
