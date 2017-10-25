@@ -1,11 +1,13 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -50,6 +52,16 @@ public class ScheduleFragment extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter(getContext(), R.layout.schedule_list_item, scheduleNameList);
         scheduleListView.setAdapter(adapter);
 
+        scheduleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new ScheduleDetailViewFragment())
+                        .commit();
+            }
+        });
         
         return v;
     }
