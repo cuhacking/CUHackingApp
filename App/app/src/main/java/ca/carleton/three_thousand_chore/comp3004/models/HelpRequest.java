@@ -1,21 +1,14 @@
 package ca.carleton.three_thousand_chore.comp3004.models;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Map;
-
 import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
-import ca.carleton.three_thousand_chore.comp3004.RequestHelper;
+import ca.carleton.three_thousand_chore.comp3004.Requests;
 
 /**
  * Created by jackmccracken on 2017-10-09.
@@ -32,7 +25,6 @@ public class HelpRequest {
         this.id = id;
         this.location = location;
         this.problem = problem;
-//        this.mentors = mentors;
         this.status = status;
     }
 
@@ -43,22 +35,25 @@ public class HelpRequest {
     public String getLocation() {
         return location;
     }
-
     public String getProblem() {
         return problem;
     }
-
     public String[] getMentors() {
         return mentors;
     }
-
     public String getStatus() {
         return status;
     }
 
     public static void forId(int id, JsonRequest.CompletionHandler<HelpRequest> handler) {
-        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.GET, RequestHelper.BASE_URL + "/help_requests/" + id, null, objectCreationHandler, handler);
-        RequestHelper rh = RequestHelper.getInstance();
+        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.GET, Requests.BASE_URL + "/help_requests/" + id, null, objectCreationHandler, handler);
+        Requests rh = Requests.getInstance();
+        rh.getQueue().add(request);
+    }
+
+    public static void forUser(User user, JsonRequest.CompletionHandler<HelpRequest> handler) {
+        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.GET, Requests.BASE_URL + "/users/" + user.getId() + "/help_request/", null, objectCreationHandler, handler);
+        Requests rh = Requests.getInstance();
         rh.getQueue().add(request);
     }
 
@@ -79,13 +74,12 @@ public class HelpRequest {
             requestParams.put("user_name", usersName);
             requestParams.put("user_id", userId);
 
-            JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.POST, RequestHelper.BASE_URL + "/help_requests", requestParams, objectCreationHandler, handler);
-            RequestHelper rh = RequestHelper.getInstance();
+            JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.POST, Requests.BASE_URL + "/help_requests", requestParams, objectCreationHandler, handler);
+            Requests rh = Requests.getInstance();
 
             rh.getQueue().add(request);
         } catch (JSONException e) {
             Log.e(HelpRequest.class.getClass().getSimpleName(), "Failed to create help request: " + e.getMessage());
         }
     }
-
 }

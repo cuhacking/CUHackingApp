@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,8 +16,6 @@ import android.widget.ArrayAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import ca.carleton.three_thousand_chore.comp3004.fragments.DefaultFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.LinksFragment;
@@ -43,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
     // General
     private User user;
+    private HelpRequest activeHelpRequest;
+
 
 
     @Override
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         setContentView(R.layout.activity_main);
 
-        RequestHelper.getInstance(this);
+        Requests.getInstance(this);
 
         // Drawer menu
         activitiesList = getResources().getStringArray(R.array.activities_array);
@@ -74,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
 
         if (!preferences.contains(getString(R.string.user_id_key))) {
+            // New user
             User.createUser(new JsonRequest.CompletionHandler<User>() {
                 @Override
                 public void requestSucceeded(User user) {
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                     editor.apply();
 
                     MainActivity.this.user = user;
+                    // Help request is null
                 }
 
                 @Override
@@ -92,7 +93,23 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             });
         }
         else {
+            // Existing user
             this.user = new User(preferences.getInt(getString(R.string.user_id_key), -1));
+            HelpRequest.forUser(this.user, new JsonRequest.CompletionHandler<HelpRequest>()
+            {
+                @Override
+                public void requestSucceeded(HelpRequest object)
+                {
+                    MainActivity.this.activeHelpRequest = object;
+                }
+
+                @Override
+                public void requestFailed(String errorMessage)
+                {
+                    Log.e("MainActivity Log", errorMessage);
+                    //TODO: Test if this runs when you don't get a help request or only when fails
+                }
+            });
         }
 
         // Toggle connects the sliding drawer with action bar app icon

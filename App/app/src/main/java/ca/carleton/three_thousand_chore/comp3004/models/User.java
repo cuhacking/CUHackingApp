@@ -1,7 +1,6 @@
 package ca.carleton.three_thousand_chore.comp3004.models;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -10,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
-import ca.carleton.three_thousand_chore.comp3004.RequestHelper;
+import ca.carleton.three_thousand_chore.comp3004.Requests;
 
 /**
  * Created by jackmccracken on 2017-10-09.
@@ -45,7 +44,7 @@ public class User {
         {
             params.put("token", FirebaseInstanceId.getInstance().getToken());
 
-            JsonRequest<User> request = new JsonRequest<User>(Request.Method.PUT, RequestHelper.BASE_URL + "/users/" + id, params, new JsonRequest.CompletionHandler<JSONObject>()
+            JsonRequest<User> request = new JsonRequest<User>(Request.Method.PUT, Requests.BASE_URL + "/users/" + id, params, new JsonRequest.CompletionHandler<JSONObject>()
             {
                 @Override
                 public void requestSucceeded(JSONObject object)
@@ -60,7 +59,7 @@ public class User {
                     Log.e(TAG, "requestFailed: error getting token for notifications");
                 }
             });
-            RequestHelper rh = RequestHelper.getInstance();
+            Requests rh = Requests.getInstance();
 
             rh.getQueue().add(request);
         } catch (JSONException e)
@@ -77,7 +76,7 @@ public class User {
             params.put("token", FirebaseInstanceId.getInstance().getToken());
 
             // Make request
-            JsonRequest<User> request = new JsonRequest<>(Request.Method.POST, RequestHelper.BASE_URL + "/users", params, new JsonRequest.ObjectCreationHandler<User>() {
+            JsonRequest<User> request = new JsonRequest<>(Request.Method.POST, Requests.BASE_URL + "/users", params, new JsonRequest.ObjectCreationHandler<User>() {
                 @Override
                 public User fromJson(JSONObject response) throws JSONException {
                     User newuser = new User(response.getInt("id"));
@@ -85,7 +84,7 @@ public class User {
                     return newuser;
                 }
             }, handler);
-            RequestHelper rh = RequestHelper.getInstance();
+            Requests rh = Requests.getInstance();
 
             rh.getQueue().add(request);
         } catch (JSONException e)

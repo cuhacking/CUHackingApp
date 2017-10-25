@@ -25,8 +25,6 @@
         <item>Links</item>
         <item>Sponsors</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="need_help_heading">Need some help? Don\'t wait, just ask!</string>
     <string name="name_question">What\'s your name?</string>
@@ -36,11 +34,11 @@
     <string name="map_of_carleton">A map of Carleton</string>
     <string name="subtitle_request_help_success">A mentor will be contacting you on <a href="https://cuhacking2017.slack.com/">Slack</a> soon.</string>
     <string name="request_help_success_headline">Help is on the way!</string>
-<<<<<<< HEAD
     <string name="emergency_info_header">In Case of Emergencies</string>
     <string name="emergency_info_details">Contact a volunteer or CUSERT <u>613-520-2600 ext. 4166</u></string>
-=======
     <string name="slack_profile_photo">Mentor slack profile photo</string>
     <string name="mentor_has_arrived">Mentor has arrived!</string>
->>>>>>> b72c5f6... Getting ready to display mentor information and help request states
+    <string name="no_request">No request</string>
+    <string name="pending_mentor">Pending mentor</string>
+    <string name="mentor_found">Mentor found</string>
 </resources>
