@@ -14,5 +14,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/map_of_carleton"
-        android:src="@drawable/mapofcarleton" />
+        android:src="@mipmap/exterior_map" />
 </LinearLayout>
