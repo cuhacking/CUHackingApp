@@ -3,6 +3,12 @@ class BuildingsController < ApplicationController
   end
 
   def show
+    @help_request = HelpRequest.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @help_request.to_json }
+      format.html
+    end
   end
 
   def create

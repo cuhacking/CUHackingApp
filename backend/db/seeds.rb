@@ -11,3 +11,5 @@ forest = User.new(name: "Forest")
 forest.save!
 HelpRequest.new(user: forest, problem: "Plz hlp boxx").save!
 #end
+
+hp = Building.new()
