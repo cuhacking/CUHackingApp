@@ -9,6 +9,18 @@ module Lita
       route(/what time is it?/, :get_time, command: true, help: {
         "what time is it?" => "Tells you to check the time yourself"
         })
+      
+      BOT_CONTROL_CHANNEL = "three-thousand-more"
+      ANNOUNCEMENTS_CHANNEL = "fake-announcements"
+
+      route(/^announce\s+(.+)/, command: true, help: {
+        "announce TEXT" => "Announce the provided text through the app and the announcements channel"
+      }) do |response|
+        if Lita::Room.find_by_id(response.room.id).name == BOT_CONTROL_CHANNEL
+          target = Lita::Source.new(room: Lita::Room.find_by_name(ANNOUNCEMENTS_CHANNEL))
+          robot.send_message(target, response.matches[0])
+        end
+      end
 
       def call_everyone_nerds(response)
           if response.private_message?
