@@ -1,6 +1,6 @@
 module Lita
   module Handlers
-    class CUSlacking < Handler
+    class CUSlackingChat < Handler
       # insert handler code here
       route(/call everyone nerds/, :call_everyone_nerds, command: true, help: {
         "call everyone nerds" => "Calls everyone nerds!"
