@@ -19,6 +19,11 @@ module Lita
         if Lita::Room.find_by_id(response.room.id).name == BOT_CONTROL_CHANNEL
           target = Lita::Source.new(room: Lita::Room.find_by_name(ANNOUNCEMENTS_CHANNEL))
           robot.send_message(target, response.matches[0])
+
+          notification = Notification.new(audience: nil, title: "CUHacking Announcement", description: response.matches[0])
+          notification.save!
+
+          notification.send_notification!
         end
       end
 
