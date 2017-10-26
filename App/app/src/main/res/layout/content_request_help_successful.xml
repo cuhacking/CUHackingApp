@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/mentor_headline"
         android:padding="40dp"
         android:text="@string/request_help_success_headline"
         style="@style/Base.TextAppearance.AppCompat.Headline"
@@ -16,4 +18,18 @@
         android:text="@string/subtitle_request_help_success"
         android:gravity="center_horizontal"
         style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mentor_profile"
+        android:visibility="invisible"
+        android:gravity="center_horizontal"
+        android:contentDescription="@string/slack_profile_photo"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mentor_done_button"
+        android:text="@string/mentor_has_arrived"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"/>
 </LinearLayout>

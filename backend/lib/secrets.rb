@@ -16,7 +16,18 @@ class SecretHash < Hash
   end
 end
 
-Secrets = JSON.parse(
-  File.read('config/secrets.json'),
-  symbolize_names: true, object_class: SecretHash
-)
+class EnvironmentsSecrets
+  def [](param)
+    env_name = param.to_s.upcase
+    ENV[env_name]
+  end
+end
+
+if Rails.env.development?
+  Secrets = JSON.parse(
+    File.read('config/secrets.json'),
+    symbolize_names: true, object_class: SecretHash
+  )
+else
+  Secrets = EnvironmentsSecrets.new
+end

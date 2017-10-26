@@ -1,4 +1,9 @@
+require "#{Rails.root}/lib/secrets"
+
 class HelpRequestsController < ApplicationController
+  PENDING_MENTOR = "Pending mentor"
+  MENTOR_FOUND = "Mentor found"
+
   def index
   end
 
@@ -16,11 +21,13 @@ class HelpRequestsController < ApplicationController
     user.name = params[:user_name]
     user.save!
 
-    @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem])
+    @help_request = HelpRequest.new(user: user, location: help_request_params[:location], problem: help_request_params[:problem], status: PENDING_MENTOR)
     @help_request.save!
 
+    SendHelpRequestToBotJob.perform_later(@help_request)
+
     respond_to do |format|
-      format.json { render json: @help_request.serializable_hash }
+      format.json { render json: @help_request.to_json }
       format.html
     end
   end
@@ -28,8 +35,50 @@ class HelpRequestsController < ApplicationController
   def new
   end
 
+  def update
+    @help_request = HelpRequest.find(params[:id])
+
+    if help_request_params[:status] == "Complete" && @help_request.status != "Complete"
+      CompleteHelpRequestWithBotJob.perform_later(@help_request)
+    end
+
+    @help_request.update!(location: help_request_params[:location], problem: help_request_params[:problem], status: help_request_params[:status])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @help_request.to_json }
+    end
+  end
+
   def help_request_params
     params[:help_request]
+  end
+
+  def bot_callback
+    help_request = HelpRequest.find(params[:help_request_id])
+
+    mentors = help_request.mentors
+    mentors << params[:mentor_name]
+    help_request.mentors = mentors
+    help_request.status = MENTOR_FOUND
+    help_request.profile_pic_link = params[:profile_pic]
+    help_request.save!
+
+    # Send a notif to the client
+    fcm = FCM.new(Secrets[:server_key])
+
+    tokens = [help_request.user.token] # an array of one or more client registration tokens
+    options = {
+      notification: {
+        title: "Help is on the way!",
+        body: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!"
+      },
+      data: {
+        drawer_page: 3,
+        help_request: help_request.serializable_hash
+      }
+    }
+    response = fcm.send(tokens, options)
   end
 
   def destroy
