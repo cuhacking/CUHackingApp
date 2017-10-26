@@ -32,7 +32,8 @@
     <string name="get_some_help">get some help</string>
     <string name="hr_location">Where are you on campus (room number)?</string>
     <string name="map_of_carleton">A map of Carleton</string>
-    <string name="subtitle_request_help_success">A mentor will be contacting you on <a href="https://cuhacking2017.slack.com/">Slack</a> soon.</string>
+    <string name="subtitle_request_help_success">You should get a notification soon about your mentor match.</string>
+    <string name="subtitle_request_help_mentor_found">You can contact them on <a href="https://cuhacking2017.slack.com/">Slack</a>.</string>
     <string name="request_help_success_headline">Help is on the way!</string>
     <string name="emergency_info_header">In Case of Emergencies</string>
     <string name="emergency_info_details">Contact a volunteer or CUSERT <u>613-520-2600 ext. 4166</u></string>
@@ -41,4 +42,6 @@
     <string name="no_request">No request</string>
     <string name="pending_mentor">Pending mentor</string>
     <string name="mentor_found">Mentor found</string>
+    <string name="help_request_complete">Complete</string>
+    <string name="mentor_on_the_way_label">%s is on the way!</string>
 </resources>

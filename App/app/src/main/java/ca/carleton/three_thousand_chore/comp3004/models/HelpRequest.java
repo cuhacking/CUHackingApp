@@ -5,7 +5,9 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,15 +26,19 @@ public class HelpRequest implements Parcelable{
     private String status;
 
     public HelpRequest(int id, String location, String problem, String status) {
+        this(id, location, problem, status, null);
+    }
+
+    public HelpRequest(int id, String location, String problem, String status, String[] mentors) {
         this.id = id;
         this.location = location;
         this.problem = problem;
         this.status = status;
+        this.mentors = mentors;
     }
 
     public HelpRequest(Parcel p) {
-        this(p.readInt(), p.readString(), p.readString(), p.readString());
-        this.mentors = p.createStringArray();
+        this(p.readInt(), p.readString(), p.readString(), p.readString(), p.createStringArray());
     }
 
     public int getId() {
@@ -67,7 +73,14 @@ public class HelpRequest implements Parcelable{
     private static JsonRequest.ObjectCreationHandler<HelpRequest> objectCreationHandler = new JsonRequest.ObjectCreationHandler<HelpRequest>() {
         @Override
         public HelpRequest fromJson(JSONObject obj) throws JSONException {
-            return new HelpRequest(obj.getInt("id"), obj.getString("location"), obj.getString("problem"), obj.getString("status"));
+            JSONArray mentorsJsonArray = obj.getJSONArray("mentors");
+            String[] mentors = new String[mentorsJsonArray.length()];
+
+            for (int i = 0; i < mentors.length; i ++) {
+                mentors[i] = mentorsJsonArray.getString(i);
+            }
+
+            return new HelpRequest(obj.getInt("id"), obj.getString("location"), obj.getString("problem"), obj.getString("status"), mentors);
         }
     };
 
@@ -115,5 +128,34 @@ public class HelpRequest implements Parcelable{
         parcel.writeString(problem);
         parcel.writeString(status);
         parcel.writeStringArray(getMentors());
+    }
+
+    private JSONObject toJson() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("location", location);
+        obj.put("problem", problem);
+        obj.put("status", status);
+        obj.put("mentors", mentors);
+
+        return obj;
+    }
+
+    public static HelpRequest fromJson(JSONObject obj) throws JSONException {
+        return objectCreationHandler.fromJson(obj);
+    }
+
+    private void updateOnServer(JsonRequest.CompletionHandler<JSONObject> handler) throws JSONException {
+        JSONObject requestParameters = toJson();
+
+        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.PUT, Requests.BASE_URL + "/help_requests/" + id, requestParameters, handler);
+        RequestQueue rh = Requests.getInstance().getQueue();
+        rh.add(request);
+    }
+
+    public void setStatus(String status, final JsonRequest.CompletionHandler<JSONObject> completion) throws JSONException {
+        this.status = status;
+
+        updateOnServer(completion);
     }
 }

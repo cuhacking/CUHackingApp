@@ -1,6 +1,6 @@
 require "#{Rails.root}/lib/slack_party"
 
-class SendHelpRequestToBotJob < ApplicationJob
+class CompleteHelpRequestWithBotJob < ApplicationJob
   queue_as :default
 
   def perform(help_request)
@@ -12,6 +12,6 @@ class SendHelpRequestToBotJob < ApplicationJob
       user_name: user.name
     }
 
-    response = SlackParty.post('/help_request/start', body: data_for_bot.to_json, headers: {"Content-Type": "application/json"})
+    response = SlackParty.post('/help_request/complete', body: data_for_bot.to_json, headers: {"Content-Type": "application/json"})
   end
 end

@@ -35,6 +35,21 @@ class HelpRequestsController < ApplicationController
   def new
   end
 
+  def update
+    @help_request = HelpRequest.find(params[:id])
+
+    if help_request_params[:status] == "Complete" && @help_request.status != "Complete"
+      CompleteHelpRequestWithBotJob.perform_later(@help_request)
+    end
+
+    @help_request.update!(location: help_request_params[:location], problem: help_request_params[:problem], status: help_request_params[:status])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @help_request.to_json }
+    end
+  end
+
   def help_request_params
     params[:help_request]
   end

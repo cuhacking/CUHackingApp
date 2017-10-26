@@ -2,9 +2,13 @@ package ca.carleton.three_thousand_chore.comp3004;
 
 import android.app.FragmentManager;
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +21,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import ca.carleton.three_thousand_chore.comp3004.fragments.DefaultFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.LinksFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.MapFragment;
@@ -28,7 +35,7 @@ import ca.carleton.three_thousand_chore.comp3004.fragments.SponsorsFragment;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 import ca.carleton.three_thousand_chore.comp3004.models.User;
 
-public class MainActivity extends AppCompatActivity implements RequestHelpFragment.HelpRequestSentListener {
+public class MainActivity extends AppCompatActivity implements RequestHelpFragment.HelpRequestSentListener, RequestHelpSuccessfulFragment.HelpRequestCompletedListener {
 
     // Hamburger menu
     private DrawerLayout drawer;
@@ -43,6 +50,15 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     private HelpRequest activeHelpRequest;
     private boolean requestInProgress = false;
     private boolean loadingHelpRequestFragment = false;
+    private int drawerPosition;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        stopService(new Intent(this, NotificationFirebaseService.class));
+        stopService(new Intent(this, CUHFirebaseInstanceIDService.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         setContentView(R.layout.activity_main);
 
         Requests.getInstance(this);
+
+        startService(new Intent(this, NotificationFirebaseService.class));
+        startService(new Intent(this, CUHFirebaseInstanceIDService.class));
 
         // Drawer menu
         activitiesList = getResources().getStringArray(R.array.activities_array);
@@ -61,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         title = drawerTitle = getTitle();
 
         // Set up the menu with screen items
-        drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, activitiesList));
+        drawerList.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, activitiesList));
 
         // Set onClick Listeners for each item in the menu
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -70,11 +89,25 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                HelpRequest helpRequest = intent.getParcelableExtra("help_request");
+
+                MainActivity.this.activeHelpRequest = helpRequest;
+
+                if (drawerPosition == 3) {
+                    selectItem(3);
+                }
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter("NewHelpRequest"));
+
         final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
 
-        requestInProgress = true;
-
         if (!preferences.contains(getString(R.string.user_id_key))) {
+            requestInProgress = true;
             // New user
             User.createUser(new JsonRequest.CompletionHandler<User>() {
                 @Override
@@ -97,25 +130,41 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             });
         }
         else {
+
             // Existing user
             this.user = new User(preferences.getInt(getString(R.string.user_id_key), -1));
-            HelpRequest.forUser(this.user, new JsonRequest.CompletionHandler<HelpRequest>()
-            {
-                @Override
-                public void requestSucceeded(HelpRequest object)
-                {
-                    MainActivity.this.activeHelpRequest = object;
-                    requestDone();
-                }
+            if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("help_request")) {
+                // If we got here from a notification
 
-                @Override
-                public void requestFailed(String errorMessage)
-                {
-                    Log.e("MainActivity Log", errorMessage);
-                    requestInProgress = false;
-                    //TODO: Test if this runs when you don't get a help request or only when fails
+                String json = getIntent().getExtras().getString("help_request");
+                try {
+                    JSONObject helpRequestJson = new JSONObject(json);
+
+                    this.activeHelpRequest = HelpRequest.fromJson(helpRequestJson);
+                } catch (JSONException e) {
+                    Log.e("MainActivity Log", "Help request parse failed: " + e.getMessage());
                 }
-            });
+            }
+            else {
+                requestInProgress = true;
+                // If we got here from the user tapping on the app
+                HelpRequest.forUser(this.user, new JsonRequest.CompletionHandler<HelpRequest>()
+                {
+                    @Override
+                    public void requestSucceeded(HelpRequest object)
+                    {
+                        MainActivity.this.activeHelpRequest = object;
+                        requestDone();
+                    }
+
+                    @Override
+                    public void requestFailed(String errorMessage)
+                    {
+                        Log.e("MainActivity Log", errorMessage);
+                        requestInProgress = false;
+                    }
+                });
+            }
         }
 
         // Toggle connects the sliding drawer with action bar app icon
@@ -174,6 +223,12 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     @Override
     public void helpRequestSent(HelpRequest request) {
         this.activeHelpRequest = request;
+        selectItem(3);
+    }
+
+    @Override
+    public void helpRequestCompleted() {
+        this.activeHelpRequest = null;
         selectItem(3);
     }
 
@@ -252,6 +307,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 .commit();
 
         // Highlight the selected item, update the title, and close the drawer
+        this.drawerPosition = position;
         drawerList.setItemChecked(position, true);
         setTitle(activitiesList[position]);
         drawer.closeDrawer(drawerList);
