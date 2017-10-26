@@ -25,20 +25,19 @@ public class HelpRequest implements Parcelable{
     private String[] mentors;
     private String status;
 
-    public HelpRequest(int id, String location, String problem, String status) {
-        this(id, location, problem, status, null);
-    }
+    private String profilePictureURL;
 
-    public HelpRequest(int id, String location, String problem, String status, String[] mentors) {
+    public HelpRequest(int id, String location, String problem, String status, String[] mentors, String profilePictureURL) {
         this.id = id;
         this.location = location;
         this.problem = problem;
         this.status = status;
         this.mentors = mentors;
+        this.profilePictureURL = profilePictureURL;
     }
 
     public HelpRequest(Parcel p) {
-        this(p.readInt(), p.readString(), p.readString(), p.readString(), p.createStringArray());
+        this(p.readInt(), p.readString(), p.readString(), p.readString(), p.createStringArray(), p.readString());
     }
 
     public int getId() {
@@ -80,7 +79,7 @@ public class HelpRequest implements Parcelable{
                 mentors[i] = mentorsJsonArray.getString(i);
             }
 
-            return new HelpRequest(obj.getInt("id"), obj.getString("location"), obj.getString("problem"), obj.getString("status"), mentors);
+            return new HelpRequest(obj.getInt("id"), obj.getString("location"), obj.getString("problem"), obj.getString("status"), mentors, obj.getString("profile_pic_link"));
         }
     };
 
@@ -128,6 +127,7 @@ public class HelpRequest implements Parcelable{
         parcel.writeString(problem);
         parcel.writeString(status);
         parcel.writeStringArray(getMentors());
+        parcel.writeString(profilePictureURL);
     }
 
     private JSONObject toJson() throws JSONException {
@@ -137,6 +137,7 @@ public class HelpRequest implements Parcelable{
         obj.put("problem", problem);
         obj.put("status", status);
         obj.put("mentors", mentors);
+        obj.put("profile_pic_link", profilePictureURL);
 
         return obj;
     }
@@ -157,5 +158,9 @@ public class HelpRequest implements Parcelable{
         this.status = status;
 
         updateOnServer(completion);
+    }
+
+    public String getProfilePictureURL() {
+        return profilePictureURL;
     }
 }

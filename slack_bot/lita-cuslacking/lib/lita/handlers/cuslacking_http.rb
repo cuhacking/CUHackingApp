@@ -23,11 +23,15 @@ module Lita
           request_id = Lita.redis.get(payload[:item]["ts"] + payload[:item]["channel"])
           robot.send_message(to_location, "Thanks @#{payload[:user].mention_name} (#{request_id})!")
 
+          user_profile = @api.user_profile(payload[:user].id)
+          profile_pic_link = user_profile["user"]["profile"]["image_512"]
+          real_name = user_profile["user"]["real_name"]
+
           # Send to server
           callback_data = {
             help_request_id: request_id,
-            #TODO: Get the mentor's real name?
-            mentor_name: payload[:user].mention_name
+            mentor_name: real_name,
+            profile_pic: profile_pic_link
           }
 
           BackendParty.post('/help_requests/bot_callback', body: callback_data.to_json, headers: {"Content-Type": "application/json"})
@@ -36,7 +40,7 @@ module Lita
 
       def help_request_message(data)
         help_request = data["help_request"]
-  
+
         "#{data["user_name"] || "Someone"} needs help with " \
         "\"#{help_request["problem"] || "something"}\" at \"#{help_request["location"] || "unknown location"}\"." \
         " React :+1: to this message to take it! (request ID #{help_request["id"]})"
@@ -54,13 +58,13 @@ module Lita
         Lita.redis.set(api_response["ts"] + api_response["channel"], help_request["id"])
         Lita.redis.set(help_request["id"], api_response["ts"] + ":" + api_response["channel"])
       end
-  
+
       http.post "/help_request/complete" do |request, response|
         data = JSON.parse(request.body.read)
         help_request = data["help_request"]
-  
+
         timestamp, channel_id = Lita.redis.get(help_request["id"]).split(':')
-  
+
         @api.update("~#{help_request_message(data)}~", ts: timestamp, channel: channel_id)
       end
 

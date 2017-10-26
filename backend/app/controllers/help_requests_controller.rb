@@ -61,7 +61,7 @@ class HelpRequestsController < ApplicationController
     mentors << params[:mentor_name]
     help_request.mentors = mentors
     help_request.status = MENTOR_FOUND
-
+    help_request.profile_pic_link = params[:profile_pic]
     help_request.save!
 
     # Send a notif to the client

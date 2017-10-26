@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     private boolean loadingHelpRequestFragment = false;
     private int drawerPosition;
 
+    // Page constants
+    private static final int NOTIFICATION_PAGE = 0;
+    private static final int SCHEDULE_PAGE = 1;
+    private static final int MAP_PAGE = 2;
+    private static final int HELP_PAGE = 3;
+    private static final int LINKS_PAGE = 4;
+    private static final int SPONSORSHIP_PAGE = 5;
+
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -92,12 +101,10 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         BroadcastReceiver messageReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                HelpRequest helpRequest = intent.getParcelableExtra("help_request");
+                MainActivity.this.activeHelpRequest = intent.getParcelableExtra("help_request");
 
-                MainActivity.this.activeHelpRequest = helpRequest;
-
-                if (drawerPosition == 3) {
-                    selectItem(3);
+                if (drawerPosition == HELP_PAGE) {
+                    selectItem(HELP_PAGE);
                 }
             }
         };
@@ -125,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 @Override
                 public void requestFailed(String errorMessage) {
                     Toast.makeText(MainActivity.this, "Failed to create user: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    Log.e("MainActivity Logter", "Failed to create user: " + errorMessage);
                     requestInProgress = false;
                 }
             });
@@ -223,13 +231,13 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     @Override
     public void helpRequestSent(HelpRequest request) {
         this.activeHelpRequest = request;
-        selectItem(3);
+        selectItem(HELP_PAGE);
     }
 
     @Override
     public void helpRequestCompleted() {
         this.activeHelpRequest = null;
-        selectItem(3);
+        selectItem(HELP_PAGE);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -243,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     private void requestDone() {
         requestInProgress = false;
         if (loadingHelpRequestFragment) {
-            selectItem(3);
+            selectItem(HELP_PAGE);
         }
     }
 
@@ -257,19 +265,19 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         // Use page to create new Fragment
         switch(position){
-            case 0:
+            case NOTIFICATION_PAGE:
                 // Notifications
                 fragment = new NotificationFragment();
                 break;
-            case 1:
+            case SCHEDULE_PAGE:
                 // Schedule
                 fragment = new ScheduleFragment();
                 break;
-            case 2:
+            case MAP_PAGE:
                 // Map
                 fragment = new MapFragment();
                 break;
-            case 3:
+            case HELP_PAGE:
                 // Request Help
                 if (requestInProgress) {
                     loadingHelpRequestFragment = true;
@@ -286,11 +294,11 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 }
 
                 break;
-            case 4:
+            case LINKS_PAGE:
                 // Links
                 fragment = new LinksFragment();
                 break;
-            case 5:
+            case SPONSORSHIP_PAGE:
                 // Sponsors
                 fragment = new SponsorsFragment();
                 break;

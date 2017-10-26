@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.carleton.three_thousand_chore.comp3004">
     <uses-permission android:name="android.permission.INTERNET" />
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.CALL_PHONE" />
-=======
->>>>>>> 79af436... Firebase scaffolding
 
     <application
         android:allowBackup="true"
@@ -40,8 +37,4 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
     </application>
-<<<<<<< HEAD
 </manifest>
-=======
-</manifest>
->>>>>>> 79af436... Firebase scaffolding

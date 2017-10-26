@@ -2,6 +2,7 @@ package ca.carleton.three_thousand_chore.comp3004.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.method.LinkMovementMethod;
@@ -10,14 +11,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
 import ca.carleton.three_thousand_chore.comp3004.R;
+import ca.carleton.three_thousand_chore.comp3004.Requests;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 
 /**
@@ -29,10 +36,11 @@ public class RequestHelpSuccessfulFragment extends Fragment {
         void helpRequestCompleted();
     }
 
-    TextView mentorSubHeader;
-    Button mentorDoneButton;
-    HelpRequest activeHelpRequest;
-    TextView mentorHeadline;
+    private TextView mentorSubHeader;
+    private Button mentorDoneButton;
+    private HelpRequest activeHelpRequest;
+    private TextView mentorHeadline;
+    private ImageView profilePictureView;
     private HelpRequestCompletedListener listener;
 
     public static RequestHelpSuccessfulFragment newInstance(HelpRequest activeHelpRequest) {
@@ -45,11 +53,9 @@ public class RequestHelpSuccessfulFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         this.activeHelpRequest = this.getArguments().getParcelable("help_request");
     }
 
@@ -60,15 +66,35 @@ public class RequestHelpSuccessfulFragment extends Fragment {
 
         mentorSubHeader = v.findViewById(R.id.successMessage);
         mentorSubHeader.setMovementMethod(LinkMovementMethod.getInstance());
-
         mentorHeadline = v.findViewById(R.id.mentor_headline);
-
         mentorDoneButton = v.findViewById(R.id.mentor_done_button);
+        profilePictureView = v.findViewById(R.id.mentor_profile);
 
         if (activeHelpRequest.getStatus().equals(getString(R.string.mentor_found))) {
             mentorSubHeader.setText(R.string.subtitle_request_help_mentor_found);
             mentorHeadline.setText(String.format(getString(R.string.mentor_on_the_way_label), activeHelpRequest.getMentors()[0]));
             mentorDoneButton.setVisibility(View.VISIBLE);
+
+            if (activeHelpRequest.getProfilePictureURL() != null && !activeHelpRequest.getProfilePictureURL().equals("null")) {
+                ImageRequest request = new ImageRequest(activeHelpRequest.getProfilePictureURL(), new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap response) {
+                        profilePictureView.setVisibility(View.VISIBLE);
+                        profilePictureView.setImageBitmap(response);
+                    }
+                }, 512, 512, Bitmap.Config.ALPHA_8, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("RequestHelpSFrag Log", "Failed to download profile picture: " + error.getMessage());
+                        Toast.makeText(getContext(), "Failed to download profile picture: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                Requests.getInstance(getContext()).getQueue().add(request);
+            }
+        }
+        else if (activeHelpRequest.getStatus().equals(getString(R.string.help_request_complete))) {
+            listener.helpRequestCompleted();
         }
 
         mentorDoneButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +114,7 @@ public class RequestHelpSuccessfulFragment extends Fragment {
                         }
                     });
                 } catch (JSONException e) {
-                    Log.e("RequestHelpSFrag Log", "(JSE) Help request failed to complete: " + e.getMessage());
+                    Log.e("RequestHelpSFrag Log", "Help request failed to complete: " + e.getMessage());
                     Toast.makeText(getContext(), "Help request failed to complete: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }

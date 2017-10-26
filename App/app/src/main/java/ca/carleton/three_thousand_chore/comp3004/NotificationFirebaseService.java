@@ -1,17 +1,14 @@
 package ca.carleton.three_thousand_chore.comp3004;
 
 import android.app.Service;
-<<<<<<< HEAD
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-=======
 
 import com.google.firebase.messaging.FirebaseMessagingService;
->>>>>>> 79af436... Firebase scaffolding
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,9 +20,6 @@ import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
  */
 
 public class NotificationFirebaseService extends FirebaseMessagingService {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     public static String HR_BROADCAST_NAME = "NewHelpRequest";
 
     @Override
@@ -33,7 +27,6 @@ public class NotificationFirebaseService extends FirebaseMessagingService {
         super.onCreate();
     }
 
->>>>>>> 990af1f... Auto update state of help request using broadcasts and strikethrough Slack message
     // Gets run when a notification happens while the app is foregrounded
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -54,7 +47,4 @@ public class NotificationFirebaseService extends FirebaseMessagingService {
             }
         }
     }
-=======
-
->>>>>>> 79af436... Firebase scaffolding
 }

@@ -1,6 +1,7 @@
 package ca.carleton.three_thousand_chore.comp3004.models;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -18,7 +19,7 @@ import ca.carleton.three_thousand_chore.comp3004.Requests;
 public class User {
     private int id;
     private String name;
-    private String token;
+    private String token; // Not used?
 
     static private String TAG = "User Log";
 
@@ -30,7 +31,6 @@ public class User {
     public User(int id) {
         this.id = id;
     }
-
     public int getId() {
         return id;
     }
@@ -91,7 +91,5 @@ public class User {
         {
             e.printStackTrace();
         }
-
-
     }
 }
