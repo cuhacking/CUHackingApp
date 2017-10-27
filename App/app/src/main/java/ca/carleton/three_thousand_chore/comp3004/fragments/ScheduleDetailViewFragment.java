@@ -11,11 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import ca.carleton.three_thousand_chore.comp3004.R;
+import ca.carleton.three_thousand_chore.comp3004.models.Event;
 
 
 public class ScheduleDetailViewFragment extends Fragment {
-    TextView message;
+    TextView name;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,8 +31,13 @@ public class ScheduleDetailViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schedule_detail_view, null);
 
-//        message = (TextView) v.findViewById(R.id.successMessage);
-
+        name = v.findViewById(R.id.title);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            Serializable e = bundle.getSerializable("event");
+            Event ev = (Event)e;
+            name.setText(ev.getName().toString());
+        }
 
         return v;
     }

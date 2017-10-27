@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -57,8 +58,12 @@ public class ScheduleFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 FragmentManager fragmentManager = getFragmentManager();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("event", scheduleList.get(position));
+                Fragment fragment = new ScheduleDetailViewFragment();
+                fragment.setArguments(bundle);
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, new ScheduleDetailViewFragment())
+                        .replace(R.id.content_frame, fragment)
                         .commit();
             }
         });
