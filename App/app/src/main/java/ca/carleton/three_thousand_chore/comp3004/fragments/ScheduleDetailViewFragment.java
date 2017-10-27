@@ -20,6 +20,9 @@ import ca.carleton.three_thousand_chore.comp3004.models.Event;
 
 public class ScheduleDetailViewFragment extends Fragment {
     TextView name;
+    TextView date;
+    TextView startTime;
+    TextView endTime;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,13 +33,19 @@ public class ScheduleDetailViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schedule_detail_view, null);
+        name = v.findViewById(R.id.name);
+        date = v.findViewById(R.id.date);
+        startTime = v.findViewById(R.id.startTime);
+        endTime = v.findViewById(R.id.endTime);
 
-        name = v.findViewById(R.id.title);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             Serializable e = bundle.getSerializable("event");
             Event ev = (Event)e;
             name.setText(ev.getName().toString());
+            date.setText(date.getText() + ev.getDate().toString());
+            startTime.setText(startTime.getText() + ev.getStartTime().toString());
+            endTime.setText(endTime.getText() + ev.getEndTime().toString());
         }
 
         return v;
