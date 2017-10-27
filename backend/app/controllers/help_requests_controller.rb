@@ -64,21 +64,15 @@ class HelpRequestsController < ApplicationController
     help_request.profile_pic_link = params[:profile_pic]
     help_request.save!
 
-    # Send a notif to the client
-    fcm = FCM.new(Secrets[:server_key])
-
-    tokens = [help_request.user.token] # an array of one or more client registration tokens
-    options = {
-      notification: {
-        title: "Help is on the way!",
-        body: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!"
-      },
-      data: {
-        drawer_page: 3,
-        help_request: help_request.serializable_hash
-      }
-    }
-    response = fcm.send(tokens, options)
+    notif = Notification.new(
+            title: "Help is on the way!", 
+            description: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!",
+            user: help_request.user)
+    notif.save!
+    notif.send_notification!({
+      drawer_page: 3,
+      help_request: help_request.serializable_hash
+    })
   end
 
   def destroy

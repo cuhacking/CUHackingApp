@@ -21,6 +21,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -175,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             }
         }
 
+        FirebaseMessaging.getInstance().subscribeToTopic("announcements");
+
         // Toggle connects the sliding drawer with action bar app icon
         toggle = new ActionBarDrawerToggle(
                 this,                   /* host Activity (aka main) */
@@ -199,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         int drawerPage = 0;
 
-        if (getIntent().getExtras() != null) {
+        if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("drawer_page")) {
             drawerPage = Integer.parseInt(getIntent().getExtras().getString("drawer_page"));
         }
 
