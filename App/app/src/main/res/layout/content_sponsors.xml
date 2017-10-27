@@ -20,12 +20,12 @@
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="@+id/ccss"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="126dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/martello"
+        app:layout_constraintVertical_bias="0.513" />
 
     <ImageView
         android:id="@+id/martello"
@@ -35,38 +35,44 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/mlh"
+        app:layout_constraintBottom_toTopOf="@+id/ccss"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="33dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ieee"
-        android:layout_width="0dp"
-        android:layout_height="79dp"
-        app:srcCompat="@mipmap/ieee"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="68dp"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ccss"
+        app:srcCompat="@mipmap/ieee"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="160dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <ImageView
         android:id="@+id/ccss"
-        android:layout_width="202dp"
-        android:layout_height="94dp"
+        android:layout_width="299dp"
+        android:layout_height="199dp"
         app:srcCompat="@mipmap/ccss"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/ieee"
+        android:layout_marginStart="61dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="61dp"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintHorizontal_bias="0.505"
+        android:layout_marginBottom="0dp" />
 
 </android.support.constraint.ConstraintLayout>
