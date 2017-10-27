@@ -19,13 +19,12 @@ import ca.carleton.three_thousand_chore.comp3004.R;
 
 public class MapFragment extends Fragment {
     ImageView map;
+    ImageView map2;
+    FloatingActionButton fab;
     FloatingActionButton me;
-    FloatingActionButton me3;
-    FloatingActionButton me4;
     FloatingActionButton cu;
     TextView cuText;
-    TextView me3Text;
-    TextView me4Text;
+    TextView meText;
     TextView toolbarText;
 
 
@@ -37,70 +36,60 @@ public class MapFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_map, null);
-        me = v.findViewById(R.id.fabME);
-        me3 = v.findViewById(R.id.fabMeFloor3);
-        me4 = v.findViewById(R.id.fabMeFloor4);
+        final View v = inflater.inflate(R.layout.activity_map, null);
+        fab = v.findViewById(R.id.fab);
+        me = v.findViewById(R.id.fabMe);
         cu = v.findViewById(R.id.fabCU);
         map = v.findViewById(R.id.map_image);
+        map2 = v.findViewById(R.id.map_image2);
+        meText = v.findViewById(R.id.meText);
         cuText = v.findViewById(R.id.cuText);
-        me3Text = v.findViewById(R.id.meFloor3Text);
-        me4Text = v.findViewById(R.id.meFloor4Text);
         toolbarText = v.findViewById(R.id.toolbarText);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(cuText.getVisibility() == View.INVISIBLE){
+                    cu.show();
+                    me.show();
+                    cuText.setVisibility(View.VISIBLE);
+                    meText.setVisibility(View.VISIBLE);
+                }
+                else{
+                    cu.hide();
+                    me.hide();
+                    cuText.setVisibility(View.INVISIBLE);
+                    meText.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
 
         cu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cu.hide();
-                cuText.setVisibility(View.INVISIBLE);
                 map.setImageResource(R.mipmap.exterior_map);
                 toolbarText.setText("Carleton Campus");
+                cu.hide();
+                me.hide();
+                map2.setVisibility(View.INVISIBLE);
+                cuText.setVisibility(View.INVISIBLE);
+                meText.setVisibility(View.INVISIBLE);
             }
         });
 
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(me3.getVisibility() == View.VISIBLE){
-                    me3.hide();
-                    me4.hide();
-                    me3Text.setVisibility(View.INVISIBLE);
-                    me4Text.setVisibility(View.INVISIBLE);
-                }
-                else{
-                    me3.show();
-                    me4.show();
-                    me3Text.setVisibility(View.VISIBLE);
-                    me4Text.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        me4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                map.setImageResource(R.mipmap.me4);
-                me3.hide();
-                me4.hide();
-                cu.show();
-                cuText.setVisibility(View.VISIBLE);
-                me3Text.setVisibility(View.INVISIBLE);
-                me4Text.setVisibility(View.INVISIBLE);
-                toolbarText.setText("Mackenzie 4th Floor");
-            }
-        });
-
-        me3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                toolbarText.setText("Mackenzie");
                 map.setImageResource(R.mipmap.me3);
-                me3.hide();
-                me4.hide();
-                cu.show();
-                cuText.setVisibility(View.VISIBLE);
-                me3Text.setVisibility(View.INVISIBLE);
-                me4Text.setVisibility(View.INVISIBLE);
-                toolbarText.setText("Mackenzie 3rd Floor");
+                map2.setImageResource(R.mipmap.me4);
+                map2.setVisibility(View.VISIBLE);
+                cu.hide();
+                me.hide();
+                cuText.setVisibility(View.INVISIBLE);
+                meText.setVisibility(View.INVISIBLE);
             }
         });
 
