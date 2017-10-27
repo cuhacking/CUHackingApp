@@ -32,6 +32,7 @@ import ca.carleton.three_thousand_chore.comp3004.fragments.RequestHelpFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.RequestHelpSuccessfulFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.ScheduleFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.SponsorsFragment;
+import ca.carleton.three_thousand_chore.comp3004.models.Event;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 import ca.carleton.three_thousand_chore.comp3004.models.User;
 
@@ -220,6 +221,15 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     }
 
     @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Open and close the drawer
         if (toggle.onOptionsItemSelected(item)) {
@@ -262,20 +272,23 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         // Create Fragment
         Fragment fragment;
-
+        String tag;
         // Use page to create new Fragment
         switch(position){
             case NOTIFICATION_PAGE:
                 // Notifications
                 fragment = new NotificationFragment();
+                tag = "notification";
                 break;
             case SCHEDULE_PAGE:
                 // Schedule
                 fragment = new ScheduleFragment();
+                tag = "schedule";
                 break;
             case MAP_PAGE:
                 // Map
                 fragment = new MapFragment();
+                tag = "map";
                 break;
             case HELP_PAGE:
                 // Request Help
@@ -293,18 +306,23 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                     fragment = RequestHelpSuccessfulFragment.newInstance(activeHelpRequest);
                 }
 
+                fragment = RequestHelpFragment.newInstance(user.getId());
+                tag = "requestHelp";
                 break;
             case LINKS_PAGE:
                 // Links
                 fragment = new LinksFragment();
+                tag = "links";
                 break;
             case SPONSORSHIP_PAGE:
                 // Sponsors
                 fragment = new SponsorsFragment();
+                tag = "sponsors";
                 break;
             default:
                 Toast.makeText(this, "ERROR: fragment not found.", Toast.LENGTH_LONG).show();
                 fragment = new DefaultFragment();
+                tag = "";
                 break;
         }
 
@@ -312,6 +330,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, fragment)
+                .addToBackStack(tag)
                 .commit();
 
         // Highlight the selected item, update the title, and close the drawer
