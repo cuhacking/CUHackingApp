@@ -20,19 +20,21 @@ ActiveRecord::Schema.define(version: 20171027030510) do
   end
 
   create_table "companies", force: :cascade do |t|
+    t.integer "event_id"
     t.string "name"
     t.string "tier"
     t.string "website_url"
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_companies_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
     t.date "date"
     t.time "start_time"
     t.time "end_time"
-    t.string "type"
+    t.string "event_type"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,19 +62,11 @@ ActiveRecord::Schema.define(version: 20171027030510) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "reference_links", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
-    t.string "logo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "rooms", force: :cascade do |t|
     t.integer "event_id"
     t.integer "building_id"
     t.string "room_type"
-    t.integer "room_num"
+    t.integer "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["building_id"], name: "index_rooms_on_building_id"

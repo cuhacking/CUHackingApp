@@ -4,12 +4,12 @@ one:
   date: 2017-09-28
   start_time: 2017-09-28 12:49:45
   end_time: 2017-09-28 12:49:45
-  type: 
+  event_type: 
   description: MyString
 
 two:
   date: 2017-09-28
   start_time: 2017-09-28 12:49:45
   end_time: 2017-09-28 12:49:45
-  type: 
+  event_type: 
   description: MyString
