@@ -37,73 +37,52 @@
         android:id="@+id/include2" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabME"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:backgroundTint="@color/colorPrimary"
-        android:layout_margin="@dimen/fab_margin"/>
-
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="ME"
-        android:elevation="6dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorWhite"
-        app:layout_anchor="@id/fabME"
-        app:layout_anchorGravity="center"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabMeFloor4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center"
-        android:adjustViewBounds="false"
-        android:visibility="invisible"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:fabSize="mini"
-        app:layout_anchor="@id/fabME"
-        app:layout_anchorGravity="left|center" />
-
-    <TextView android:layout_height="wrap_content"
-        android:id="@+id/meFloor4Text"
-        android:layout_width="wrap_content"
-        android:text="4"
-        android:elevation="6dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorWhite"
-        android:visibility="invisible"
-        app:layout_anchor="@id/fabMeFloor4"
-        app:layout_anchorGravity="center"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabMeFloor3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center"
-        android:visibility="invisible"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:fabSize="mini"
-        app:layout_anchor="@id/fabMeFloor4"
-        app:layout_anchorGravity="left|center" />
-
-    <TextView
-        android:id="@+id/meFloor3Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="6dp"
-        android:text="3"
-        android:textColor="@color/colorWhite"
-        android:textSize="18dp"
-        android:visibility="invisible"
-        app:layout_anchor="@+id/fabMeFloor3"
-        app:layout_anchorGravity="center"/>
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/fabME"
+        android:layout_gravity="bottom|end"
+        android:scaleType="center"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@mipmap/ic_shortcut_map" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/fab"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:layout_anchorGravity="center|top" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="mini"
+        app:layout_anchor="@id/fabSpace"
+        app:layout_anchorGravity="top|center" />
+
+    <TextView
+        android:id="@+id/meText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:text="ME"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_anchor="@+id/fabMe"
+        app:layout_anchorGravity="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSpace2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/fabMe"
         android:visibility="invisible"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -113,9 +92,10 @@
         android:id="@+id/fabCU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/fab"
+        app:layout_anchor="@id/fabSpace2"
         app:layout_anchorGravity="center|top"
         android:visibility="invisible"
+        app:fabSize="mini"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/colorPrimary" />
 
