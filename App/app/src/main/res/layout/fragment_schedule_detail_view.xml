@@ -37,4 +37,20 @@
         android:layout_marginLeft="12dp"
         android:layout_below="@+id/startTime"/>
 
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type: "
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/endTime"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description: "
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/type"/>
+
 </RelativeLayout>

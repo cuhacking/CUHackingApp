@@ -23,6 +23,8 @@ public class ScheduleDetailViewFragment extends Fragment {
     TextView date;
     TextView startTime;
     TextView endTime;
+    TextView type;
+    TextView description;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class ScheduleDetailViewFragment extends Fragment {
         date = v.findViewById(R.id.date);
         startTime = v.findViewById(R.id.startTime);
         endTime = v.findViewById(R.id.endTime);
+        type = v.findViewById(R.id.type);
+        description = v.findViewById(R.id.description);
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -46,6 +50,8 @@ public class ScheduleDetailViewFragment extends Fragment {
             date.setText(date.getText() + ev.getDate().toString());
             startTime.setText(startTime.getText() + ev.getStartTime().toString());
             endTime.setText(endTime.getText() + ev.getEndTime().toString());
+            type.setText(type.getText() + ev.getType().toString());
+            description.setText(description.getText() + ev.getDescription().toString());
         }
 
         return v;
