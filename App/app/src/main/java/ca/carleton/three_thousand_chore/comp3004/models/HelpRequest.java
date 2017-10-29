@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
+import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
 import ca.carleton.three_thousand_chore.comp3004.Requests;
 
 /**
@@ -57,19 +57,19 @@ public class HelpRequest implements Parcelable{
         return status;
     }
 
-    public static void forId(int id, JsonRequest.CompletionHandler<HelpRequest> handler) {
-        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.GET, Requests.BASE_URL + "/help_requests/" + id, null, objectCreationHandler, handler);
+    public static void forId(int id, JsonObjectRequest.CompletionHandler<HelpRequest> handler) {
+        JsonObjectRequest<HelpRequest> request = new JsonObjectRequest<>(Request.Method.GET, Requests.BASE_URL + "/help_requests/" + id, null, objectCreationHandler, handler);
         Requests rh = Requests.getInstance();
         rh.getQueue().add(request);
     }
 
-    public static void forUser(User user, JsonRequest.CompletionHandler<HelpRequest> handler) {
-        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.GET, Requests.BASE_URL + "/users/" + user.getId() + "/help_request/", null, objectCreationHandler, handler);
+    public static void forUser(User user, JsonObjectRequest.CompletionHandler<HelpRequest> handler) {
+        JsonObjectRequest<HelpRequest> request = new JsonObjectRequest<>(Request.Method.GET, Requests.BASE_URL + "/users/" + user.getId() + "/help_request/", null, objectCreationHandler, handler);
         Requests rh = Requests.getInstance();
         rh.getQueue().add(request);
     }
 
-    private static JsonRequest.ObjectCreationHandler<HelpRequest> objectCreationHandler = new JsonRequest.ObjectCreationHandler<HelpRequest>() {
+    private static JsonObjectRequest.ObjectCreationHandler<HelpRequest> objectCreationHandler = new JsonObjectRequest.ObjectCreationHandler<HelpRequest>() {
         @Override
         public HelpRequest fromJson(JSONObject obj) throws JSONException {
             JSONArray mentorsJsonArray = obj.getJSONArray("mentors");
@@ -83,7 +83,7 @@ public class HelpRequest implements Parcelable{
         }
     };
 
-    public static void createHelpRequest(String location, String problem, int userId, String usersName, final JsonRequest.CompletionHandler<HelpRequest> handler) {
+    public static void createHelpRequest(String location, String problem, int userId, String usersName, final JsonObjectRequest.CompletionHandler<HelpRequest> handler) {
         try {
             JSONObject requestParams = new JSONObject();
             JSONObject helpRequestObject = new JSONObject();
@@ -93,7 +93,7 @@ public class HelpRequest implements Parcelable{
             requestParams.put("user_name", usersName);
             requestParams.put("user_id", userId);
 
-            JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.POST, Requests.BASE_URL + "/help_requests", requestParams, objectCreationHandler, handler);
+            JsonObjectRequest<HelpRequest> request = new JsonObjectRequest<>(Request.Method.POST, Requests.BASE_URL + "/help_requests", requestParams, objectCreationHandler, handler);
             Requests rh = Requests.getInstance();
 
             rh.getQueue().add(request);
@@ -146,15 +146,15 @@ public class HelpRequest implements Parcelable{
         return objectCreationHandler.fromJson(obj);
     }
 
-    private void updateOnServer(JsonRequest.CompletionHandler<JSONObject> handler) throws JSONException {
+    private void updateOnServer(JsonObjectRequest.CompletionHandler<JSONObject> handler) throws JSONException {
         JSONObject requestParameters = toJson();
 
-        JsonRequest<HelpRequest> request = new JsonRequest<>(Request.Method.PUT, Requests.BASE_URL + "/help_requests/" + id, requestParameters, handler);
+        JsonObjectRequest<HelpRequest> request = new JsonObjectRequest<>(Request.Method.PUT, Requests.BASE_URL + "/help_requests/" + id, requestParameters, handler);
         RequestQueue rh = Requests.getInstance().getQueue();
         rh.add(request);
     }
 
-    public void setStatus(String status, final JsonRequest.CompletionHandler<JSONObject> completion) throws JSONException {
+    public void setStatus(String status, final JsonObjectRequest.CompletionHandler<JSONObject> completion) throws JSONException {
         this.status = status;
 
         updateOnServer(completion);

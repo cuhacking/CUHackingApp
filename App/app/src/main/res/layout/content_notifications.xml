@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,11 +7,10 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ca.carleton.three_thousand_chore.comp3004.MainActivity"
     tools:showIn="@layout/activity_notifications">
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/notification_list">
+        android:id="@+id/notification_list"
+        android:visibility="visible">
     </ListView>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

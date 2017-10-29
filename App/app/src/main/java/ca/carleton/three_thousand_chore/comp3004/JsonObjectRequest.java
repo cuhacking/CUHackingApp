@@ -3,12 +3,9 @@ package ca.carleton.three_thousand_chore.comp3004;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,14 +13,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
-import ca.carleton.three_thousand_chore.comp3004.models.User;
-
 /**
  * Created by jackmccracken on 2017-10-19.
  */
 
-public class JsonRequest<T> extends JsonObjectRequest {
+public class JsonObjectRequest<T> extends com.android.volley.toolbox.JsonObjectRequest {
     public interface CompletionHandler<T> {
         void requestSucceeded(T object);
         void requestFailed(String errorMessage);
@@ -34,9 +28,9 @@ public class JsonRequest<T> extends JsonObjectRequest {
     }
 
     // For creating/getting objects
-    public JsonRequest(int method, String url, JSONObject jsonRequest,
-                       final ObjectCreationHandler<T> objectCreationHandler,
-                       final CompletionHandler<T> completionHandler) {
+    public JsonObjectRequest(int method, String url, JSONObject jsonRequest,
+                             final ObjectCreationHandler<T> objectCreationHandler,
+                             final CompletionHandler<T> completionHandler) {
         super(method, url, jsonRequest, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -45,7 +39,7 @@ public class JsonRequest<T> extends JsonObjectRequest {
                     createdObject = objectCreationHandler.fromJson(response);
                     completionHandler.requestSucceeded(createdObject);
                 } catch (JSONException e) {
-                    Log.e(JsonRequest.class.getSimpleName(), "Server returned bad JSON: " + e.getMessage());
+                    Log.e(JsonObjectRequest.class.getSimpleName(), "Server returned bad JSON: " + e.getMessage());
                 }
             }
         }, new Response.ErrorListener() {
@@ -57,7 +51,7 @@ public class JsonRequest<T> extends JsonObjectRequest {
     }
 
     // For editing objects
-    public JsonRequest(int method, String url, JSONObject jsonRequest, final CompletionHandler<JSONObject> objectModifiedHandler) {
+    public JsonObjectRequest(int method, String url, JSONObject jsonRequest, final CompletionHandler<JSONObject> objectModifiedHandler) {
         super(method, url, jsonRequest, new Response.Listener<JSONObject>() {
 
             @Override

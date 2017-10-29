@@ -1,7 +1,6 @@
 package ca.carleton.three_thousand_chore.comp3004.models;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -9,7 +8,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
+import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
 import ca.carleton.three_thousand_chore.comp3004.Requests;
 
 /**
@@ -44,7 +43,7 @@ public class User {
         {
             params.put("token", FirebaseInstanceId.getInstance().getToken());
 
-            JsonRequest<User> request = new JsonRequest<User>(Request.Method.PUT, Requests.BASE_URL + "/users/" + id, params, new JsonRequest.CompletionHandler<JSONObject>()
+            JsonObjectRequest<User> request = new JsonObjectRequest<User>(Request.Method.PUT, Requests.BASE_URL + "/users/" + id, params, new JsonObjectRequest.CompletionHandler<JSONObject>()
             {
                 @Override
                 public void requestSucceeded(JSONObject object)
@@ -68,7 +67,7 @@ public class User {
         }
     }
 
-    public static void createUser(final JsonRequest.CompletionHandler<User> handler) {
+    public static void createUser(final JsonObjectRequest.CompletionHandler<User> handler) {
         try
         {
             // Get the token
@@ -76,7 +75,7 @@ public class User {
             params.put("token", FirebaseInstanceId.getInstance().getToken());
 
             // Make request
-            JsonRequest<User> request = new JsonRequest<>(Request.Method.POST, Requests.BASE_URL + "/users", params, new JsonRequest.ObjectCreationHandler<User>() {
+            JsonObjectRequest<User> request = new JsonObjectRequest<>(Request.Method.POST, Requests.BASE_URL + "/users", params, new JsonObjectRequest.ObjectCreationHandler<User>() {
                 @Override
                 public User fromJson(JSONObject response) throws JSONException {
                     User newuser = new User(response.getInt("id"));
