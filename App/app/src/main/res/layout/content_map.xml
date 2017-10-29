@@ -9,17 +9,45 @@
     tools:context="ca.carleton.three_thousand_chore.comp3004.MainActivity"
     tools:showIn="@layout/activity_map"
     android:id="@+id/mapLinearLayout">
-    <ImageView
-        android:id="@+id/map_image"
-        android:scaleType="fitCenter"
+
+    <FrameLayout
+        android:id="@+id/carletonMapLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/map_of_carleton"
-        android:src="@mipmap/exterior_map" />
-    <ImageView
-        android:id="@+id/map_image2"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/mapImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/map_of_carleton"
+            android:scaleType="matrix"
+            android:src="@mipmap/exterior_map" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/meMapLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:src="@mipmap/me4" />
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/mapImage2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:contentDescription="@string/map_of_carleton"
+            android:scaleType="matrix"
+            android:src="@mipmap/me3" />
+
+        <ImageView
+            android:id="@+id/mapImage3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:scaleType="matrix"
+            android:src="@mipmap/me4" />
+
+    </FrameLayout>
 </LinearLayout>
