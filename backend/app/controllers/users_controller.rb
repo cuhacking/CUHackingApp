@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def notifications
-    @notifications = Notification.where(user_id: [params[:user_id], nil]).limit(50)
+    byebug
+    @notifications = Notification.where(user_id: [params[:id], nil]).limit(50)
     
     respond_to do |format|
       format.html
