@@ -5,6 +5,8 @@ Jack McCracken
 --------------
 
 What I did this week:
+- Team meeting (1.5h)
+- Reviewed and paired with various team members on their PRs
 - Complete Help Request functionality (pairing with Elisa Kazan)
   - Began integrating Slack with help requests
   - Implement help request notifications using FCM
@@ -16,6 +18,13 @@ What I did this week:
   - Add help request complete button
   - Use Slack API to strikethrough message when help request complete
   - Auto updated help requests using broadcasts and FCM
+- Completed notification support
+  - Notifications view downloads notifications from server
+  - Every time we send a notif to the user on the server side, we record it 
+    in a Notification object
+  - Add a command to the bot, 'announce', that allows an organizer in a 
+    specified channel to make an announcement to everyone (via both Slack
+    and the app). This sends out an FCM to the topic "announcements"
 
 What I hope to do next week:
 - Work with team to prepare for D2 demo
