@@ -35,6 +35,7 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
         class ViewHolder {
             TextView headline;
             TextView body;
+            TextView createdAtTime;
         }
 
         List<Notification> notifications;
@@ -71,6 +72,7 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
                 viewInfo = new ViewHolder();
                 viewInfo.body = view.findViewById(R.id.notification_body);
                 viewInfo.headline = view.findViewById(R.id.notification_headline);
+                viewInfo.createdAtTime = view.findViewById(R.id.created_at_time);
                 view.setTag(viewInfo);
             }
             else {
@@ -82,6 +84,7 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
 
             viewInfo.headline.setText(notification.getTitle());
             viewInfo.body.setText(notification.getDescription());
+            viewInfo.createdAtTime.setText(notification.getCreatedAt().toString());
 
             return view;
         }
