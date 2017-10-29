@@ -35,11 +35,10 @@ import ca.carleton.three_thousand_chore.comp3004.fragments.RequestHelpSuccessful
 import ca.carleton.three_thousand_chore.comp3004.fragments.ScheduleFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.SponsorsFragment;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
+import ca.carleton.three_thousand_chore.comp3004.models.Notification;
 import ca.carleton.three_thousand_chore.comp3004.models.User;
 
 public class MainActivity extends AppCompatActivity implements RequestHelpFragment.HelpRequestSentListener, RequestHelpSuccessfulFragment.HelpRequestCompletedListener {
-    private UserListener userListener = null;
-
     // Hamburger menu
     private DrawerLayout drawer;
     private ListView drawerList;
@@ -60,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     private static final int HELP_PAGE = 3;
     private static final int LINKS_PAGE = 4;
     private static final int SPONSORSHIP_PAGE = 5;
+
+    // Listeners (usually fragments)
+    private UserListener userListener = null;
+    private NewNotificationListener notificationListener = null;
 
 
     @Override
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+        BroadcastReceiver helpRequestReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 MainActivity.this.activeHelpRequest = intent.getParcelableExtra("help_request");
@@ -110,7 +113,18 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             }
         };
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter("NewHelpRequest"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(helpRequestReceiver, new IntentFilter(NotificationFirebaseService.HR_BROADCAST_NAME));
+
+        BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (notificationListener != null) {
+                    notificationListener.newNotification((Notification) intent.getParcelableExtra("notification"));
+                }
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(notificationReceiver, new IntentFilter(NotificationFirebaseService.NOTIFICATION_BROADCAST_NAME));
 
         final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
 
@@ -126,7 +140,9 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
                     MainActivity.this.user = user;
 
-                    userListener.userReceived(user.getId());
+                    if (userListener != null) {
+                        userListener.userReceived(user.getId());
+                    }
                 }
 
                 @Override
@@ -263,12 +279,16 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         Fragment fragment;
 
         this.userListener = null;
+        this.notificationListener = null;
 
         // Use page to create new Fragment
         switch(position){
             case NOTIFICATION_PAGE:
                 // Notifications
-                fragment = new NotificationFragment();
+                NotificationFragment notificationFragment = new NotificationFragment();
+                requestUserId(notificationFragment);
+                this.notificationListener = notificationFragment;
+                fragment = notificationFragment;
                 break;
             case SCHEDULE_PAGE:
                 // Schedule

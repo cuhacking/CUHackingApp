@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
+import ca.carleton.three_thousand_chore.comp3004.models.Notification;
 
 /**
  * Created by jackmccracken on 2017-10-23.
@@ -21,6 +22,7 @@ import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 
 public class NotificationFirebaseService extends FirebaseMessagingService {
     public static String HR_BROADCAST_NAME = "NewHelpRequest";
+    public static String NOTIFICATION_BROADCAST_NAME = "Notification";
 
     @Override
     public void onCreate() {
@@ -40,6 +42,18 @@ public class NotificationFirebaseService extends FirebaseMessagingService {
 
                 Intent intent = new Intent(HR_BROADCAST_NAME);
                 intent.putExtra("help_request", request);
+
+                LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (remoteMessage.getData().containsKey("notification")) {
+            try {
+                Notification notif = Notification.fromJson(new JSONObject(remoteMessage.getData().get("notification")));
+                Intent intent = new Intent(NOTIFICATION_BROADCAST_NAME);
+                intent.putExtra("notification", notif);
 
                 LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
             } catch (JSONException e) {

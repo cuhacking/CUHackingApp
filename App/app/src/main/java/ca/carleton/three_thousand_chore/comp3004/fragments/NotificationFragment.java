@@ -17,17 +17,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
+import ca.carleton.three_thousand_chore.comp3004.NewNotificationListener;
 import ca.carleton.three_thousand_chore.comp3004.R;
+import ca.carleton.three_thousand_chore.comp3004.UserListener;
 import ca.carleton.three_thousand_chore.comp3004.models.Notification;
 
 /**
  * Created by elisakazan on 2017-10-09.
  */
 
-public class NotificationFragment extends Fragment {
+public class NotificationFragment extends Fragment implements UserListener, NewNotificationListener {
     public class NotificationAdapter extends BaseAdapter {
         class ViewHolder {
             TextView headline;
@@ -39,6 +42,7 @@ public class NotificationFragment extends Fragment {
 
         public NotificationAdapter(@NonNull Context context, @NonNull List<Notification> objects) {
             this.notifications = objects;
+            Collections.sort(notifications);
             inflater = LayoutInflater.from(context);
         }
 
@@ -81,10 +85,18 @@ public class NotificationFragment extends Fragment {
 
             return view;
         }
+
+        public void addNotification(Notification notif) {
+            this.notifications.add(notif);
+            Collections.sort(notifications);
+            notifyDataSetChanged();
+        }
     }
 
     ListView notificationList;
     NotificationAdapter adapter;
+    private boolean viewCreated = false;
+    private int userId = -1;
 
     @Override
     public void onAttach(Context context) {
@@ -96,14 +108,22 @@ public class NotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.content_notifications, null);
+    public void userReceived(int userId) {
+        this.userId = userId;
 
-        notificationList = v.findViewById(R.id.notification_list);
+        if (viewCreated) {
+            setupNotificationList();
+        }
+    }
 
-        Notification.getAll(1, new JsonObjectRequest.CompletionHandler<List<Notification>>() {
+    @Override
+    public void newNotification(Notification notif) {
+        adapter.addNotification(notif);
+    }
+
+    public void setupNotificationList() {
+        Notification.getAll(userId, new JsonObjectRequest.CompletionHandler<List<Notification>>() {
             @Override
             public void requestSucceeded(List<Notification> notifications) {
                 adapter = new NotificationAdapter(getContext(), notifications);
@@ -116,6 +136,20 @@ public class NotificationFragment extends Fragment {
                 Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.content_notifications, null);
+
+        notificationList = v.findViewById(R.id.notification_list);
+
+        viewCreated = true;
+
+        if (userId != -1) {
+            setupNotificationList();
+        }
 
         return v;
     }

@@ -49,10 +49,6 @@ public class RequestHelpFragment extends Fragment implements UserListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            userId = getArguments().getInt(USER_ID);
-        }
     }
 
     @Override
