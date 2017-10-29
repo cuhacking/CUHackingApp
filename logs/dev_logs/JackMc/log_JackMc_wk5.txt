@@ -1,0 +1,30 @@
+--------------
+Week 5 - October 17 - October 23
+Jack McCracken
+100962692
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Split app up into fragments
+- Continued working on help request fragment (pairing with Elisa Kazan)
+  - Fixed user creation
+  - Getting the user ID from the server
+  - Submitting the help request
+  - Flow for switching fragments when a help request is created (using listeners)
+- Reviewed team member PRs
+- Got app working on Heroku so server doesn't always have to be running
+  locally when developing client-sided code
+- Created a class that makes doing JSON-based requests much easier (JsonRequest)
+
+What I hope to do next week:
+- Complete help request flow
+  - Allow mentor user to +1 message on Slack and have that initiate request 
+    state change
+  - Use FCM to get message to mobile app user's phone via a FCM notification
+
+What I struggled with:
+- Things were much better now team mates are getting used to the technology
+  and can work independently. I struggled with learning a new technology (Android
+  notifications) so that will have to happen next week
+
+--------------

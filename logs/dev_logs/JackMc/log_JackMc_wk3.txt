@@ -1,0 +1,24 @@
+--------------
+Week 3 - October 3 - October 9
+Jack McCracken
+100962692
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Team work session(7h)
+   - Worked to create specificications for objects to be shared on both client
+     and server side
+- Began work on help request fragment
+- Reviewed team member PRs
+- Made classes for the models
+
+What I hope to do next week:
+- Get the app up and running on Heroku (our cloud server provider)
+- More work on help request functionality
+
+What I struggled with:
+- Setting up the new project was difficult and I'm the most experienced with
+  the tools we are using, so I spent most of the week helping others with 
+  learning and managing the project instead of doing focused development.
+
+--------------
