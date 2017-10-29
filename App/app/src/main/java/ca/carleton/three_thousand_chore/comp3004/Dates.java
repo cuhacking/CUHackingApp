@@ -26,4 +26,10 @@ public class Dates {
 
         return date;
     }
+
+    public static String prettyDate(Date date) {
+        String format = "MMM dd h:mm a";
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(date);
+    }
 }

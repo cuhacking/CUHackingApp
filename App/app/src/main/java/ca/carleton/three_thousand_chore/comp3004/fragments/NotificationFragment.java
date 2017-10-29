@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import ca.carleton.three_thousand_chore.comp3004.Dates;
 import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
 import ca.carleton.three_thousand_chore.comp3004.NewNotificationListener;
 import ca.carleton.three_thousand_chore.comp3004.R;
@@ -71,7 +72,7 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
                 view = getLayoutInflater().inflate(R.layout.notification_cell, null);
                 viewInfo = new ViewHolder();
                 viewInfo.body = view.findViewById(R.id.notification_body);
-                viewInfo.headline = view.findViewById(R.id.notification_headline);
+                //viewInfo.headline = view.findViewById(R.id.notification_headline);
                 viewInfo.createdAtTime = view.findViewById(R.id.created_at_time);
                 view.setTag(viewInfo);
             }
@@ -82,9 +83,9 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
 
             Notification notification = notifications.get(position);
 
-            viewInfo.headline.setText(notification.getTitle());
+            //viewInfo.headline.setText(notification.getTitle());
             viewInfo.body.setText(notification.getDescription());
-            viewInfo.createdAtTime.setText(notification.getCreatedAt().toString());
+            viewInfo.createdAtTime.setText(Dates.prettyDate(notification.getCreatedAt()));
 
             return view;
         }
