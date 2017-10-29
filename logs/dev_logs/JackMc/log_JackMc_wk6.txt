@@ -1,0 +1,39 @@
+--------------
+Week 6 - Oct. 26 - Nov 1
+Jack McCracken
+100962692
+--------------
+
+What I did this week:
+- Team meeting (1.5h)
+- Reviewed and paired with various team members on their PRs
+- Complete Help Request functionality (pairing with Elisa Kazan)
+  - Began integrating Slack with help requests
+  - Implement help request notifications using FCM
+  - Add server side secret to backend
+  - Add token to user object (token is used to communicate between web server,
+    FCM, and the device)
+  - Add routes to backend for getting the associated help request for a user
+  - Use Slack API to get profile picture of mentor along with their full name
+  - Add help request complete button
+  - Use Slack API to strikethrough message when help request complete
+  - Auto updated help requests using broadcasts and FCM
+- Completed notification support
+  - Notifications view downloads notifications from server
+  - Every time we send a notif to the user on the server side, we record it 
+    in a Notification object
+  - Add a command to the bot, 'announce', that allows an organizer in a 
+    specified channel to make an announcement to everyone (via both Slack
+    and the app). This sends out an FCM to the topic "announcements"
+
+What I hope to do next week:
+- Work with team to prepare for D2 demo
+- Make my sections of the app prettier
+- Help teammates who are still working on their functionality with that
+
+What I struggled with:
+- This week was really good. I got a lot done and had a lot of time to do it.
+  I enjoyed pairing with Elisa. The only problems I had was that I still felt
+  like a lot was being asked of me.
+
+--------------

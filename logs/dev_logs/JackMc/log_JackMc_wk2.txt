@@ -1,9 +1,11 @@
 --------------
-Week 1 - September 19 - 26
-<First Last>
-<Student Number>
+Week 2 - September 26 - October 2
+Jack McCracken
+100962692
 --------------
 What I did this week:
+- Team meeting (1h)
+- Work period
 - Floated around in work period helping
 - Helped Elisa with setting up Android Studio
 - Helped Esti with setting up splash page
@@ -14,6 +16,8 @@ What I hope to do next week:
   use for mobile app
 
 What I struggled with:
-- Busy week outside 3004
+- Setting up the new project was difficult and I'm the most experienced with
+  the tools we are using, so I spent most of the week helping others with 
+  learning and managing the project instead of doing focused development.
 
 --------------

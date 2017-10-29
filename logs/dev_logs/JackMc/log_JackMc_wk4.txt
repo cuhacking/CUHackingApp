@@ -1,0 +1,20 @@
+--------------
+Week 4 - October 10 - October 16
+Jack McCracken
+100962692
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Continued working on help request fragment
+- Fixed up model classes on the client side
+
+What I hope to do next week:
+- Get the app up and running on Heroku (our cloud server provider) (carried from previous week)
+- More work on help request functionality
+
+What I struggled with:
+- This week I got a little more focused development done, but people have been
+  asking me a lot of questions to unblock their work so that is still a continued
+  issue
+
+--------------
