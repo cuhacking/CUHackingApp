@@ -1,0 +1,20 @@
+--------------
+Week 5 - October 17 - October 23
+Forest Anderson
+101009514
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Did more research on Rails database management
+- Worked on setting up the controllers for the database
+- Fixed the relationships
+- Prepared the events for use
+
+What I hope to do next week:
+- Finish the rest of the controllers
+
+What I struggled with:
+- Figuring out relationships with rails
+- Setting up a rails test environment
+
+--------------

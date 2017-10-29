@@ -1,0 +1,18 @@
+--------------
+Week 3 - October 3 - October 9
+Forest Anderson
+101009514
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Team work session(7h)
+- Setup the controllers for the database
+
+What I hope to do next week:
+- Finish controllers and get them to be functional
+
+What I struggled with:
+- Figuring out how routing works on rails
+- Using rails convention rather than what I'm used to
+
+--------------

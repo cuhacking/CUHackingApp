@@ -1,0 +1,18 @@
+--------------
+Week 4 - Oct. 12 - Oct 18
+Esti Tweg
+101005024
+--------------
+
+What I did this week:
+- created a RequestHelper class with completion handler interface
+- worked on forId function for getting a user by id from backend
+
+What I hope to do next week:
+- do more UI
+- complete the forId and forName functions
+
+What I struggled with:
+- working with the different threads/ completion handlers/ concurrency 
+
+--------------
