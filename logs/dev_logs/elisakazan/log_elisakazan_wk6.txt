@@ -1,0 +1,21 @@
+--------------
+Week 6 - October 27 - November 2
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- Team Meeting (1.5h)
+- Formatted the date being displayed in Notifications tab
+- Updated the design of the notification cells
+- Worked on D2 document
+- Practice demo with team
+
+What I hope to do next week:
+- Get the schedule working
+- Make the app look nicer (improve the user experience and interface design)
+- Prepare early for D3 (make temporary plan, divide up tasks)
+
+What I struggled with:
+Keeping my logs up to date. I've been writing mini to do lists and taking notes during work periods/sessions however when I complete tasks I scratch them out and when I'm done with a page I threw it out which made logs hard to update and complete. I'm going to try to update the logs after every work period or at least keep my written notes until I type them up.
+
+--------------

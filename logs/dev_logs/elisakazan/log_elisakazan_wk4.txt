@@ -1,0 +1,20 @@
+--------------
+Week 3 - October 13 - October 19
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- Team Meeting ~ turned into a work period (1.5h)
+- Looked into architectural styles
+
+What I hope to do next week:
+- Talk with the group...
+    - Get more organized and have more frequent stand ups
+    - Make a plan for D2
+    - Organize more work periods with 2-3 members
+
+What I struggled with:
+This week I struggled with figuring out what needed to be done. Our meeting was turned into a silent work period which was counter productive because we had needed to share what we were all working on and do our weekly standup. This was a bad week which happens sometimes. It was due to personal reasons and lack of communication with out team.
+It didn't help that I also struggled with understanding how the server, slack bot and app interact which made figuring what to do next difficult. This week I didn't feel very productive and I really want to improve this in future weeks.
+
+--------------

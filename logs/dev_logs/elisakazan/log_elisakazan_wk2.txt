@@ -4,14 +4,15 @@ Elisa Kazan
 100965140
 --------------
 What I did this week:
-- update Android Studio 
-- made the routes a table in the google doc
-- worked on hamburger menu 
+- Team Meeting (1.5h)
+- Update Android Studio
+- Made the routes a table in the google doc
+- Worked on hamburger menu
 
 What I hope to do next week:
-- finish the hamburger menu 
+- Finish the hamburger menu
 
 What I struggled with:
-- making time for the project due to personal reasons
+Making time for the project due to personal reasons
 
 --------------

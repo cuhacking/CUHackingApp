@@ -4,13 +4,16 @@ Elisa Kazan
 100965140
 --------------
 What I did this week:
-- finished the hamburger menu
-- create default fragments for each page
+- Team Meeting (1.5h)
+- Removed temporary button navigation
+- Finished the hamburger menu and merged to master
+- Create default fragments for each page
+- Added a "name" to the events on the backend
 
 What I hope to do next week:
--  
+- Regroup with team and see what next task I should work on (potentially notifications or schedule)
 
 What I struggled with:
-- getting the hamburger menu to work (followed the Android tutorial)
+Getting the hamburger menu to work (followed the Android tutorial)
 
 --------------

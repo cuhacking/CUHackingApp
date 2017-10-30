@@ -1,0 +1,25 @@
+--------------
+Week 3 - October 20 - October 26
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- Team Meeting (1.5h)
+- Set states for Help Requests (i.e. No Request, Pending Mentor, Mentor Found)
+- Layout design for the "Mentor Found" state
+- Discussed new design layout for Map tab with Esti
+- Approved and commented on multiple PRs
+- Added token
+- Make client set and update token
+- Collaborated with Jack on overall Help Request functionality
+- Started creating a list of WBN (Would Be Nice) features
+
+What I hope to do next week:
+- Make the notifications look nicer
+- Complete Help Request functionality
+- Work on D2 document
+
+What I struggled with:
+I really enjoyed working with Jack on our tasks, but I found that I got distracted very easily especially when we worked in louder environments and when I had other things on my mind. We had multiple daily stand ups during reading week which was really good because it helped us stay on task. 
+
+--------------
