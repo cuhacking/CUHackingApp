@@ -39,8 +39,4 @@ class EventsController < ApplicationController
 
   def destroy
   end
-
-  def event_params
-    params[:event]
-  end
 end
