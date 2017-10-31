@@ -22,7 +22,7 @@ import com.android.volley.toolbox.ImageRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
+import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
 import ca.carleton.three_thousand_chore.comp3004.R;
 import ca.carleton.three_thousand_chore.comp3004.Requests;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
@@ -101,7 +101,7 @@ public class RequestHelpSuccessfulFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    activeHelpRequest.setStatus(getString(R.string.help_request_complete), new JsonRequest.CompletionHandler<JSONObject>() {
+                    activeHelpRequest.setStatus(getString(R.string.help_request_complete), new JsonObjectRequest.CompletionHandler<JSONObject>() {
                         @Override
                         public void requestSucceeded(JSONObject object) {
                             listener.helpRequestCompleted();

@@ -11,6 +11,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def notifications
+    @notifications = Notification.where(user_id: [params[:id], nil]).limit(50)
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @notifications.to_json }
+    end
+  end
+
   def create
     @user = User.new
     @user.token = params[:token]

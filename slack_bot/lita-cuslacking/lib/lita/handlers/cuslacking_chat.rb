@@ -1,32 +1,30 @@
+require 'httparty'
+
 module Lita
   module Handlers
-    class CUSlackingChat < Handler
-      # insert handler code here
-      route(/call everyone nerds/, :call_everyone_nerds, command: true, help: {
-        "call everyone nerds" => "Calls everyone nerds!"
-        })
+      class CUSlackingChat < Handler
+        class BackendParty
+          include HTTParty
+          base_uri "http://127.0.0.1:3000"
+        end
 
-      route(/what time is it?/, :get_time, command: true, help: {
-        "what time is it?" => "Tells you to check the time yourself"
-        })
+        BOT_CONTROL_CHANNEL = "three-thousand-more"
+        ANNOUNCEMENTS_CHANNEL = "fake-announcements"
 
-      def call_everyone_nerds(response)
-          if response.private_message?
-            response.reply "You're the only nerd here..."
-          else
-            users = robot.roster(response.room)
-            users = users.map {|user_id| "@#{User.find_by_id(user_id).mention_name}" }
-            users = users.reject { |user_name| user_name == "@cuslacking" }
+        route(/announce\s+(.+)/, command: true, help: {
+          "announce TEXT" => "Make an announcement on Slack and the app with the given text"
+        }) do |response|
+          target = Lita::Source.new(room: Lita::Room.find_by_name(ANNOUNCEMENTS_CHANNEL))
+          robot.send_message(target, response.matches[0])
 
-            response.reply "Sup nerds #{users.join(' ')}!"
-          end
-      end
+          callback_data = {
+            announcement: response.matches[0][0]
+          }
 
-      def get_time(response)
-        response.reply "Just look up or #{Time.now}"
-      end
+          BackendParty.post('/notifications/make_announcement', body: callback_data.to_json, headers: {"Content-Type": "application/json"})
+        end
 
-      Lita.register_handler(self)
+        Lita.register_handler(self)
     end
   end
 end

@@ -13,4 +13,11 @@ class NotificationsController < ApplicationController
 
   def destroy
   end
+
+  def make_announcement
+    notification = Notification.new(title: "CUHacking Announcement", description: params[:announcement])
+    notification.save!
+
+    notification.send_notification!({})
+  end
 end

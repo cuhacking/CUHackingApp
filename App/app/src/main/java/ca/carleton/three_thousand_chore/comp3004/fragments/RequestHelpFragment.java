@@ -10,15 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import ca.carleton.three_thousand_chore.comp3004.JsonRequest;
+import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
+import ca.carleton.three_thousand_chore.comp3004.MainActivity;
 import ca.carleton.three_thousand_chore.comp3004.R;
+import ca.carleton.three_thousand_chore.comp3004.UserListener;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 
 /**
  * Created by elisakazan on 2017-10-09.
  */
 
-public class RequestHelpFragment extends Fragment {
+public class RequestHelpFragment extends Fragment implements UserListener {
+    @Override
+    public void userReceived(int userId) {
+        this.userId = userId;
+    }
+
     public interface HelpRequestSentListener {
         void helpRequestSent(HelpRequest request);
     }
@@ -35,23 +42,13 @@ public class RequestHelpFragment extends Fragment {
 
     public RequestHelpFragment() { }
 
-    public static RequestHelpFragment newInstance(int userId) {
-        RequestHelpFragment fragment = new RequestHelpFragment();
-
-        Bundle b = new Bundle();
-        b.putInt("user_id", userId);
-        fragment.setArguments(b);
-
-        return fragment;
+    public static RequestHelpFragment newInstance() {
+        return new RequestHelpFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            userId = getArguments().getInt(USER_ID);
-        }
     }
 
     @Override
@@ -70,7 +67,7 @@ public class RequestHelpFragment extends Fragment {
                     Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    HelpRequest.createHelpRequest(locationField.getText().toString(), problemField.getText().toString(), userId, nameField.getText().toString(), new JsonRequest.CompletionHandler<HelpRequest>() {
+                    HelpRequest.createHelpRequest(locationField.getText().toString(), problemField.getText().toString(), userId, nameField.getText().toString(), new JsonObjectRequest.CompletionHandler<HelpRequest>() {
                         @Override
                         public void requestSucceeded(HelpRequest object) {
                             listener.helpRequestSent(object);

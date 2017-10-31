@@ -21,6 +21,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,10 +35,10 @@ import ca.carleton.three_thousand_chore.comp3004.fragments.RequestHelpSuccessful
 import ca.carleton.three_thousand_chore.comp3004.fragments.ScheduleFragment;
 import ca.carleton.three_thousand_chore.comp3004.fragments.SponsorsFragment;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
+import ca.carleton.three_thousand_chore.comp3004.models.Notification;
 import ca.carleton.three_thousand_chore.comp3004.models.User;
 
 public class MainActivity extends AppCompatActivity implements RequestHelpFragment.HelpRequestSentListener, RequestHelpSuccessfulFragment.HelpRequestCompletedListener {
-
     // Hamburger menu
     private DrawerLayout drawer;
     private ListView drawerList;
@@ -48,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     // General
     private User user;
     private HelpRequest activeHelpRequest;
-    private boolean requestInProgress = false;
-    private boolean loadingHelpRequestFragment = false;
     private int drawerPosition;
 
     // Page constants
@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
     private static final int HELP_PAGE = 3;
     private static final int LINKS_PAGE = 4;
     private static final int SPONSORSHIP_PAGE = 5;
+
+    // Listeners (usually fragments)
+    private UserListener userListener = null;
+    private NewNotificationListener notificationListener = null;
 
 
     @Override
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+        BroadcastReceiver helpRequestReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 MainActivity.this.activeHelpRequest = intent.getParcelableExtra("help_request");
@@ -109,14 +113,24 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             }
         };
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter("NewHelpRequest"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(helpRequestReceiver, new IntentFilter(NotificationFirebaseService.HR_BROADCAST_NAME));
+
+        BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (notificationListener != null) {
+                    notificationListener.newNotification((Notification) intent.getParcelableExtra("notification"));
+                }
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(notificationReceiver, new IntentFilter(NotificationFirebaseService.NOTIFICATION_BROADCAST_NAME));
 
         final SharedPreferences preferences = getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
 
         if (!preferences.contains(getString(R.string.user_id_key))) {
-            requestInProgress = true;
             // New user
-            User.createUser(new JsonRequest.CompletionHandler<User>() {
+            User.createUser(new JsonObjectRequest.CompletionHandler<User>() {
                 @Override
                 public void requestSucceeded(User user) {
                     SharedPreferences.Editor editor = preferences.edit();
@@ -126,14 +140,15 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
                     MainActivity.this.user = user;
 
-                    requestDone();
+                    if (userListener != null) {
+                        userListener.userReceived(user.getId());
+                    }
                 }
 
                 @Override
                 public void requestFailed(String errorMessage) {
                     Toast.makeText(MainActivity.this, "Failed to create user: " + errorMessage, Toast.LENGTH_SHORT).show();
                     Log.e("MainActivity Logter", "Failed to create user: " + errorMessage);
-                    requestInProgress = false;
                 }
             });
         }
@@ -143,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             this.user = new User(preferences.getInt(getString(R.string.user_id_key), -1));
             if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("help_request")) {
                 // If we got here from a notification
-
                 String json = getIntent().getExtras().getString("help_request");
                 try {
                     JSONObject helpRequestJson = new JSONObject(json);
@@ -154,26 +168,25 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 }
             }
             else {
-                requestInProgress = true;
                 // If we got here from the user tapping on the app
-                HelpRequest.forUser(this.user, new JsonRequest.CompletionHandler<HelpRequest>()
+                HelpRequest.forUser(this.user, new JsonObjectRequest.CompletionHandler<HelpRequest>()
                 {
                     @Override
                     public void requestSucceeded(HelpRequest object)
                     {
                         MainActivity.this.activeHelpRequest = object;
-                        requestDone();
                     }
 
                     @Override
                     public void requestFailed(String errorMessage)
                     {
                         Log.e("MainActivity Log", errorMessage);
-                        requestInProgress = false;
                     }
                 });
             }
         }
+
+        FirebaseMessaging.getInstance().subscribeToTopic("announcements");
 
         // Toggle connects the sliding drawer with action bar app icon
         toggle = new ActionBarDrawerToggle(
@@ -199,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
 
         int drawerPage = 0;
 
-        if (getIntent().getExtras() != null) {
+        if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("drawer_page")) {
             drawerPage = Integer.parseInt(getIntent().getExtras().getString("drawer_page"));
         }
 
@@ -248,10 +261,12 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         }
     }
 
-    private void requestDone() {
-        requestInProgress = false;
-        if (loadingHelpRequestFragment) {
-            selectItem(HELP_PAGE);
+    private void requestUserId(UserListener listener) {
+        if (user == null) {
+            this.userListener = listener;
+        }
+        else {
+            listener.userReceived(user.getId());
         }
     }
 
@@ -263,11 +278,17 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         // Create Fragment
         Fragment fragment;
 
+        this.userListener = null;
+        this.notificationListener = null;
+
         // Use page to create new Fragment
         switch(position){
             case NOTIFICATION_PAGE:
                 // Notifications
-                fragment = new NotificationFragment();
+                NotificationFragment notificationFragment = new NotificationFragment();
+                requestUserId(notificationFragment);
+                this.notificationListener = notificationFragment;
+                fragment = notificationFragment;
                 break;
             case SCHEDULE_PAGE:
                 // Schedule
@@ -278,15 +299,11 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
                 fragment = new MapFragment();
                 break;
             case HELP_PAGE:
-                // Request Help
-                if (requestInProgress) {
-                    loadingHelpRequestFragment = true;
-                    return;
-                }
-
                 if (this.activeHelpRequest == null) {
                     // Create new help request
-                    fragment = RequestHelpFragment.newInstance(user.getId());
+                    RequestHelpFragment helpFragment = RequestHelpFragment.newInstance();
+                    requestUserId(helpFragment);
+                    fragment = helpFragment;
                 }
                 else {
                     // Help request either pending mentor or mentor found
