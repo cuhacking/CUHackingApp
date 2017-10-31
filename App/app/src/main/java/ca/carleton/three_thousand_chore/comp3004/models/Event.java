@@ -1,12 +1,13 @@
 package ca.carleton.three_thousand_chore.comp3004.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by jackmccracken on 2017-10-09.
  */
 
-public class Event {
+public class Event implements Serializable{
     private int id;
     private String name;
     private Date date;
