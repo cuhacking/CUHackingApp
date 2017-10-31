@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.all
+    @events = Event.find(params[:id])
 
     respond_to do |format|
       format.json { render json: @events.to_json }
@@ -18,7 +18,6 @@ class EventsController < ApplicationController
   end
 
   def create
-
     @event = Event.new(
       name: params[:name],
       description: params[:description],
