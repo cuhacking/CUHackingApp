@@ -69,7 +69,7 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
             ViewHolder viewInfo;
 
             if (convertView == null) {
-                view = getLayoutInflater().inflate(R.layout.notification_cell, null);
+                view = LayoutInflater.from(getContext()).inflate(R.layout.notification_cell, null);
                 viewInfo = new ViewHolder();
                 viewInfo.body = view.findViewById(R.id.notification_body);
                 //viewInfo.headline = view.findViewById(R.id.notification_headline);
@@ -83,7 +83,6 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
 
             Notification notification = notifications.get(position);
 
-            //viewInfo.headline.setText(notification.getTitle());
             viewInfo.body.setText(notification.getDescription());
             viewInfo.createdAtTime.setText(Dates.prettyDate(notification.getCreatedAt()));
 
@@ -123,7 +122,9 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
 
     @Override
     public void newNotification(Notification notif) {
-        adapter.addNotification(notif);
+        if (viewCreated) {
+            adapter.addNotification(notif);
+        }
     }
 
     public void setupNotificationList() {
