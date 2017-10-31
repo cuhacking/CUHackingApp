@@ -10,9 +10,11 @@ What I did this week:
 - added partial back button functionality
 - displayed all of events information in the detailed view
 - wrote up the description/functionality that will be presented for D2
+- added more events to schedule 
 
 What I hope to do next week:
--
+- make the schedule populated with events from the backend
+- make the map fragment zoom feature better
 
 What I struggled with:
 - finding a tutorial to implement the pinch to zoom feature for an imageview in a fragment - they were mostly only applicable for activities
