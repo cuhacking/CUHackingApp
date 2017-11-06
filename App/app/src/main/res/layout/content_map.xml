@@ -38,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:contentDescription="@string/map_of_carleton"
             android:scaleType="matrix"
             android:src="@mipmap/me3" />
 

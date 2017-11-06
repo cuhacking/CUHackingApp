@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -102,6 +103,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                 meMapLayout.setVisibility(View.GONE);
                 cuText.setVisibility(View.INVISIBLE);
                 meText.setVisibility(View.INVISIBLE);
+                resetZoom(map);
             }
         });
 
@@ -115,6 +117,8 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                 me.hide();
                 cuText.setVisibility(View.INVISIBLE);
                 meText.setVisibility(View.INVISIBLE);
+                resetZoom(map2);
+                resetZoom(map3);
             }
         });
 
@@ -169,14 +173,61 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                         float scale = newDist / oldDist;
                         matrix.postScale(scale, scale, mid.x, mid.y);
                     }
+
+                    float[] f = new float[9];
+                    matrix.getValues(f);
+                    float scaleX = f[Matrix.MSCALE_X];
+                    float scaleY = f[Matrix.MSCALE_Y];
+
+                    if(scaleX <= 0.7f) {
+                        matrix.postScale((0.7f)/scaleX, (0.7f)/scaleY, mid.x, mid.y);
+                    }
+                    else if(scaleX >= 2.5f) {
+                        matrix.postScale((2.5f)/scaleX, (2.5f)/scaleY, mid.x, mid.y);
+                    }
                 }
                 break;
         }
-
+        limitDrag(matrix, map);
+        limitDrag(matrix, map2);
+        limitDrag(matrix, map3);
         view.setImageMatrix(matrix);
         return true; // indicate event was handled
     }
 
+    public void resetZoom(ImageView v) {
+        matrix = new Matrix();
+        oldDist = 1f;
+        v.setImageMatrix(matrix);
+        v.invalidate();
+    }
+
+    private void limitDrag(Matrix m, ImageView iv) {
+        Rect bounds = iv.getDrawable().getBounds();
+
+        int width = bounds.right - bounds.left;
+        int height = bounds.bottom - bounds.top;
+
+        float[] values = new float[9];
+        m.getValues(values);
+        float transX = values[Matrix.MTRANS_X];
+        float transY = values[Matrix.MTRANS_Y];
+        float scaleX = values[Matrix.MSCALE_X];
+        float scaleY = values[Matrix.MSCALE_Y];
+//        limit moving to left
+        float minX = (-width + 0) * (scaleX-1);
+        float minY = (-height + 0) * (scaleY-1);
+//        limit moving to right
+        float maxX=minX+width*(scaleX-1);
+        float maxY=minY+height*(scaleY-1);
+        if(transX>maxX){transX = maxX;}
+        if(transX<minX){transX = minX;}
+        if(transY>maxY){transY = maxY;}
+        if(transY<minY){transY = minY;}
+        values[Matrix.MTRANS_X] = transX;
+        values[Matrix.MTRANS_Y] = transY;
+        m.setValues(values);
+    }
 
     @Override
     public void onAttach(Context context) {
