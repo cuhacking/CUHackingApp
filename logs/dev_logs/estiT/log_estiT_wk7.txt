@@ -1,0 +1,18 @@
+--------------
+Week 7 - Nov. 2 - Nov. 9
+Esti Tweg
+101005024
+--------------
+
+What I did this week:
+- redid the splash page
+- added reset imageview zoom functionality to choosing a map button
+- added imageview drag limiting for map so that it will always be on screen
+
+
+What I hope to do next week:
+-
+
+What I struggled with:
+- figuring out why the splash page wasnt working
+--------------
