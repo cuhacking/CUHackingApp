@@ -12,7 +12,7 @@
     android:id="@+id/mapLinearLayout">
 
     <FrameLayout
-        android:id="@+id/carletonMapLayout"
+        android:id="@+id/mapLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,33 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:contentDescription="@string/map_of_carleton"
             android:scaleType="matrix"
-            android:src="@mipmap/exterior_map" />
-
+            android:src="@mipmap/exterior_map2" />
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/meMapLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
-
-        <ImageView
-            android:id="@+id/mapImage2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:scaleType="matrix"
-            android:src="@mipmap/me3" />
-
-        <ImageView
-            android:id="@+id/mapImage3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:scaleType="matrix"
-            android:src="@mipmap/me4" />
-
-    </FrameLayout>
 </LinearLayout>

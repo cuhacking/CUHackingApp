@@ -23,8 +23,7 @@ import ca.carleton.three_thousand_chore.comp3004.R;
  */
 
 public class MapFragment extends Fragment implements View.OnTouchListener{
-    FrameLayout carletonMapLayout;
-    FrameLayout meMapLayout;
+    FrameLayout mapLayout;
     FloatingActionButton fab;
     FloatingActionButton me;
     FloatingActionButton cu;
@@ -32,8 +31,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
     TextView meText;
     TextView toolbarText;
     ImageView map;
-    ImageView map2;
-    ImageView map3;
 
     Matrix matrix = new Matrix();
     Matrix savedMatrix = new Matrix();
@@ -66,14 +63,9 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         cuText = v.findViewById(R.id.cuText);
         toolbarText = v.findViewById(R.id.toolbarText);
         map = v.findViewById(R.id.mapImage);
-        map2 = v.findViewById(R.id.mapImage2);
-        map3 = v.findViewById(R.id.mapImage3);
-        carletonMapLayout = v.findViewById(R.id.carletonMapLayout);
-        meMapLayout = v.findViewById(R.id.meMapLayout);
+        mapLayout = v.findViewById(R.id.mapLayout);
 
         map.setOnTouchListener(this);
-        map2.setOnTouchListener(this);
-        map3.setOnTouchListener(this);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +91,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                 toolbarText.setText("Carleton Campus");
                 cu.hide();
                 me.hide();
-                carletonMapLayout.setVisibility(View.VISIBLE);
-                meMapLayout.setVisibility(View.GONE);
+                map.setImageResource(R.mipmap.exterior_map2);
                 cuText.setVisibility(View.INVISIBLE);
                 meText.setVisibility(View.INVISIBLE);
                 resetZoom(map);
@@ -111,14 +102,12 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
             @Override
             public void onClick(View view) {
                 toolbarText.setText("Mackenzie");
-                carletonMapLayout.setVisibility(View.GONE);
-                meMapLayout.setVisibility(View.VISIBLE);
                 cu.hide();
                 me.hide();
+                map.setImageResource(R.mipmap.me3_4);
                 cuText.setVisibility(View.INVISIBLE);
                 meText.setVisibility(View.INVISIBLE);
-                resetZoom(map2);
-                resetZoom(map3);
+                resetZoom(map);
             }
         });
 
@@ -189,14 +178,14 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                 break;
         }
         limitDrag(matrix, map);
-        limitDrag(matrix, map2);
-        limitDrag(matrix, map3);
         view.setImageMatrix(matrix);
         return true; // indicate event was handled
     }
 
     public void resetZoom(ImageView v) {
         matrix = new Matrix();
+        savedMatrix = new Matrix();
+        mode = NONE;
         oldDist = 1f;
         v.setImageMatrix(matrix);
         v.invalidate();
