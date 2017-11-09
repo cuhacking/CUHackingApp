@@ -8,6 +8,10 @@ What I did this week:
 - redid the splash page
 - added reset imageview zoom functionality to choosing a map button
 - added imageview drag limiting for map so that it will always be on screen
+- made the meckenzie map one image view instead of 2 images
+- added more image resources
+- made campus exterior map view look more centered
+- add wifi credentials on links page
 
 
 What I hope to do next week:
