@@ -22,7 +22,7 @@
         <item>Schedule</item>
         <item>Map</item>
         <item>Request Help</item>
-        <item>Links</item>
+        <item>Info</item>
         <item>Sponsors</item>
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
