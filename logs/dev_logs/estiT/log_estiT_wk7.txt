@@ -13,6 +13,7 @@ What I did this week:
 - made campus exterior map view look more centered
 - redid links page layout relative layout instead of constraint
 - added wifi credentials to the links page and made it scrollable
+- changed links page to Info
 
 
 What I hope to do next week:
