@@ -11,7 +11,7 @@ import com.android.volley.toolbox.Volley;
 
 public class Requests
 {
-    public static String BASE_URL = "https://cuhacking.herokuapp.com";//"http://10.0.2.2:3000"; //
+    public static String BASE_URL = "http://10.0.2.2:3000"; //"https://cuhacking.herokuapp.com";//
     private static Requests instance;
     private static int contextHash;
 
