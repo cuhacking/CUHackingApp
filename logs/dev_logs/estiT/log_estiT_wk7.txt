@@ -11,12 +11,14 @@ What I did this week:
 - made the meckenzie map one image view instead of 2 images
 - added more image resources
 - made campus exterior map view look more centered
-- add wifi credentials on links page
+- redid links page layout relative layout instead of constraint
+- added wifi credentials to the links page and made it scrollable
 
 
 What I hope to do next week:
--
+- populate the schedule view with events from the back end as soon as the requests are ready
 
 What I struggled with:
 - figuring out why the splash page wasnt working
+- dealing with constraints
 --------------
