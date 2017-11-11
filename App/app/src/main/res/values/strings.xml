@@ -22,7 +22,7 @@
         <item>Schedule</item>
         <item>Map</item>
         <item>Request Help</item>
-        <item>Links</item>
+        <item>Info</item>
         <item>Sponsors</item>
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -47,4 +47,7 @@
     <string name="cuhacking_announcement_placeholder">CUHacking Announcement</string>
     <string name="hello_world">Hello world!!</string>
     <string name="multiple_mentors">Multiple mentors are on the way: \n%s</string>
+    <string name="cu_wireless">CU-Wireless</string>
+    <string name="wifi_username">Username: Wifiguestw18</string>
+    <string name="wifi_password">Password: HMTory.57!</string>
 </resources>
