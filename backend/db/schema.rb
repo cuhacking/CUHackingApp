@@ -20,14 +20,12 @@ ActiveRecord::Schema.define(version: 20171031123649) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.integer "event_id"
     t.string "name"
     t.string "tier"
     t.string "website_url"
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_companies_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
