@@ -58,14 +58,17 @@ class HelpRequestsController < ApplicationController
     help_request = HelpRequest.find(params[:help_request_id])
 
     mentors = help_request.mentors
-    mentors << params[:mentor_name]
+
+    # Check for duplicates
+    mentors << params[:mentor_name] unless mentors.include? params[:mentor_name]
+
     help_request.mentors = mentors
     help_request.status = MENTOR_FOUND
     help_request.profile_pic_link = params[:profile_pic]
     help_request.save!
 
     notif = Notification.new(
-            title: "Help is on the way!", 
+            title: "Help is on the way!",
             description: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!",
             user: help_request.user)
     notif.save!

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -69,29 +70,26 @@ public class RequestHelpSuccessfulFragment extends Fragment {
         mentorHeadline = v.findViewById(R.id.mentor_headline);
         mentorDoneButton = v.findViewById(R.id.mentor_done_button);
         profilePictureView = v.findViewById(R.id.mentor_profile);
+        String[] mentors = activeHelpRequest.getMentors();
 
         if (activeHelpRequest.getStatus().equals(getString(R.string.mentor_found))) {
+            String message;
+            if (activeHelpRequest.getMentors().length > 1) {
+                // Handle multiple mentors
+                message = String.format(getString(R.string.multiple_mentors), TextUtils.join(", ", mentors));
+
+            }
+            else {
+                message = String.format(getString(R.string.mentor_on_the_way_label), mentors[0]);
+                displayMentorProfileImage();
+            }
+
+
             mentorSubHeader.setText(R.string.subtitle_request_help_mentor_found);
-            mentorHeadline.setText(String.format(getString(R.string.mentor_on_the_way_label), activeHelpRequest.getMentors()[0]));
+            mentorHeadline.setText(message);
             mentorDoneButton.setVisibility(View.VISIBLE);
 
-            if (activeHelpRequest.getProfilePictureURL() != null && !activeHelpRequest.getProfilePictureURL().equals("null")) {
-                ImageRequest request = new ImageRequest(activeHelpRequest.getProfilePictureURL(), new Response.Listener<Bitmap>() {
-                    @Override
-                    public void onResponse(Bitmap response) {
-                        profilePictureView.setVisibility(View.VISIBLE);
-                        profilePictureView.setImageBitmap(response);
-                    }
-                }, 512, 512, Bitmap.Config.ALPHA_8, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("RequestHelpSFrag Log", "Failed to download profile picture: " + error.getMessage());
-                        Toast.makeText(getContext(), "Failed to download profile picture: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
 
-                Requests.getInstance(getContext()).getQueue().add(request);
-            }
         }
         else if (activeHelpRequest.getStatus().equals(getString(R.string.help_request_complete))) {
             listener.helpRequestCompleted();
@@ -121,6 +119,26 @@ public class RequestHelpSuccessfulFragment extends Fragment {
         });
 
         return v;
+    }
+
+    public void displayMentorProfileImage() {
+        if (activeHelpRequest.getProfilePictureURL() != null && !activeHelpRequest.getProfilePictureURL().equals("null")) {
+            ImageRequest request = new ImageRequest(activeHelpRequest.getProfilePictureURL(), new Response.Listener<Bitmap>() {
+                @Override
+                public void onResponse(Bitmap response) {
+                    profilePictureView.setVisibility(View.VISIBLE);
+                    profilePictureView.setImageBitmap(response);
+                }
+            }, 512, 512, Bitmap.Config.ALPHA_8, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("RequestHelpSFrag Log", "Failed to download profile picture: " + error.getMessage());
+                    Toast.makeText(getContext(), "Failed to download profile picture: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            Requests.getInstance(getContext()).getQueue().add(request);
+        }
     }
 
     @Override

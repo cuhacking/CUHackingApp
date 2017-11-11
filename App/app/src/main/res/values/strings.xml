@@ -46,4 +46,5 @@
     <string name="mentor_on_the_way_label">%s is on the way!</string>
     <string name="cuhacking_announcement_placeholder">CUHacking Announcement</string>
     <string name="hello_world">Hello world!!</string>
+    <string name="multiple_mentors">Multiple mentors are on the way: \n%s</string>
 </resources>
