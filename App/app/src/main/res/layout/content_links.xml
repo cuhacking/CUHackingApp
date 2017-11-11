@@ -18,40 +18,56 @@
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="13dp"
-            android:background="@color/colourLightGrey">
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/rounded_corner">
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/wifiIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/ic_wifi_white"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="0dp"/>
+
                 <TextView
                     android:id="@+id/wifiName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wifi Name: CU-Wireless"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginTop="7dp"
-                    android:textSize="15sp"/>
+                    android:layout_toRightOf="@id/wifiIcon"
+                    android:text="@string/cu_wireless"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/wifiUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/wifiName"
-                    android:text="Username: Wifiguestw18"
+                    android:text="@string/wifi_username"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="13dp"
-                    android:textSize="15sp"/>
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/wifiPass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/wifiUser"
-                    android:text="Password: HMTory.57!"
+                    android:text="@string/wifi_password"
                     android:layout_marginLeft="13dp"
-                    android:textSize="15sp"/>
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
 
             </RelativeLayout>
         </FrameLayout>
