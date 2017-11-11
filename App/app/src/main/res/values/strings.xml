@@ -50,4 +50,5 @@
     <string name="cu_wireless">CU-Wireless</string>
     <string name="wifi_username">Username: Wifiguestw18</string>
     <string name="wifi_password">Password: HMTory.57!</string>
+    <string name="wifi_disconnected_text">Network unavailable, switching to Info. Use this wifi and then reboot the app</string>
 </resources>
