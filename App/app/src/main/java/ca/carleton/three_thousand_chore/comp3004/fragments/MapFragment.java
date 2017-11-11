@@ -88,7 +88,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         cu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toolbarText.setText("Carleton Campus");
+                toolbarText.setText(R.string.carleton_campus);
                 cu.hide();
                 me.hide();
                 map.setImageResource(R.mipmap.exterior_map2);
@@ -101,7 +101,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toolbarText.setText("Mackenzie");
+                toolbarText.setText(R.string.me_building);
                 cu.hide();
                 me.hide();
                 map.setImageResource(R.mipmap.me3_4);
