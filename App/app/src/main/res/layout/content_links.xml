@@ -19,8 +19,8 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="3dp"
             android:background="@drawable/rounded_corner">
@@ -34,20 +34,21 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@mipmap/ic_wifi_white"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="0dp"/>
+                    android:layout_toLeftOf="@id/wifiName"
+                    android:layout_marginTop="0dp"
+                    android:layout_centerHorizontal="true"/>
 
                 <TextView
                     android:id="@+id/wifiName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/wifiIcon"
                     android:text="@string/cu_wireless"
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
 
                 <TextView
                     android:id="@+id/wifiUser"
@@ -57,7 +58,8 @@
                     android:text="@string/wifi_username"
                     android:textColor="@color/white"
                     android:layout_marginLeft="13dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
 
                 <TextView
                     android:id="@+id/wifiPass"
@@ -67,7 +69,8 @@
                     android:text="@string/wifi_password"
                     android:layout_marginLeft="13dp"
                     android:textColor="@color/white"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
         </FrameLayout>
