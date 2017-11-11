@@ -1,4 +1,4 @@
 class Room < ApplicationRecord
-	belongs_to :event
+	has_many :event
 	belongs_to :building
 end
