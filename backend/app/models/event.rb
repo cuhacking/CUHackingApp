@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-	has_one :room
-	has_one :company
+	belongs_to :room
+	belongs_to :company, optional: true
 end

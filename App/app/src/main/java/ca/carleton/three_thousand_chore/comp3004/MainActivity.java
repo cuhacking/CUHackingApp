@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -72,6 +74,14 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         stopService(new Intent(this, NotificationFirebaseService.class));
         stopService(new Intent(this, CUHFirebaseInstanceIDService.class));
     }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,10 +220,17 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
         // Set the drawer toggle as the DrawerListener
         drawer.addDrawerListener(toggle);
 
-        int drawerPage = 0;
+        int drawerPage;
 
-        if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("drawer_page")) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(this, R.string.wifi_disconnected_text, Toast.LENGTH_SHORT).show();
+            drawerPage = LINKS_PAGE;
+        }
+        else if (getIntent().getExtras() != null && getIntent().getExtras().containsKey("drawer_page")) {
             drawerPage = Integer.parseInt(getIntent().getExtras().getString("drawer_page"));
+        }
+        else {
+            drawerPage = NOTIFICATION_PAGE;
         }
 
         selectItem(drawerPage);
