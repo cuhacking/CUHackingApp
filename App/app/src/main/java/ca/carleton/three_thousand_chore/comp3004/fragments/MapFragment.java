@@ -1,23 +1,19 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +24,6 @@ import ca.carleton.three_thousand_chore.comp3004.R;
  */
 
 public class MapFragment extends Fragment implements View.OnTouchListener{
-    //FrameLayout mapLayout;
     FloatingActionButton fab;
     FloatingActionButton me;
     FloatingActionButton cu;
@@ -40,20 +35,16 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
     Matrix matrix = new Matrix();
     Matrix savedMatrix = new Matrix();
 
-    Drawable untouchedDrawable;
-
-
-    // 3 states for imageview
+    // Imageview States
     static final int NONE = 0;
     static final int DRAG = 1;
     static final int ZOOM = 2;
     int mode = NONE;
 
-    // Remember some things for zooming
+    // Zoom Information
     PointF start = new PointF();
     PointF mid = new PointF();
     float oldDist = 1f;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,9 +62,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         cuText = v.findViewById(R.id.cuText);
         toolbarText = v.findViewById(R.id.toolbarText);
         map = v.findViewById(R.id.mapImage);
-        untouchedDrawable = map.getDrawable();
-
-        //resetZoom(map);
         map.setOnTouchListener(this);
 
         ViewTreeObserver vto = v.getViewTreeObserver();
@@ -91,17 +79,11 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cuText.getVisibility() == View.INVISIBLE){
-                    cu.show();
-                    me.show();
-                    cuText.setVisibility(View.VISIBLE);
-                    meText.setVisibility(View.VISIBLE);
+                if (cuText.getVisibility() == View.INVISIBLE){
+                    displayMapButtons(View.VISIBLE);
                 }
-                else{
-                    cu.hide();
-                    me.hide();
-                    cuText.setVisibility(View.INVISIBLE);
-                    meText.setVisibility(View.INVISIBLE);
+                else {
+                    displayMapButtons(View.INVISIBLE);
                 }
             }
         });
@@ -109,32 +91,41 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         cu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toolbarText.setText(R.string.carleton_campus);
-                cu.hide();
-                me.hide();
-                map.setImageResource(R.mipmap.carleton_outdoor_map);
-                cuText.setVisibility(View.INVISIBLE);
-                meText.setVisibility(View.INVISIBLE);
-                resetZoom(map);
+                showSelectedMap(R.string.carleton_campus, R.mipmap.carleton_outdoor_map);
             }
         });
 
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toolbarText.setText(R.string.me_building);
-                cu.hide();
-                me.hide();
-                map.setImageResource(R.mipmap.me_building);
-                cuText.setVisibility(View.INVISIBLE);
-                meText.setVisibility(View.INVISIBLE);
-                resetZoom(map);
+                showSelectedMap(R.string.me_building, R.mipmap.me_building);
             }
         });
 
         return v;
     }
 
+    private void displayMapButtons(int visitbility) {
+        if (visitbility == View.VISIBLE) {
+            cu.show();
+            me.show();
+            cuText.setVisibility(View.VISIBLE);
+            meText.setVisibility(View.VISIBLE);
+        }
+        else {
+            cu.hide();
+            me.hide();
+            cuText.setVisibility(View.INVISIBLE);
+            meText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void showSelectedMap(int buildingName, int mipmap) {
+        toolbarText.setText(buildingName);
+        displayMapButtons(View.INVISIBLE);
+        map.setImageResource(mipmap);
+        resetZoom(map);
+    }
 
     private float spacing(MotionEvent event) {
         float x = event.getX(0) - event.getX(1);
@@ -173,8 +164,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
             case MotionEvent.ACTION_MOVE:
                 if (mode == DRAG) {
                     matrix.set(savedMatrix);
-                    matrix.postTranslate(event.getX() - start.x,
-                            event.getY() - start.y);
+                    matrix.postTranslate(event.getX() - start.x,event.getY() - start.y);
                 }
                 else if (mode == ZOOM) {
                     float newDist = spacing(event);
@@ -183,28 +173,13 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                         float scale = newDist / oldDist;
                         matrix.postScale(scale, scale, mid.x, mid.y);
                     }
-/*
-                    float[] f = new float[9];
-                    matrix.getValues(f);
-                    float scaleX = f[Matrix.MSCALE_X];
-                    float scaleY = f[Matrix.MSCALE_Y];
-
-                    if(scaleX <= 0.7f) {
-                        matrix.postScale((0.7f)/scaleX, (0.7f)/scaleY, mid.x, mid.y);
-                    }
-                    else if(scaleX >= 2.5f) {
-                        matrix.postScale((2.5f)/scaleX, (2.5f)/scaleY, mid.x, mid.y);
-                    }*/
                 }
                 break;
         }
         limitDrag(matrix, map);
         view.setImageMatrix(matrix);
-        return true; // indicate event was handled
+        return true;
     }
-
-
-
 
     public void resetZoom(ImageView v) {
         matrix = centrecropMatrix();
@@ -215,7 +190,10 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         v.invalidate();
     }
 
-
+    @NonNull
+    private Boolean isLandscapeImage(ImageView iv){
+        return iv.getDrawable().getIntrinsicWidth() > iv.getDrawable().getIntrinsicHeight();
+    }
 
     private void limitDrag(Matrix m, ImageView iv) {
         Rect boundingRect = iv.getDrawable().getBounds();
@@ -232,7 +210,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         float xTranslation = values[Matrix.MTRANS_X];
         float yTranslation = values[Matrix.MTRANS_Y];
         float scale = values[Matrix.MSCALE_X];
-
 
         float scaledWidth = drawableWidth * scale;
         float horWidth = -Math.abs(scaledWidth - viewWidth);
@@ -264,7 +241,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         float drawableHeight = (float)map.getDrawable().getIntrinsicHeight();
         float viewWidth = (float) map.getMeasuredWidth();
         float viewHeight = (float) map.getMeasuredHeight();
-
 
         // CenterCrop Scale
         float xScale = viewWidth / drawableWidth;
