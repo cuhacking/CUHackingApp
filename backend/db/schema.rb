@@ -31,9 +31,8 @@ ActiveRecord::Schema.define(version: 20171112030557) do
   create_table "events", force: :cascade do |t|
     t.integer "room_id"
     t.integer "company_id"
-    t.date "date"
-    t.time "start_time"
-    t.time "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "event_type"
     t.string "description"
     t.datetime "created_at", null: false
