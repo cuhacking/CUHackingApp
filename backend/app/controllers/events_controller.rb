@@ -18,7 +18,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    pp params
     @event = Event.new(
       name: params[:name],
       description: params[:description],
