@@ -21,23 +21,31 @@
         android:id="@+id/help_request_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:singleLine="true"
         android:hint="@string/name_question"/>
 
     <EditText
         android:id="@+id/help_request_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:singleLine="true"
         android:hint="@string/hr_location"/>
 
     <EditText
         android:id="@+id/problem_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
+        android:layout_margin="25dp"
+        android:layout_marginRight="25dp"
         android:hint="@string/problem_question"
-        android:minLines="3"
+        android:inputType="text"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:gravity="bottom"/>
 
     <Button

@@ -28,9 +28,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="need_help_heading">Need some help? Don\'t wait, just ask!</string>
     <string name="name_question">What\'s your name?</string>
-    <string name="problem_question">Give us a brief description of your problem</string>
+    <string name="problem_question">What can we help with?</string>
     <string name="get_some_help">get some help</string>
-    <string name="hr_location">Where are you on campus (room number)?</string>
+    <string name="hr_location">Where are you (room number)?</string>
     <string name="map_of_carleton">A map of Carleton</string>
     <string name="subtitle_request_help_success">You should get a notification soon about your mentor match.</string>
     <string name="subtitle_request_help_mentor_found">You can contact them on <a href="https://cuhacking2017.slack.com/">Slack</a>.</string>
