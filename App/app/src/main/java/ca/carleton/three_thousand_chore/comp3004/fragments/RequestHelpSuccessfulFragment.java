@@ -77,7 +77,7 @@ public class RequestHelpSuccessfulFragment extends Fragment {
             if (activeHelpRequest.getMentors().length > 1) {
                 // Handle multiple mentors
                 message = String.format(getString(R.string.multiple_mentors), TextUtils.join(", ", mentors));
-
+                profilePictureView.setVisibility(View.GONE);
             }
             else {
                 message = String.format(getString(R.string.mentor_on_the_way_label), mentors[0]);
