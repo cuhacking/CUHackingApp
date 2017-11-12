@@ -3,16 +3,10 @@ package ca.carleton.three_thousand_chore.comp3004.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.google.gson.JsonArray;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
