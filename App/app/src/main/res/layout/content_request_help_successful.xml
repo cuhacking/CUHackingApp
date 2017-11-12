@@ -17,10 +17,11 @@
         android:id="@+id/successMessage"
         android:text="@string/subtitle_request_help_success"
         android:gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
         style="@style/Base.TextAppearance.AppCompat.Subhead"/>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/mentor_profile"
         android:visibility="invisible"
         android:gravity="center_horizontal"
