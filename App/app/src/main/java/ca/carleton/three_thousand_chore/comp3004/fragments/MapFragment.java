@@ -72,7 +72,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         toolbarText = v.findViewById(R.id.toolbarText);
         map = v.findViewById(R.id.mapImage);
         untouchedDrawable = map.getDrawable();
-        //mapLayout = v.findViewById(R.id.mapLayout);
 
         //resetZoom(map);
         map.setOnTouchListener(this);
@@ -229,11 +228,17 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
 
         float drawableWidth = boundingRect.width();
         float drawableHeight = boundingRect.height();
-        float horWidth = -Math.abs(drawableWidth - viewWidth);
 
         float xTranslation = values[Matrix.MTRANS_X];
         float yTranslation = values[Matrix.MTRANS_Y];
         float scale = values[Matrix.MSCALE_X];
+
+
+        float scaledWidth = drawableWidth * scale;
+        float horWidth = -Math.abs(scaledWidth - viewWidth);
+
+        float scaledHeight = drawableHeight * scale;
+        float vertHeight = -Math.abs(scaledHeight - viewHeight);
 
         if (xTranslation > 0) {
             xTranslation = 0;
@@ -241,8 +246,11 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         if (yTranslation > 0) {
             yTranslation = 0;
         }
-        if (xTranslation < horWidth*2) {
-            xTranslation = horWidth*2;
+        if (xTranslation < horWidth) {
+            xTranslation = horWidth;
+        }
+        if (yTranslation < vertHeight) {
+            yTranslation = vertHeight;
         }
 
         values[Matrix.MTRANS_X] = xTranslation;
@@ -250,35 +258,6 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
 
         m.setValues(values);
     }
-//    private void limitDrag(Matrix m, ImageView iv) {
-//        Rect bounds = iv.getDrawable().getBounds();
-//
-//        float width = bounds.right - bounds.left;
-//        float height = bounds.bottom - bounds.top;
-//
-//        float[] values = new float[9];
-//        m.getValues(values);
-//        float transX = values[Matrix.MTRANS_X];
-//        float transY = values[Matrix.MTRANS_Y];
-//        float scaleX = values[Matrix.MSCALE_X];
-//        float scaleY = values[Matrix.MSCALE_Y];
-//
-////        limit moving to left
-//        float minX = (-width + 0) * (scaleX-1);
-//        float minY = (-height + 0) * (scaleY-1);
-////        limit moving to right
-//        float maxX=minX+width*(scaleX-1);
-//        float maxY=minY+height*(scaleY-1);
-//        Log.e("Drag location data", "Min X: " + minX + " X translation: " + transX + "Min Y: " + minY + " Y translation: " + transY);
-//        if(transX>maxX){Log.e("Drag location data", "X too big");transX = maxX;}
-//        if(transX<minX){Log.e("Drag location data", "X too small");transX = minX;}
-//        if(transY>maxY){Log.e("Drag location data", "Y too big");transY = maxY;}
-//        if(transY<minY){Log.e("Drag location data", "Y too small");transY = minY;}
-//        values[Matrix.MTRANS_X] = transX;
-//        values[Matrix.MTRANS_Y] = transY;
-//        m.setValues(values);
-//    }
-
 
     private Matrix centrecropMatrix() {
         float drawableWidth = (float)map.getDrawable().getIntrinsicWidth();
