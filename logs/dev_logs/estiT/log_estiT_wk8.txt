@@ -6,12 +6,27 @@ Esti Tweg
 
 What I did this week:
 - tried to add the cuhacking logo to the menu drawer 
+- redid the layout for the wifi box on the links/info page
+  - added a wifi logo
+  -changed the colour of the box
+  -bolded and changed text size
+  -made text centered
+  -added drop shadow
+- added code to lock screen orientation for the splash page
+- removed hardcoded strings and made string resources
+- reviewed pull requests
+- populated schedule events with back end request and sorted by start date
+- removed date from event object, only using start and end date
+- redid drop shadow to use android best practices
+- fixed bugs and improved UX for help request flow
+- hide keyboard when opening menu
+- 
 
 
 What I hope to do next week:
--
+- more UX to make the app look better
 
 What I struggled with:
--
+- figuring out how to add a footer to the app menu
 
 --------------
