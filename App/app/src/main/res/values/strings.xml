@@ -46,6 +46,8 @@
     <string name="mentor_on_the_way_label">%s is on the way!</string>
     <string name="cuhacking_announcement_placeholder">CUHacking Announcement</string>
     <string name="hello_world">Hello world!!</string>
+    <string name="carleton_campus">Carleton Campus</string>
+    <string name="me_building">Mackenzie Building</string>
     <string name="multiple_mentors">Multiple mentors are on the way: \n%s</string>
     <string name="cu_wireless">CU-Wireless</string>
     <string name="wifi_username">Username: Wifiguestw18</string>
