@@ -28,7 +28,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="need_help_heading">Need some help? Don\'t wait, just ask!</string>
     <string name="name_question">What\'s your name?</string>
-    <string name="problem_question">Description of problem</string>
+    <string name="problem_question">What can we help with?</string>
     <string name="get_some_help">get some help</string>
     <string name="hr_location">Where are you (room number)?</string>
     <string name="map_of_carleton">A map of Carleton</string>
