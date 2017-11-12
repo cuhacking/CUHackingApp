@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.support.v4.widget.DrawerLayout;
@@ -214,6 +215,8 @@ public class MainActivity extends AppCompatActivity implements RequestHelpFragme
             public void onDrawerOpened(View drawerView) {
                 getSupportActionBar().setTitle(drawerTitle);
                 invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+
+                UIHelper.closeKeyboard(getCurrentFocus(), (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE));
             }
         };
 
