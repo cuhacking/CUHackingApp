@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="25dp"
+        android:singleLine="true"
         android:hint="@string/name_question"/>
 
     <EditText
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="25dp"
+        android:singleLine="true"
         android:hint="@string/hr_location"/>
 
     <EditText
@@ -37,7 +39,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="25dp"
         android:hint="@string/problem_question"
-        android:minLines="3"
+        android:inputType="text"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:gravity="bottom"/>
 
     <Button
