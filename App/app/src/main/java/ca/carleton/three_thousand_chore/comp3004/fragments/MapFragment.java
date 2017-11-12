@@ -105,8 +105,8 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         return v;
     }
 
-    private void displayMapButtons(int visitbility) {
-        if (visitbility == View.VISIBLE) {
+    private void displayMapButtons(int visible) {
+        if (visible == View.VISIBLE) {
             cu.show();
             me.show();
             cuText.setVisibility(View.VISIBLE);
