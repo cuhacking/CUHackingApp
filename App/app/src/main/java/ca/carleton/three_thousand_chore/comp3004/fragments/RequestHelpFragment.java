@@ -17,6 +17,7 @@ import android.widget.Toast;
 import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
 import ca.carleton.three_thousand_chore.comp3004.MainActivity;
 import ca.carleton.three_thousand_chore.comp3004.R;
+import ca.carleton.three_thousand_chore.comp3004.UIHelper;
 import ca.carleton.three_thousand_chore.comp3004.UserListener;
 import ca.carleton.three_thousand_chore.comp3004.models.HelpRequest;
 
@@ -78,11 +79,7 @@ public class RequestHelpFragment extends Fragment implements UserListener {
         getHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                View v = getActivity().getCurrentFocus();
-                if (v != null) {
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
+                UIHelper.closeKeyboard(getActivity().getCurrentFocus(), (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE));
 
                 if(locationField.getText().toString().trim().equals("") || problemField.getText().toString().trim().equals("") || nameField.getText().toString().trim().equals("")){
                     Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
