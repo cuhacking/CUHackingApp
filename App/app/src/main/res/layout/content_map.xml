@@ -11,18 +11,13 @@
     tools:showIn="@layout/activity_map"
     android:id="@+id/mapLinearLayout">
 
-    <FrameLayout
-        android:id="@+id/mapLayout"
+    <ImageView
+        android:id="@+id/mapImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/mapImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="matrix"
-            android:src="@mipmap/exterior_map2" />
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:scaleType="matrix"
+        android:src="@mipmap/carleton_outdoor_map" />
 
 </LinearLayout>

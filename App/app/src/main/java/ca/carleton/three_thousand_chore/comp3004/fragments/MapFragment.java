@@ -1,17 +1,22 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +28,7 @@ import ca.carleton.three_thousand_chore.comp3004.R;
  */
 
 public class MapFragment extends Fragment implements View.OnTouchListener{
-    FrameLayout mapLayout;
+    //FrameLayout mapLayout;
     FloatingActionButton fab;
     FloatingActionButton me;
     FloatingActionButton cu;
@@ -34,6 +39,9 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
 
     Matrix matrix = new Matrix();
     Matrix savedMatrix = new Matrix();
+
+    Drawable untouchedDrawable;
+
 
     // 3 states for imageview
     static final int NONE = 0;
@@ -63,9 +71,23 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         cuText = v.findViewById(R.id.cuText);
         toolbarText = v.findViewById(R.id.toolbarText);
         map = v.findViewById(R.id.mapImage);
-        mapLayout = v.findViewById(R.id.mapLayout);
+        untouchedDrawable = map.getDrawable();
+        //mapLayout = v.findViewById(R.id.mapLayout);
 
+        //resetZoom(map);
         map.setOnTouchListener(this);
+
+        ViewTreeObserver vto = v.getViewTreeObserver();
+        if(vto.isAlive()) {
+            vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+            {
+                @Override
+                public void onGlobalLayout()
+                {
+                    resetZoom(map);
+                }
+            });
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +113,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                 toolbarText.setText(R.string.carleton_campus);
                 cu.hide();
                 me.hide();
-                map.setImageResource(R.mipmap.exterior_map2);
+                map.setImageResource(R.mipmap.carleton_outdoor_map);
                 cuText.setVisibility(View.INVISIBLE);
                 meText.setVisibility(View.INVISIBLE);
                 resetZoom(map);
@@ -104,7 +126,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                 toolbarText.setText(R.string.me_building);
                 cu.hide();
                 me.hide();
-                map.setImageResource(R.mipmap.me3_4);
+                map.setImageResource(R.mipmap.me_building);
                 cuText.setVisibility(View.INVISIBLE);
                 meText.setVisibility(View.INVISIBLE);
                 resetZoom(map);
@@ -162,7 +184,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                         float scale = newDist / oldDist;
                         matrix.postScale(scale, scale, mid.x, mid.y);
                     }
-
+/*
                     float[] f = new float[9];
                     matrix.getValues(f);
                     float scaleX = f[Matrix.MSCALE_X];
@@ -173,7 +195,7 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
                     }
                     else if(scaleX >= 2.5f) {
                         matrix.postScale((2.5f)/scaleX, (2.5f)/scaleY, mid.x, mid.y);
-                    }
+                    }*/
                 }
                 break;
         }
@@ -182,40 +204,103 @@ public class MapFragment extends Fragment implements View.OnTouchListener{
         return true; // indicate event was handled
     }
 
+
+
+
     public void resetZoom(ImageView v) {
-        matrix = new Matrix();
-        savedMatrix = new Matrix();
+        matrix = centrecropMatrix();
+        savedMatrix = centrecropMatrix();
         mode = NONE;
         oldDist = 1f;
         v.setImageMatrix(matrix);
         v.invalidate();
     }
 
-    private void limitDrag(Matrix m, ImageView iv) {
-        Rect bounds = iv.getDrawable().getBounds();
 
-        int width = bounds.right - bounds.left;
-        int height = bounds.bottom - bounds.top;
+
+    private void limitDrag(Matrix m, ImageView iv) {
+        Rect boundingRect = iv.getDrawable().getBounds();
 
         float[] values = new float[9];
         m.getValues(values);
-        float transX = values[Matrix.MTRANS_X];
-        float transY = values[Matrix.MTRANS_Y];
-        float scaleX = values[Matrix.MSCALE_X];
-        float scaleY = values[Matrix.MSCALE_Y];
-//        limit moving to left
-        float minX = (-width + 0) * (scaleX-1);
-        float minY = (-height + 0) * (scaleY-1);
-//        limit moving to right
-        float maxX=minX+width*(scaleX-1);
-        float maxY=minY+height*(scaleY-1);
-        if(transX>maxX){transX = maxX;}
-        if(transX<minX){transX = minX;}
-        if(transY>maxY){transY = maxY;}
-        if(transY<minY){transY = minY;}
-        values[Matrix.MTRANS_X] = transX;
-        values[Matrix.MTRANS_Y] = transY;
+
+        float viewWidth = map.getMeasuredWidth();
+        float viewHeight = map.getMeasuredHeight();
+
+        float drawableWidth = boundingRect.width();
+        float drawableHeight = boundingRect.height();
+        float horWidth = -Math.abs(drawableWidth - viewWidth);
+
+        float xTranslation = values[Matrix.MTRANS_X];
+        float yTranslation = values[Matrix.MTRANS_Y];
+        float scale = values[Matrix.MSCALE_X];
+
+        if (xTranslation > 0) {
+            xTranslation = 0;
+        }
+        if (yTranslation > 0) {
+            yTranslation = 0;
+        }
+        if (xTranslation < horWidth*2) {
+            xTranslation = horWidth*2;
+        }
+
+        values[Matrix.MTRANS_X] = xTranslation;
+        values[Matrix.MTRANS_Y] = yTranslation;
+
         m.setValues(values);
+    }
+//    private void limitDrag(Matrix m, ImageView iv) {
+//        Rect bounds = iv.getDrawable().getBounds();
+//
+//        float width = bounds.right - bounds.left;
+//        float height = bounds.bottom - bounds.top;
+//
+//        float[] values = new float[9];
+//        m.getValues(values);
+//        float transX = values[Matrix.MTRANS_X];
+//        float transY = values[Matrix.MTRANS_Y];
+//        float scaleX = values[Matrix.MSCALE_X];
+//        float scaleY = values[Matrix.MSCALE_Y];
+//
+////        limit moving to left
+//        float minX = (-width + 0) * (scaleX-1);
+//        float minY = (-height + 0) * (scaleY-1);
+////        limit moving to right
+//        float maxX=minX+width*(scaleX-1);
+//        float maxY=minY+height*(scaleY-1);
+//        Log.e("Drag location data", "Min X: " + minX + " X translation: " + transX + "Min Y: " + minY + " Y translation: " + transY);
+//        if(transX>maxX){Log.e("Drag location data", "X too big");transX = maxX;}
+//        if(transX<minX){Log.e("Drag location data", "X too small");transX = minX;}
+//        if(transY>maxY){Log.e("Drag location data", "Y too big");transY = maxY;}
+//        if(transY<minY){Log.e("Drag location data", "Y too small");transY = minY;}
+//        values[Matrix.MTRANS_X] = transX;
+//        values[Matrix.MTRANS_Y] = transY;
+//        m.setValues(values);
+//    }
+
+
+    private Matrix centrecropMatrix() {
+        float drawableWidth = (float)map.getDrawable().getIntrinsicWidth();
+        float drawableHeight = (float)map.getDrawable().getIntrinsicHeight();
+        float viewWidth = (float) map.getMeasuredWidth();
+        float viewHeight = (float) map.getMeasuredHeight();
+
+
+        // CenterCrop Scale
+        float xScale = viewWidth / drawableWidth;
+        float yScale = viewHeight / drawableHeight;
+        float scale = (xScale >= yScale) ? xScale : yScale;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        if (scale == yScale) {
+            float centerOffset = (drawableWidth - viewWidth)/2;
+            matrix.postTranslate(centerOffset, 0);
+        }
+
+        return matrix;
     }
 
     @Override
