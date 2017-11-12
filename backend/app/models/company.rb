@@ -1,3 +1,3 @@
 class Company < ApplicationRecord
-	belongs_to :event
+	has_many :event
 end
