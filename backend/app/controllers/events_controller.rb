@@ -18,9 +18,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    room = Room.find(params[:room_id])
-    company = Company.find(params[:company_id])
-
     @event = Event.new(
       name: params[:name],
       description: params[:description],
@@ -28,8 +25,8 @@ class EventsController < ApplicationController
       end_time: Time.parse(params[:end_time]),
       date: Date.parse(params[:date]),
       event_type: params[:event_type],
-      room: room,
-      company: company
+      room: Room.find(params[:room_id]),
+      company: params[:company_id].present? ? Company.find(params[:company_id]) : nil
       )
     @event.save!
 
