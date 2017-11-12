@@ -3,11 +3,15 @@ package ca.carleton.three_thousand_chore.comp3004.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
@@ -60,9 +64,26 @@ public class RequestHelpFragment extends Fragment implements UserListener {
         locationField = v.findViewById(R.id.help_request_location);
         problemField = v.findViewById(R.id.problem_description);
 
+        problemField.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    getHelpButton.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         getHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                View v = getActivity().getCurrentFocus();
+                if (v != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
                 if(locationField.getText().toString().trim().equals("") || problemField.getText().toString().trim().equals("") || nameField.getText().toString().trim().equals("")){
                     Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
