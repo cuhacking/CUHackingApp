@@ -23,7 +23,6 @@ class EventsController < ApplicationController
       description: params[:description],
       start_time: Time.parse(params[:start_time]),
       end_time: Time.parse(params[:end_time]),
-      date: Date.parse(params[:date]),
       event_type: params[:event_type],
       room: Room.find(params[:room_id]),
       company: params[:company_id].present? ? Company.find(params[:company_id]) : nil

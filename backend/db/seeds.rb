@@ -6,26 +6,112 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-forest = User.new(name: "Forest")
+forest = User.create!(name: "Forest")
 
-help = HelpRequest.new(user: forest, problem: "Need help with ruby")
+HelpRequest.create!(user: forest, problem: "Need help with ruby")
 
-company = Company.new(name: "Spotify", tier: "Gold", website_url: "https://open.spotify.com/browse", logo: "http://www.scdn.co/i/_global/open-graph-default.png")
+martello = Company.create!(name: "Martello", tier: "Gold", website_url: "http://martellotech.com/", logo: "http://martellotech.com/wp-content/uploads/2014/08/logo-login.png")
 
-building = Building.new(name: "Herzberg", initials: "HP")
+river = Building.create!(name: "Herzberg Laboratories", initials: "HB")
+herzberg = Building.create!(name: "River Building", initials: "RB")
 
-room = Room.new(room_type: "Chill", name: "Comp Sci Lounge", building: building)
+river_2200 = Room.create!(room_type: "Theater", name:"River 2200", building: river)
+herzberg_3434 = Room.create!(room_type: "Hacking Space", name:"Herzberg 3434", building: herzberg)
 
-forest.save!
-help.save!
-company.save!
-room.save!
-building.save!
+Event.create!(
+	name: "Registration Opens",
+	start_time: "March 11 2018 18:00:00",
+	end_time: "March 11 2018 19:00:00",
+	event_type: "Registration",
+	description: "During this time hackers will line up in Minto to receive their CUHacking swag bag then have a chance to meet other hackers. Included in the swag bag is a t-shirt, stickers, hackthon handbook and many more fun goodies.",
+	room: river_2200)
 
-event = Event.new(name: "3004 Meeting", event_type: "Meeting", description: "3004 Meeting", room: room, company: company, date: Date.parse('2017-04-20'), start_time: Time.parse("00:04:20"), end_time: Time.parse("00:06:20"))
-event2 = Event.new(name: "3004 Meeting, but Jack just arrived", event_type: "Meeting", description: "3004 Meeting but now Jack is here", room: room, company: company, date: Date.parse('2017-04-20'), start_time: Time.parse("00:04:30"), end_time: Time.parse("00:06:30"))
+Event.create!(
+	name: "Opening Ceremonies",
+	start_time: "March 11 2018 19:00:00",
+	end_time: "March 11 2018 20:00:00",
+	event_type: "Opening Ceremony",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
 
-event.save!
-event2.save!
+Event.create!(
+	name: "Hacking Begins",
+	start_time: "March 11 2018 20:00:00",
+	end_time: "March 11 2018 20:00:00",
+	event_type: "Hacking Starts",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
 
-#notification = 
+Event.create!(
+	name: "Lunch",
+	start_time: "March 12 2018 12:00:00",
+	end_time: "March 12 2018 13:00:00",
+	event_type: "Lunch",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "iOS Workshop",
+	start_time: "March 12 2018 13:00:00",
+	end_time: "March 12 2018 14:00:00",
+	event_type: "Workshop",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "Databases Workshop",
+	start_time: "March 12 2018 15:00:00",
+	end_time: "March 12 2018 16:00:00",
+	event_type: "Workshop",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "Dinner",
+	start_time: "March 12 2018 18:00:00",
+	end_time: "March 12 2018 19:00:00",
+	event_type: "Ceremony",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "Midnight Yoga",
+	start_time: "March 12 2018 24:00:00",
+	end_time: "March 13 2018 01:00:00",
+	event_type: "Hacking",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "Breakfast",
+	start_time: "March 13 2018 07:00:00",
+	end_time: "March 13 2018 08:00:00",
+	event_type: "Food",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "React Workshop",
+	start_time: "March 13 2018 09:50:00",
+	end_time: "March 13 2018 10:00:00",
+	event_type: "Workshop",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
+
+Event.create!(
+	name: "Rails Workshop",
+	start_time: "March 13 2018 10:00:00",
+	end_time: "March 13 2018 11:20:00",
+	event_type: "Workshop",
+	description: "work on some stuff",
+	room: herzberg_3434,
+	company: martello)
