@@ -1,0 +1,20 @@
+--------------
+Week 8 - November 7 - November 13
+Forest Anderson
+101009514
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Team work session (10h)
+- Finished event controllers
+
+What I hope to do next week:
+- Start website
+- Fix maps
+- Clean up code
+
+What I struggled with:
+- Figuring out relationships with rails
+- Figuring out why the migrations are messing up
+
+--------------

@@ -1,0 +1,16 @@
+--------------
+Week 7 - October 31 - November 6
+Forest Anderson
+101009514
+--------------
+What I did this week:
+- Team meeting (1.5h)
+
+What I hope to do next week:
+- Finish event controllers
+
+What I struggled with:
+- Figuring out relationships with rails
+- Figuring out why the migrations are messing up
+
+--------------
