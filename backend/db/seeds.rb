@@ -24,7 +24,7 @@ Event.create!(
 	end_time: "March 11 2018 19:00:00",
 	event_type: "Registration",
 	description: "During this time hackers will line up in Minto to receive their CUHacking swag bag then have a chance to meet other hackers. Included in the swag bag is a t-shirt, stickers, hackthon handbook and many more fun goodies.",
-	room: river_2200);
+	room: river_2200)
 
 Event.create!(
 	name: "Opening Ceremonies",
@@ -33,7 +33,7 @@ Event.create!(
 	event_type: "Opening Ceremony",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Hacking Begins",
@@ -42,7 +42,7 @@ Event.create!(
 	event_type: "Hacking Starts",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Lunch",
@@ -51,7 +51,7 @@ Event.create!(
 	event_type: "Lunch",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "iOS Workshop",
@@ -60,7 +60,7 @@ Event.create!(
 	event_type: "Workshop",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Databases Workshop",
@@ -69,7 +69,7 @@ Event.create!(
 	event_type: "Workshop",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Dinner",
@@ -78,7 +78,7 @@ Event.create!(
 	event_type: "Ceremony",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Midnight Yoga",
@@ -87,7 +87,7 @@ Event.create!(
 	event_type: "Hacking",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Breakfast",
@@ -96,7 +96,7 @@ Event.create!(
 	event_type: "Food",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "React Workshop",
@@ -105,7 +105,7 @@ Event.create!(
 	event_type: "Workshop",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
 
 Event.create!(
 	name: "Rails Workshop",
@@ -114,4 +114,4 @@ Event.create!(
 	event_type: "Workshop",
 	description: "work on some stuff",
 	room: herzberg_3434,
-	company: martello);
+	company: martello)
