@@ -21,7 +21,7 @@ What I did this week:
 - fixed bugs and improved UX for help request flow
 - hide keyboard when opening menu
 - worked on adding a countdown to the notification page to show when hacking starts and ends
-
+- made back button not close the app when going from the schedule details back to the schedules
 
 What I hope to do next week:
 - more UX to make the app look better
