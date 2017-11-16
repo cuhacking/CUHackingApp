@@ -3,6 +3,7 @@ package ca.carleton.three_thousand_chore.comp3004.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -96,6 +97,7 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
     NotificationAdapter adapter;
     private boolean viewCreated = false;
     private int userId = -1;
+    TextView countdown;
 
     @Override
     public void onAttach(Context context) {
@@ -145,12 +147,24 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
         View v = inflater.inflate(R.layout.content_notifications, null);
 
         notificationList = v.findViewById(R.id.notification_list);
+        countdown = v.findViewById(R.id.countdown);
 
         viewCreated = true;
 
         if (userId != -1) {
             setupNotificationList();
         }
+
+        new CountDownTimer(7507754, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                countdown.setText(getString(R.string.time_until_hacking_start) + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                countdown.setText("done!");
+            }
+        }.start();
 
         return v;
     }
