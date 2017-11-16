@@ -70,7 +70,7 @@ public class ScheduleFragment extends Fragment {
                         fragment.setArguments(bundle);
                         fragmentManager.beginTransaction()
                                 .replace(R.id.content_frame, fragment)
-                                .addToBackStack(getResources().getStringArray(R.array.activities_array)[1]+"Detail")
+                                .addToBackStack(null)
                                 .commit();
                     }
                 });
