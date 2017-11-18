@@ -85,13 +85,13 @@ public class LinksFragment extends Fragment {
             try {
                 getContext().getPackageManager().getPackageInfo("com.facebook.katana", 0); //Checks if FB is installed.
                 Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("fb://page/1446989328648692"));
+                        Uri.parse(getString(R.string.fb_link)));
                 startActivity(intent);
             }
             catch (Exception e) {
                 //FB is not installed
                 Intent intent =  new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.facebook.com/CUHacking/")); //catches and opens a url to the desired page
+                        Uri.parse(getString(R.string.fb_website))); //catches and opens a url to the desired page
                 startActivity(intent);
             }
         }
@@ -100,7 +100,7 @@ public class LinksFragment extends Fragment {
     private View.OnClickListener twitterRedirect = new View.OnClickListener() {
         public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://twitter.com/cuhacking"));
+                    Uri.parse(getString(R.string.twitter_link)));
             startActivity(intent);
         }
     };
@@ -108,14 +108,14 @@ public class LinksFragment extends Fragment {
     private View.OnClickListener instaRedirect = new View.OnClickListener() {
         public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.instagram.com/cuhacking/")); //TODO test with device
+                    Uri.parse(getString(R.string.insta_link))); //TODO test with device
             startActivity(intent);
         }
     };
 
     private View.OnClickListener snapRedirect = new View.OnClickListener() {
         public void onClick(View v) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://snapchat.com/add/cuhacking"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.snapchat_link)));
             startActivity(intent);
         }
     };
@@ -123,7 +123,7 @@ public class LinksFragment extends Fragment {
     private View.OnClickListener slackRedirect = new View.OnClickListener() {
         public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://cuhacking2017.slack.com/"));//TODO change to app instead of browser
+                    Uri.parse(getString(R.string.slack_link)));//TODO change to app instead of browser
             startActivity(intent);
 
         }
@@ -147,7 +147,7 @@ public class LinksFragment extends Fragment {
 
     public void makeCall(){
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:+6135202600"+ PhoneNumberUtils.PAUSE+"#4166"));
+        callIntent.setData(Uri.parse(getString(R.string.phone_number)+ PhoneNumberUtils.PAUSE+getString(R.string.phone_ext)));
         startActivity(callIntent);
     }
 

@@ -53,4 +53,12 @@
     <string name="wifi_username">Username: Wifiguestw18</string>
     <string name="wifi_password">Password: HMTory.57!</string>
     <string name="wifi_disconnected_text">Network unavailable, switching to Info. Use this wifi and then reboot the app</string>
+    <string name="fb_link">fb://page/1446989328648692</string>
+    <string name="fb_website">https://www.facebook.com/CUHacking/</string>
+    <string name="twitter_link">https://twitter.com/cuhacking</string>
+    <string name="insta_link">https://www.instagram.com/cuhacking/</string>
+    <string name="snapchat_link">https://snapchat.com/add/cuhacking</string>
+    <string name="slack_link">https://cuhacking2017.slack.com/</string>
+    <string name="phone_number">tel:+6135202600</string>
+    <string name="phone_ext">#4166</string>
 </resources>
