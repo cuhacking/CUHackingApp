@@ -30,7 +30,6 @@ import ca.carleton.three_thousand_chore.comp3004.models.Notification;
 public class NotificationFragment extends Fragment implements UserListener, NewNotificationListener {
     public class NotificationAdapter extends BaseAdapter {
         class ViewHolder {
-            TextView headline;
             TextView body;
             TextView createdAtTime;
         }
@@ -68,7 +67,6 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
                 view = LayoutInflater.from(getContext()).inflate(R.layout.notification_cell, null);
                 viewInfo = new ViewHolder();
                 viewInfo.body = view.findViewById(R.id.notification_body);
-                //viewInfo.headline = view.findViewById(R.id.notification_headline);
                 viewInfo.createdAtTime = view.findViewById(R.id.created_at_time);
                 view.setTag(viewInfo);
             }
