@@ -1,0 +1,16 @@
+--------------
+Week 9 - Nov. 17 - Nov. 23
+Esti Tweg
+101005024
+--------------
+
+What I did this week:
+- worked on deliverable 3 documentation
+    - overview of the functionality
+    - Non functional design patterns and Architecture styles
+
+What I hope to do next week:
+- more UX to make the app look better
+
+
+--------------
