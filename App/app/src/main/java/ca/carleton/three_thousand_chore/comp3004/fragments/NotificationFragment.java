@@ -15,8 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -104,6 +107,9 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
     TextView timeUntil;
     Calendar nowCalendar;
     FrameLayout frameLayout;
+    private static String HACKING_START_DATE = "2017-02-10-1:00 p";
+    private static String HACKING_END_DATE = "2017-02-11-1:00 p";
+    String pattern = "yyyy-MM-dd-h:mm a";
 
     @Override
     public void onAttach(Context context) {
@@ -163,15 +169,16 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
             setupNotificationList();
         }
         //https://stackoverflow.com/questions/32773659/how-to-countdown-to-a-day-using-android-countdowntimer
-
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         nowCalendar = Calendar.getInstance();
         Calendar hackingStartCalendar = Calendar.getInstance();
 
-        hackingStartCalendar.set(2018, Calendar.FEBRUARY, 10);
-        hackingStartCalendar.set(Calendar.HOUR, 10);//0 is noon or midnight
-        hackingStartCalendar.set(Calendar.MINUTE, 0);
-        hackingStartCalendar.set(Calendar.SECOND, 0);
-        hackingStartCalendar.set(Calendar.AM_PM, Calendar.AM);
+        try{
+            hackingStartCalendar.setTime(simpleDateFormat.parse(HACKING_START_DATE));
+        }
+        catch (ParseException ex){
+            ex.printStackTrace();
+        }
 
         long startMillis = nowCalendar.getTimeInMillis();
         long endMillis = hackingStartCalendar.getTimeInMillis();
@@ -202,11 +209,12 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
 
                 Calendar hackingEndCalendar = Calendar.getInstance();
 
-                hackingEndCalendar.set(2018, Calendar.FEBRUARY, 11);
-                hackingEndCalendar.set(Calendar.HOUR, 3);//0 is noon or midnight
-                hackingEndCalendar.set(Calendar.MINUTE, 0);
-                hackingEndCalendar.set(Calendar.SECOND, 0);
-                hackingEndCalendar.set(Calendar.AM_PM, Calendar.PM);
+                try{
+                    hackingEndCalendar.setTime(simpleDateFormat.parse(HACKING_START_DATE));
+                }
+                catch (ParseException ex){
+                    ex.printStackTrace();
+                }
 
                 long startMillis = nowCalendar.getTimeInMillis();
                 long endMillis = hackingEndCalendar.getTimeInMillis();
