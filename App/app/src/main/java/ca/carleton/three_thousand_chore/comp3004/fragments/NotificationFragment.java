@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import ca.carleton.three_thousand_chore.comp3004.Dates;
 import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
@@ -98,6 +101,9 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
     private boolean viewCreated = false;
     private int userId = -1;
     TextView countdown;
+    TextView timeUntil;
+    Calendar nowCalendar;
+    FrameLayout frameLayout;
 
     @Override
     public void onAttach(Context context) {
@@ -148,21 +154,92 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
 
         notificationList = v.findViewById(R.id.notification_list);
         countdown = v.findViewById(R.id.countdown);
+        timeUntil = v.findViewById(R.id.timeUntil);
+        frameLayout = v.findViewById(R.id.frameLayout);
 
         viewCreated = true;
 
         if (userId != -1) {
             setupNotificationList();
         }
+        //https://stackoverflow.com/questions/32773659/how-to-countdown-to-a-day-using-android-countdowntimer
 
-        new CountDownTimer(7507754, 1000) {
+        nowCalendar = Calendar.getInstance();
+        Calendar hackingStartCalendar = Calendar.getInstance();
 
+        hackingStartCalendar.set(2018, Calendar.FEBRUARY, 10);
+        hackingStartCalendar.set(Calendar.HOUR, 10);//0 is noon or midnight
+        hackingStartCalendar.set(Calendar.MINUTE, 0);
+        hackingStartCalendar.set(Calendar.SECOND, 0);
+        hackingStartCalendar.set(Calendar.AM_PM, Calendar.AM);
+
+        long startMillis = nowCalendar.getTimeInMillis();
+        long endMillis = hackingStartCalendar.getTimeInMillis();
+        long totalMillis = (endMillis - startMillis);
+
+        //1000 = 1 second interval
+        new CountDownTimer(totalMillis, 1000) {
+            @Override
             public void onTick(long millisUntilFinished) {
-                countdown.setText(getString(R.string.time_until_hacking_start) + millisUntilFinished / 1000);
+                long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
+                millisUntilFinished -= TimeUnit.DAYS.toMillis(days);
+
+                long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished);
+                millisUntilFinished -= TimeUnit.HOURS.toMillis(hours);
+
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes);
+
+                long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
+
+                countdown.setText(days +" "+ getString(R.string.days) +" "+ hours + " "+ getString(R.string.hour) +" "+ minutes + " " + getString(R.string.min) +" "+ seconds + " "+ getString(R.string.sec));
+
             }
 
+            @Override
             public void onFinish() {
-                countdown.setText("done!");
+                timeUntil.setText(getString(R.string.time_until_hacking_end));
+
+                Calendar hackingEndCalendar = Calendar.getInstance();
+
+                hackingEndCalendar.set(2018, Calendar.FEBRUARY, 11);
+                hackingEndCalendar.set(Calendar.HOUR, 3);//0 is noon or midnight
+                hackingEndCalendar.set(Calendar.MINUTE, 0);
+                hackingEndCalendar.set(Calendar.SECOND, 0);
+                hackingEndCalendar.set(Calendar.AM_PM, Calendar.PM);
+
+                long startMillis = nowCalendar.getTimeInMillis();
+                long endMillis = hackingEndCalendar.getTimeInMillis();
+                long totalMillis = (endMillis - startMillis);
+
+                new CountDownTimer(totalMillis, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
+                        millisUntilFinished -= TimeUnit.DAYS.toMillis(days);
+
+                        long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished);
+                        millisUntilFinished -= TimeUnit.HOURS.toMillis(hours);
+
+                        long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                        millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes);
+
+                        long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
+
+                        countdown.setText(days +" "+ getString(R.string.days) +" "+ hours + " "+ getString(R.string.hour) +" "+ minutes + " " + getString(R.string.min) +" "+ seconds + " "+ getString(R.string.sec)); //You can compute the millisUntilFinished on hours/minutes/seconds
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        timeUntil.setText(getString(R.string.time_hacking_over));
+                        countdown.setVisibility(View.INVISIBLE);
+
+                        ViewGroup.LayoutParams params = frameLayout.getLayoutParams();
+
+                        params.height = 100;
+                        frameLayout.setLayoutParams(params);
+                    }
+                }.start();
             }
         }.start();
 
