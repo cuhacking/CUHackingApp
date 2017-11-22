@@ -8,9 +8,11 @@ What I did this week:
 - worked on deliverable 3 documentation
     - overview of the functionality
     - Non functional design patterns and Architecture styles
+- worked on slides for D4 and practiced presentation
+- finished countdown until hacking 
 
 What I hope to do next week:
-- more UX to make the app look better
+- more UI to make the app look better
 
 
 --------------
