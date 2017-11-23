@@ -1,0 +1,111 @@
+@startuml
+package models {
+  class User {
+    + id : int
+    + name : string
+    + token : string
+    + created_at : datetime
+    + updated_at : datetime
+  }
+  class Building {
+    + id : int
+    + name : string
+    + initials : string
+    + created_at : datetime
+    + updated_at : datetime
+  }
+  class Company {
+    + id : int
+    + name : string
+    + tier : string
+    + website_url : string
+    + logo : string
+    + created_at : datetime
+    + updated_at : datetime
+  }
+  class Room {
+    + id : int
+    + room_type : string
+    + name : string
+    + created_at : datetime
+    + updated_at : datetime
+  }
+  class Event {
+    + id : int
+    + name : string
+    + start_time : datetime
+    + end_time : datetime
+    + event_type : string
+    + description : string
+    + created_at : datetime
+    + updated_at : datetime
+  }
+  class HelpRequest {
+    + id : int
+    + profile_pic_link : string
+    + location : string
+    + problem : string
+    + mentors : string[]
+    + status : string
+    + created_at : datetime
+    + updated_at : datetime
+  }
+
+  Event "0..n" --> "1" Company
+  Event "0..n" --> "1" Room
+  Building "1" --> "0..n" Room
+  HelpRequest "1" --> "1" User
+}
+
+package controllers {
+  class HelpRequestsController {
+    + def update
+    + def create
+    + def destroy
+    + def index
+    + def index
+    + def new
+    + def show
+    + def bot_callback
+  }
+  class RoomsController {
+    + def create
+    + def destroy
+    + def index
+    + def new
+    + def show
+  }
+  class EventsController {
+    + def create
+    + def destroy
+    + def index
+    + def new
+    + def show
+  }
+  class NotificationsController {
+    + def create
+    + def destroy
+    + def index
+    + def make_announcement
+    + def new
+    + def show
+  }
+  class UsersController {
+    + def destroy
+    + def help_request
+    + def index
+    + def new
+    + def notifications
+    + def show
+    + def update
+    + def create
+  }
+  class CompaniesController {
+    + def create
+    + def destroy
+    + def index
+    + def new
+    + def show
+  }
+}
+@enduml
