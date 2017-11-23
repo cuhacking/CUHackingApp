@@ -1,2 +1,14 @@
-<h1>Company#new</h1>
-<p>Find me in app/views/company/new.html.erb</p>
+<%= form_for @event, url: {action: "create"} do |f| %>
+  <p>
+    <%= f.label :logo %>
+    <%= f.text_field :logo %>
+  </p>
+    <%= f.label :website_url %>
+    <%= f.text_field :website_url %>
+  <p>
+    <%= f.label :tier %>
+    <%= f.select :tier, ["Bronze", "Silver", "Gold", "Platinum"] %>
+  </p>
+
+  <%= f.submit "Create" %>
+<% end %>

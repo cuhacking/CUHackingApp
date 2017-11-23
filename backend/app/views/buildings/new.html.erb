@@ -1,2 +1,13 @@
-<h1>Building#new</h1>
-<p>Find me in app/views/building/new.html.erb</p>
+<%= form_for @building, url: {action: "create"} do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :initials %>
+    <%= f.text_field :initials %>
+  </p>
+
+  <%= f.submit "Create" %>
+<% end %>

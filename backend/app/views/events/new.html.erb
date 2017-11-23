@@ -1,2 +1,18 @@
-<h1>Event#new</h1>
-<p>Find me in app/views/event/new.html.erb</p>
+<%= form_for @event, url: {action: "create"} do |f| %>
+  <p>
+    <%= f.label :type %>
+    <%= f.select :event_type, ["Opening Ceremonies", "Breakfast", "Lunch", "Dinner", "Workshop", "Closing Ceremonies", "Demos", "Deadlines", "Registration", "Fun Activities", "Hacking Starts", "Hacking Ends", "Team Formation"] %>
+  </p>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :room %>
+    <%= f.collection_select :room, Room.all, :id, :name, prompt: true %>
+  </p>
+
+  <%= f.submit "Create" %>
+<% end %>
