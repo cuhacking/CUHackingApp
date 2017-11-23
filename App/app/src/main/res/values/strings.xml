@@ -53,4 +53,11 @@
     <string name="wifi_username">Username: Wifiguestw18</string>
     <string name="wifi_password">Password: HMTory.57!</string>
     <string name="wifi_disconnected_text">Network unavailable, switching to Info. Use this wifi and then reboot the app</string>
+    <string name="time_until_hacking_start">Hacking starts in:</string>
+    <string name="time_until_hacking_end">Hacking ends in:</string>
+    <string name="time_hacking_over">Time\'s up!</string>
+    <string name="hour">hours</string>
+    <string name="days">days</string>
+    <string name="min">min</string>
+    <string name="sec">sec</string>
 </resources>

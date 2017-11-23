@@ -3,18 +3,25 @@ package ca.carleton.three_thousand_chore.comp3004.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import ca.carleton.three_thousand_chore.comp3004.Dates;
 import ca.carleton.three_thousand_chore.comp3004.JsonObjectRequest;
@@ -96,6 +103,13 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
     NotificationAdapter adapter;
     private boolean viewCreated = false;
     private int userId = -1;
+    TextView countdown;
+    TextView timeUntil;
+    Calendar nowCalendar;
+    FrameLayout frameLayout;
+    private static String HACKING_START_DATE = "2018-02-10-1:00 p";
+    private static String HACKING_END_DATE = "2018-02-11-1:00 p";
+    String pattern = "yyyy-MM-dd-h:mm a";
 
     @Override
     public void onAttach(Context context) {
@@ -145,12 +159,97 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
         View v = inflater.inflate(R.layout.content_notifications, null);
 
         notificationList = v.findViewById(R.id.notification_list);
+        countdown = v.findViewById(R.id.countdown);
+        timeUntil = v.findViewById(R.id.timeUntil);
+        frameLayout = v.findViewById(R.id.frameLayout);
 
         viewCreated = true;
 
         if (userId != -1) {
             setupNotificationList();
         }
+        //https://stackoverflow.com/questions/32773659/how-to-countdown-to-a-day-using-android-countdowntimer
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        nowCalendar = Calendar.getInstance();
+        Calendar hackingStartCalendar = Calendar.getInstance();
+
+        try{
+            hackingStartCalendar.setTime(simpleDateFormat.parse(HACKING_START_DATE));
+        }
+        catch (ParseException ex){
+            ex.printStackTrace();
+        }
+
+        long startMillis = nowCalendar.getTimeInMillis();
+        long endMillis = hackingStartCalendar.getTimeInMillis();
+        long totalMillis = (endMillis - startMillis);
+
+        //1000 = 1 second interval
+        new CountDownTimer(totalMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
+                millisUntilFinished -= TimeUnit.DAYS.toMillis(days);
+
+                long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished);
+                millisUntilFinished -= TimeUnit.HOURS.toMillis(hours);
+
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes);
+
+                long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
+
+                countdown.setText(days +" "+ getString(R.string.days) +" "+ hours + " "+ getString(R.string.hour) +" "+ minutes + " " + getString(R.string.min) +" "+ seconds + " "+ getString(R.string.sec));
+
+            }
+
+            @Override
+            public void onFinish() {
+                timeUntil.setText(getString(R.string.time_until_hacking_end));
+
+                Calendar hackingEndCalendar = Calendar.getInstance();
+
+                try{
+                    hackingEndCalendar.setTime(simpleDateFormat.parse(HACKING_END_DATE));
+                }
+                catch (ParseException ex){
+                    ex.printStackTrace();
+                }
+
+                long startMillis = nowCalendar.getTimeInMillis();
+                long endMillis = hackingEndCalendar.getTimeInMillis();
+                long totalMillis = (endMillis - startMillis);
+
+                new CountDownTimer(totalMillis, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        long days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished);
+                        millisUntilFinished -= TimeUnit.DAYS.toMillis(days);
+
+                        long hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished);
+                        millisUntilFinished -= TimeUnit.HOURS.toMillis(hours);
+
+                        long minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                        millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes);
+
+                        long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
+
+                        countdown.setText(days +" "+ getString(R.string.days) +" "+ hours + " "+ getString(R.string.hour) +" "+ minutes + " " + getString(R.string.min) +" "+ seconds + " "+ getString(R.string.sec)); //You can compute the millisUntilFinished on hours/minutes/seconds
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        timeUntil.setText(getString(R.string.time_hacking_over));
+                        countdown.setVisibility(View.INVISIBLE);
+
+                        ViewGroup.LayoutParams params = frameLayout.getLayoutParams();
+
+                        params.height = 100;
+                        frameLayout.setLayoutParams(params);
+                    }
+                }.start();
+            }
+        }.start();
 
         return v;
     }
