@@ -1,0 +1,20 @@
+--------------
+Week 6 - November 18 - November 24
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- Worked on D3 written portion (design patterns)
+- Worked on the powerpoint
+- Refactored sections of the code
+
+What I hope to do next week:
+- Finish up the app 
+- Get D4 done and ready to present
+- Make video for D4
+- Look into getting the app on the Google Play Store
+
+What I struggled with:
+This was a buys week and a lot of the time went towards the deliverables. I wish I had more time to focus on refactoring and makes fixes.
+
+--------------

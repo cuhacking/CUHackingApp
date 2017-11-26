@@ -1,0 +1,21 @@
+--------------
+Week 6 - November 11 - November 17
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- Improved the user experience for the map fragment 
+- Added new image for outside carleton map
+- Modified the mackenzie map so the top floor is on the top
+- Set matrix to scale and translate image to be in perfect centre
+
+
+What I hope to do next week:
+- Minor UX improvements
+- Demo the app to the CUHacking team at the next meeting
+- Work on D3 (written and presentation)
+
+What I struggled with:
+Matrices are hard to work with. It took forever to understand how the scale and translation worked and which copy of the matrix was being stored. After many tears and too much pop, I ended up getting it to a point where I'm happy with it. It could still be better if we couldn't zoom out of the image (i.e. only see the image and not the grey background) but I don't understand enough about what's going on with the matrices and how they're saved to do so.
+
+--------------

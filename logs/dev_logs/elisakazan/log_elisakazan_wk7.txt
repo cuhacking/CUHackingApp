@@ -1,0 +1,20 @@
+--------------
+Week 6 - November 3 - November 10
+Elisa Kazan
+100965140
+--------------
+What I did this week:
+- Looked for edge cases with help request
+- Handled multiple mentors (show names only, no images)
+- Handled duplicate mentors
+- Modified the schema 
+
+What I hope to do next week:
+- Help Esti with the map's user experience
+- Change the images to one that covers the entire display 
+
+
+What I struggled with:
+I was pretty pleased with how this week went. I didn't get huge features done but I was able to work on a few little fixes to improve the experience. I had thought about them for a while so I didn't have too much trouble getting them done.
+
+--------------
