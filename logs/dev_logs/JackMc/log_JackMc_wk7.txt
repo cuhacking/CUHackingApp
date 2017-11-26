@@ -1,0 +1,19 @@
+--------------
+Week 7 - October 31 - November 6
+Jack McCracken
+100962692
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Fix a race condition with notifications
+- Reviewed teammates' PRs
+- Worked on D3 document
+
+What I hope to do next week:
+- A couple fixes around the app
+- D3 document
+
+What I struggled with:
+- Busy week outside 3004
+
+--------------

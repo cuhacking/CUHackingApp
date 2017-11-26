@@ -1,0 +1,23 @@
+--------------
+Week 8 - November 7 - November 13
+Jack McCracken
+100962692
+--------------
+What I did this week:
+- Team meeting (1.5h)
+- Worked on D3 document
+- Made app work without wifi
+- Add more seed data for app
+- Fixes in backend database (making schema line up with migrations)
+- Helped out Forest & Elisa with the final push for D3
+- Reviewed team member PRs
+
+What I hope to do next week:
+- Fix review comments from PRs that have been around for a while
+- Help Esti with frontend polish
+- Start work on D4
+
+What I struggled with:
+- Busy week outside 3004
+
+--------------

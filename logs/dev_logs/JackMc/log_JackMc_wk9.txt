@@ -1,0 +1,17 @@
+--------------
+Week 8 - November 13 - November 20
+Jack McCracken
+100962692
+--------------
+What I did this week:
+- Fixed review comments from PRs that have been around for a while
+- Helped Esti with frontend polish & countdown
+- Started work on D4
+
+What I hope to do next week:
+- Finish everything!
+
+What I struggled with:
+- Busy week outside 3004
+
+--------------
