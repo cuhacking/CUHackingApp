@@ -1,6 +1,6 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.PointF;
