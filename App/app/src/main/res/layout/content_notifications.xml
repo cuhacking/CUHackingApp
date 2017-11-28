@@ -12,8 +12,8 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="3dp"
         android:background="@drawable/rounded_corner"
@@ -29,14 +29,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/time_until_hacking_start"
-                android:layout_marginStart="13dp"
+                android:layout_marginLeft="13dp"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/countdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
+                android:layout_marginLeft="13dp"
                 android:layout_below="@id/timeUntil"
                 android:textColor="@color/white"
                 android:textSize="18sp" />

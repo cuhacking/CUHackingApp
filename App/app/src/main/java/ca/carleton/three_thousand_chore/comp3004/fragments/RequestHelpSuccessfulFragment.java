@@ -1,6 +1,6 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -108,7 +108,9 @@ public class RequestHelpSuccessfulFragment extends Fragment {
                         @Override
                         public void requestFailed(String errorMessage) {
                             Log.e("RequestHelpSFrag Log", "Help request failed to complete: " + errorMessage);
-                            Toast.makeText(getContext(), "Help request failed to complete: " + errorMessage, Toast.LENGTH_SHORT).show();
+                            if (isAdded()) {
+                                Toast.makeText(getContext(), "Help request failed to complete: " + errorMessage, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 } catch (JSONException e) {

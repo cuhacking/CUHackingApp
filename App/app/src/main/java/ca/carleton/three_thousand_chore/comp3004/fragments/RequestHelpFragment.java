@@ -1,6 +1,6 @@
 package ca.carleton.three_thousand_chore.comp3004.fragments;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -93,7 +93,9 @@ public class RequestHelpFragment extends Fragment implements UserListener {
 
                         @Override
                         public void requestFailed(String error) {
-                            Toast.makeText(getContext(), "Failed to submit help request: " + error, Toast.LENGTH_SHORT).show();
+                            if (isAdded()) {
+                                Toast.makeText(getContext(), "Failed to submit help request: " + error, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }
