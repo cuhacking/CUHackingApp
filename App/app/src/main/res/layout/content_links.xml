@@ -19,8 +19,8 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginStart="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="3dp"
             android:background="@drawable/rounded_corner"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/fbImage"
             android:layout_marginTop="35dp"
-            android:layout_toEndOf="@+id/fbImage"
+            android:layout_toRightOf="@+id/fbImage"
             android:text="@string/fbLink"
             android:layout_below="@+id/frameLayout"
             android:textSize="18sp" />
@@ -102,7 +102,7 @@
             android:id="@+id/slackImage"
             android:layout_width="68dp"
             android:layout_height="68dp"
-            android:layout_alignStart="@+id/fbImage"
+            android:layout_alignLeft="@+id/fbImage"
             android:layout_below="@+id/fbImage"
             android:layout_marginTop="5dp"
             android:src="@mipmap/slack" />
@@ -113,8 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/slackImage"
             android:layout_marginBottom="19dp"
-            android:layout_toEndOf="@+id/fbImage"
-            android:layout_alignStart="@id/fbLinkText"
+            android:layout_toRightOf="@+id/fbImage"
+            android:layout_alignLeft="@id/fbLinkText"
             android:text="@string/slackLink"
             android:textSize="18sp" />
 
@@ -122,7 +122,7 @@
             android:id="@+id/twitterImage"
             android:layout_width="58dp"
             android:layout_height="58dp"
-            android:layout_alignEnd="@+id/fbImage"
+            android:layout_alignRight="@+id/fbImage"
             android:layout_below="@+id/slackImage"
             android:layout_marginTop="5dp"
             android:src="@mipmap/twitter" />
@@ -134,8 +134,8 @@
             android:layout_below="@+id/slackLinkText"
             android:layout_alignBottom="@+id/twitterImage"
             android:layout_marginTop="19dp"
-            android:layout_toEndOf="@+id/fbImage"
-            android:layout_alignStart="@id/fbLinkText"
+            android:layout_toRightOf="@+id/fbImage"
+            android:layout_alignLeft="@id/fbLinkText"
             android:text="@string/twitterLink"
             android:textSize="18sp" />
 
@@ -144,7 +144,7 @@
             android:layout_width="60dp"
             android:layout_height="72dp"
             android:layout_below="@+id/twitterImage"
-            android:layout_alignStart="@+id/twitterImage"
+            android:layout_alignLeft="@+id/twitterImage"
             android:layout_marginTop="7dp"
             app:srcCompat="@mipmap/snapchat" />
 
@@ -153,8 +153,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/slackImage"
-            android:layout_alignStart="@id/fbLinkText"
+            android:layout_toRightOf="@+id/slackImage"
+            android:layout_alignLeft="@id/fbLinkText"
             android:text="cuhacking"
             android:layout_marginTop="26dp"
             android:layout_below="@+id/twitterLinkText"
@@ -165,7 +165,7 @@
             android:id="@+id/instaImage"
             android:layout_width="60dp"
             android:layout_height="72dp"
-            android:layout_alignStart="@+id/twitterImage"
+            android:layout_alignLeft="@+id/twitterImage"
             android:layout_below="@+id/snapImage"
             app:srcCompat="@mipmap/instagram"
             android:layout_marginTop="5dp"/>
@@ -175,7 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/instaImage"
-            android:layout_alignStart="@id/fbLinkText"
+            android:layout_alignLeft="@id/fbLinkText"
             android:layout_marginBottom="23dp"
             android:text="@string/instaLink"
             android:textColor="@color/colorAccent"
