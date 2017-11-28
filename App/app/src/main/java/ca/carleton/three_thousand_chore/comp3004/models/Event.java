@@ -48,7 +48,6 @@ public class Event implements Serializable, Comparable<Event>{
     public static JsonObjectRequest.ObjectCreationHandler<Event> objectCreationHandler = new JsonObjectRequest.ObjectCreationHandler<Event>() {
         @Override
         public Event fromJson(JSONObject obj) throws JSONException {
-            Log.i("JSON",obj.toString());
             return new Event(obj.getInt("id"),
                     obj.getString("name"),
                     Dates.railsToJava(obj.getString("start_time")),
