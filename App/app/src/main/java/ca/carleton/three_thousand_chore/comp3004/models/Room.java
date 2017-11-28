@@ -20,7 +20,7 @@ public class Room {
     public static Room railsToJava(JSONObject railsRoom) {
         try {
             Room room = new Room(railsRoom.getInt("id"),
-                    railsRoom.getString("type"),
+                    railsRoom.getString("room_type"),
                     railsRoom.getString("name"));
             return room;
         }
