@@ -6,6 +6,9 @@ Esti Tweg
 
 What I did this week:
 - worked on adding images to the hamburger menu
+- fixed the countdown to hackathon with the right string format and adding a check
+- created signed APK file to add app to google play store
+- added layout support for older versions of android
 
 What I hope to do next week:
 -
