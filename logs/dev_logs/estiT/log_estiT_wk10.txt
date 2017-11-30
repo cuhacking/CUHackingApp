@@ -9,11 +9,13 @@ What I did this week:
 - fixed the countdown to hackathon with the right string format and adding a check
 - created signed APK file to add app to google play store
 - added layout support for older versions of android
+- redid layout for schedule/ event detail view
 
 What I hope to do next week:
 -
 
 What I struggled with:
 - conforming our app to the standard hamburger menu android template 
+- deciding how the detail view should look 
 
 --------------
