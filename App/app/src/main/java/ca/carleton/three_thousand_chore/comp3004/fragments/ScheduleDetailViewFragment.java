@@ -19,9 +19,9 @@ import ca.carleton.three_thousand_chore.comp3004.models.Event;
 public class ScheduleDetailViewFragment extends Fragment {
     TextView name;
     TextView date;
-    TextView startTime;
-    TextView endTime;
+    TextView time;
     TextView type;
+    TextView location;
     TextView description;
 
     @Override
@@ -35,9 +35,9 @@ public class ScheduleDetailViewFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_schedule_detail_view, null);
         name = v.findViewById(R.id.name);
         date = v.findViewById(R.id.date);
-        startTime = v.findViewById(R.id.startTime);
-        endTime = v.findViewById(R.id.endTime);
+        time = v.findViewById(R.id.time);
         type = v.findViewById(R.id.type);
+        location = v.findViewById(R.id.location);
         description = v.findViewById(R.id.description);
 
         Bundle bundle = this.getArguments();
@@ -49,11 +49,12 @@ public class ScheduleDetailViewFragment extends Fragment {
             DateFormat timeFormat = new SimpleDateFormat("h:mm a");
 
             name.setText(ev.getName().toString());
-            date.setText(date.getText() + dateFormat.format(ev.getStartTime()));
-            startTime.setText(startTime.getText() + timeFormat.format(ev.getStartTime()));
-            endTime.setText(endTime.getText() + timeFormat.format(ev.getEndTime()));
-            type.setText(type.getText() + ev.getType().toString());
-            description.setText(description.getText() + ev.getDescription().toString());
+            date.setText(dateFormat.format(ev.getStartTime()));
+            time.setText(timeFormat.format(ev.getStartTime()) + " - "+ timeFormat.format(ev.getEndTime()));
+            type.setText(ev.getType().toString());
+            location.setText(ev.getRoom().getName());
+            description.setText(ev.getDescription().toString());
+
         }
 
         return v;
