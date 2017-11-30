@@ -4,58 +4,108 @@
     android:layout_height="match_parent"
     tools:context="ca.carleton.three_thousand_chore.comp3004.fragments.ScheduleDetailViewFragment">
 
-    <View
-        android:id="@+id/div1"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/colourTertiary"
-        android:layout_marginTop="12dp"/>
-
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="12dp"
+        android:layout_height="80dp"
         android:textSize="20dp"
-        android:gravity="center"
-        android:layout_below="@+id/div1"/>
-    <View
-        android:id="@+id/div2"
-        android:layout_below="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/colourTertiary"
-        android:textSize="16dp"/>
+        android:gravity="bottom"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:paddingBottom="3dp"
+        android:paddingLeft="56dp"
+        android:background="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/time"
-        android:layout_below="@+id/div2"
-        android:textAlignment="textEnd"
-        android:layout_gravity="end"
+        android:id="@+id/type"
+        android:layout_below="@+id/name"
+        android:gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginRight="10dp"
-        android:textSize="18dp"/>
-    <!--android:background="@color/colourTertiary"-->
+        android:textColor="@color/colorWhite"
+        android:paddingBottom="8dp"
+        android:paddingLeft="56dp"
+        android:background="@color/colorPrimary"
+        android:textSize="16dp"/>
+    
+
+    <ImageView
+        android:id="@+id/dateIcon"
+        android:layout_below="@+id/type"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_shortcut_cal"/>
 
     <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_below="@+id/time"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/type"
+        android:layout_toRightOf="@+id/dateIcon"
         android:textSize="18dp"/>
 
+
+    <ImageView
+        android:id="@+id/timeIcon"
+        android:layout_below="@+id/dateIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_shortcut_schedule"/>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_toRightOf="@+id/timeIcon"
+        android:layout_below="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"/>
+
+
+    <ImageView
+        android:id="@+id/noteIcon"
+        android:layout_below="@+id/timeIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_shortcut_note"/>
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/noteIcon"
+        android:layout_marginTop="24dp"
         android:layout_marginStart="12dp"
-        android:layout_below="@+id/date"
+        android:layout_below="@+id/time"
+        android:textSize="18dp"/>
+
+
+    <ImageView
+        android:id="@+id/locationIcon"
+        android:layout_below="@+id/noteIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_shortcut_pin_drop"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/locationIcon"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_below="@+id/description"
         android:textSize="18dp"/>
 
 </RelativeLayout>

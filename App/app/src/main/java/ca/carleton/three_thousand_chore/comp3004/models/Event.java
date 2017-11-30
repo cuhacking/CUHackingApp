@@ -74,8 +74,8 @@ public class Event implements Serializable, Comparable<Event>{
         return name;
     }
 
-    public Date getDate() {
-        return date;
+    public Room getRoom() {
+        return room;
     }
 
     public Date getStartTime() {

@@ -20,6 +20,8 @@ public class ScheduleDetailViewFragment extends Fragment {
     TextView name;
     TextView date;
     TextView time;
+    TextView type;
+    TextView location;
     TextView description;
 
     @Override
@@ -34,6 +36,8 @@ public class ScheduleDetailViewFragment extends Fragment {
         name = v.findViewById(R.id.name);
         date = v.findViewById(R.id.date);
         time = v.findViewById(R.id.time);
+        type = v.findViewById(R.id.type);
+        location = v.findViewById(R.id.location);
         description = v.findViewById(R.id.description);
 
         Bundle bundle = this.getArguments();
@@ -47,6 +51,8 @@ public class ScheduleDetailViewFragment extends Fragment {
             name.setText(ev.getName().toString());
             date.setText(dateFormat.format(ev.getStartTime()));
             time.setText(timeFormat.format(ev.getStartTime()) + " - "+ timeFormat.format(ev.getEndTime()));
+            type.setText(ev.getType().toString());
+            location.setText(ev.getRoom().getName());
             description.setText(ev.getDescription().toString());
 
         }
