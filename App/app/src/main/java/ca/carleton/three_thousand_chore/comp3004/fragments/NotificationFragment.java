@@ -107,8 +107,8 @@ public class NotificationFragment extends Fragment implements UserListener, NewN
     TextView timeUntil;
     Calendar nowCalendar;
     FrameLayout frameLayout;
-    private static String HACKING_START_DATE = "2018-02-10-1:00 PM";
-    private static String HACKING_END_DATE = "2018-02-11-1:00 PM";
+    private static String HACKING_START_DATE = "2018-03-31-1:00 PM";
+    private static String HACKING_END_DATE = "2018-04-01-1:00 PM";
     String pattern = "yyyy-MM-dd-h:mm a";
 
     @Override
