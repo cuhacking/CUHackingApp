@@ -315,7 +315,7 @@
         <scene sceneID="22O-iu-f0E">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIN-dH-SNT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" selectedImage="second" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="first" selectedImage="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xIG-cM-GUW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -370,6 +370,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
     </resources>
 </document>
