@@ -1,4 +1,4 @@
-### CUHacking App
+# CUHacking App
 
 ## Android App
 Coming Soon
