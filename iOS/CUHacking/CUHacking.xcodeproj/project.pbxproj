@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313ACED2201D180E003B8026 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ACED1201D180E003B8026 /* Building.swift */; };
 		7248C376201CEC250070D9AE /* RequestHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7248C375201CEC250070D9AE /* RequestHelpViewController.swift */; };
 		725714AA201CE085001864E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725714A9201CE085001864E3 /* AppDelegate.swift */; };
 		725714AC201CE085001864E3 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725714AB201CE085001864E3 /* NotificationsViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		313ACED1201D180E003B8026 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		7248C375201CEC250070D9AE /* RequestHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelpViewController.swift; sourceTree = "<group>"; };
 		725714A6201CE085001864E3 /* CUHacking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CUHacking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		725714A9201CE085001864E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		313ACED0201D1707003B8026 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				313ACED1201D180E003B8026 /* Building.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		7257149D201CE085001864E3 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		725714A8201CE085001864E3 /* CUHacking */ = {
 			isa = PBXGroup;
 			children = (
+				313ACED0201D1707003B8026 /* models */,
 				725714A9201CE085001864E3 /* AppDelegate.swift */,
 				725714AB201CE085001864E3 /* NotificationsViewController.swift */,
 				725714AD201CE085001864E3 /* ScheduleViewController.swift */,
@@ -144,6 +155,7 @@
 			files = (
 				725714AE201CE085001864E3 /* ScheduleViewController.swift in Sources */,
 				725714AA201CE085001864E3 /* AppDelegate.swift in Sources */,
+				313ACED2201D180E003B8026 /* Building.swift in Sources */,
 				725714AC201CE085001864E3 /* NotificationsViewController.swift in Sources */,
 				7248C376201CEC250070D9AE /* RequestHelpViewController.swift in Sources */,
 			);

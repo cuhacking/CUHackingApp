@@ -7,3 +7,28 @@
 //
 
 import Foundation
+
+class Building {
+    var id: Int
+    var name: String
+    var initials: String
+    
+    init(id: Int, name: String, initials: String) {
+        self.id = id
+        self.name = name
+        self.initials = initials
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func getInitials() -> String {
+        return initials
+    }
+    
+    func getId() -> Int {
+        return id
+    }
+    
+}
