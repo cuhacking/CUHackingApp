@@ -19,16 +19,4 @@ class Building {
         self.initials = initials
     }
     
-    func getName() -> String {
-        return name
-    }
-    
-    func getInitials() -> String {
-        return initials
-    }
-    
-    func getId() -> Int {
-        return id
-    }
-    
 }
