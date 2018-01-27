@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="ca.carleton.three_thousand_chore.comp3004.MainActivity"
+        tools:showIn="@layout/activity_links">
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/rounded_corner"
+            android:elevation="4dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/wifiIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/ic_wifi_white"
+                    android:layout_toLeftOf="@id/wifiName"
+                    android:layout_marginTop="0dp"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/wifiName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cu_wireless"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/wifiUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/wifiName"
+                    android:text="@string/wifi_username"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="13dp"
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/wifiPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wifiUser"
+                    android:text="@string/wifi_password"
+                    android:layout_marginLeft="13dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+        </FrameLayout>
+
+
+        <ImageView
+            android:id="@+id/fbImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/frameLayout"
+            android:src="@mipmap/facebook" />
+
+        <TextView
+            android:id="@+id/fbLinkText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/fbImage"
+            android:layout_marginTop="35dp"
+            android:layout_toEndOf="@+id/fbImage"
+            android:text="@string/fbLink"
+            android:layout_below="@+id/frameLayout"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/slackImage"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_alignStart="@+id/fbImage"
+            android:layout_below="@+id/fbImage"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/slack" />
+
+        <TextView
+            android:id="@+id/slackLinkText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/slackImage"
+            android:layout_marginBottom="19dp"
+            android:layout_toEndOf="@+id/fbImage"
+            android:layout_alignStart="@id/fbLinkText"
+            android:text="@string/slackLink"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/twitterImage"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_alignEnd="@+id/fbImage"
+            android:layout_below="@+id/slackImage"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/twitter" />
+
+        <TextView
+            android:id="@+id/twitterLinkText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slackLinkText"
+            android:layout_alignBottom="@+id/twitterImage"
+            android:layout_marginTop="19dp"
+            android:layout_toEndOf="@+id/fbImage"
+            android:layout_alignStart="@id/fbLinkText"
+            android:text="@string/twitterLink"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/snapImage"
+            android:layout_width="60dp"
+            android:layout_height="72dp"
+            android:layout_below="@+id/twitterImage"
+            android:layout_alignStart="@+id/twitterImage"
+            android:layout_marginTop="7dp"
+            app:srcCompat="@mipmap/snapchat" />
+
+        <TextView
+            android:id="@+id/snapLinkText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/slackImage"
+            android:layout_alignStart="@id/fbLinkText"
+            android:text="cuhacking"
+            android:layout_marginTop="26dp"
+            android:layout_below="@+id/twitterLinkText"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/instaImage"
+            android:layout_width="60dp"
+            android:layout_height="72dp"
+            android:layout_alignStart="@+id/twitterImage"
+            android:layout_below="@+id/snapImage"
+            app:srcCompat="@mipmap/instagram"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/instaLinkText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/instaImage"
+            android:layout_alignStart="@id/fbLinkText"
+            android:layout_marginBottom="23dp"
+            android:text="@string/instaLink"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/emergencyInfoHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instaImage"
+            android:layout_centerHorizontal="true"
+            android:text="@string/emergency_info_header"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="18dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/emergencyInfoDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:layout_below="@+id/emergencyInfoHeader"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/emergency_info_details"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
