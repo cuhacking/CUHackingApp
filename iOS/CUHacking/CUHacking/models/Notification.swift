@@ -8,12 +8,11 @@
 
 import Foundation
 
-class Notification {
-    
+class Notification : Codable {
     var id: Int
     var title: String
     var description: String
-    
+
     var createdAt: Date
     
     init(id: Int, title: String, description: String, createdAt: Date) {
@@ -21,5 +20,12 @@ class Notification {
         self.title = title
         self.description = description
         self.createdAt = createdAt
+    }
+    
+    enum CodingKeys : String, CodingKey {
+        case id
+        case title
+        case description
+        case createdAt = "created_at"
     }
 }

@@ -12,7 +12,6 @@ class Event {
     
     var id: Int
     var name: String
-    var date: Date
     
     var startTime: Date
     var endTime: Date
@@ -23,11 +22,9 @@ class Event {
     var room: Room
     var company: Company
     
-    init(id: Int, name: String, date: Date, startTime: Date, endTime: Date, type: String, description: String, room: Room, company: Company) {
-        
+    init(id: Int, name: String, startTime: Date, endTime: Date, type: String, description: String, room: Room, company: Company) {
         self.id = id
         self.name = name
-        self.date = date
         self.startTime = startTime
         self.endTime = endTime
         self.type = type

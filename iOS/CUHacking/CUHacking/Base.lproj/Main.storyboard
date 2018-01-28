@@ -12,56 +12,50 @@
     </dependencies>
     <scenes>
         <!--Notifications-->
-        <scene sceneID="hNz-n2-bh7">
+        <scene sceneID="6oj-9p-Muk">
             <objects>
-                <viewController title="Notifications" id="9pv-A4-QxB" customClass="NotificationsViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                <tableViewController id="1Qz-0B-ngI" customClass="NotificationsViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OeI-Yb-Clv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VDS-aP-8c4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yRU-EU-gWj">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yRU-EU-gWj" id="TEZ-4W-ucM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcr-vY-99i">
-                                                    <rect key="frame" x="15" y="11" width="252" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Bcr-vY-99i" firstAttribute="leading" secondItem="TEZ-4W-ucM" secondAttribute="leadingMargin" constant="-1" id="UeB-BI-bJd"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Bcr-vY-99i" secondAttribute="trailing" constant="92" id="ZJz-3d-5C4"/>
-                                                <constraint firstItem="Bcr-vY-99i" firstAttribute="centerY" secondItem="TEZ-4W-ucM" secondAttribute="centerY" id="bT5-UD-1XH"/>
-                                                <constraint firstItem="Bcr-vY-99i" firstAttribute="top" secondItem="TEZ-4W-ucM" secondAttribute="topMargin" id="qCa-gs-aJw"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="VDS-aP-8c4" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="ji2-Vk-pg5"/>
-                            <constraint firstAttribute="trailing" secondItem="VDS-aP-8c4" secondAttribute="trailing" id="nl1-kC-mk2"/>
-                            <constraint firstItem="VDS-aP-8c4" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="oUN-ak-2uf"/>
-                            <constraint firstItem="VDS-aP-8c4" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="wnf-iO-T1S"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Notifications" id="4h8-z8-xoX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notification_cell" id="Bcf-M4-PF6" customClass="NotificationsCell" customModule="CUHacking" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bcf-M4-PF6" id="S61-cx-6UL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcm-Wi-Hz0">
+                                            <rect key="frame" x="15" y="11" width="252" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="top" secondItem="S61-cx-6UL" secondAttribute="topMargin" id="8Rh-Cb-1yz"/>
+                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="centerY" secondItem="S61-cx-6UL" secondAttribute="centerY" id="Q0i-ZA-rO7"/>
+                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="leading" secondItem="S61-cx-6UL" secondAttribute="leadingMargin" constant="-1" id="gZL-Pf-wUa"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Hcm-Wi-Hz0" secondAttribute="trailing" constant="92" id="wbv-7A-a0y"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="notificationText" destination="Hcm-Wi-Hz0" id="zec-UC-A2f"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1Qz-0B-ngI" id="pl7-io-EzE"/>
+                            <outlet property="delegate" destination="1Qz-0B-ngI" id="gVq-bJ-i4M"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Notifications" id="XEI-fn-pf8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5u3-9N-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="-1259"/>
+            <point key="canvasLocation" x="967" y="-1259"/>
         </scene>
         <!--Get Help-->
         <scene sceneID="wg7-f3-ORb">
@@ -323,7 +317,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="GhI-CE-CF6"/>
+                        <segue destination="1Qz-0B-ngI" kind="relationship" relationship="rootViewController" id="Ck8-zR-KNT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyG-K2-VRH" userLabel="First Responder" sceneMemberID="firstResponder"/>

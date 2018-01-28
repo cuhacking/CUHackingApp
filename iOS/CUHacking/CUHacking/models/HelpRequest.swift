@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HelpRequest {
+class HelpRequest : Codable {
     var id: Int
     var location: String
     var problem: String
@@ -25,7 +25,13 @@ class HelpRequest {
         self.status = status
         self.profilePictureURL = profilePictureURL
     }
-    
-    
-    
+
+    enum CodingKeys : String, CodingKey {
+        case id
+        case location
+        case problem
+        case mentors
+        case status
+        case profilePictureURL = "profile_pic_link"
+    }
 }

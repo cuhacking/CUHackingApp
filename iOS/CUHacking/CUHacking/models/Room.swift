@@ -9,7 +9,6 @@
 import Foundation
 
 class Room {
-    
     var id: Int
     var type: String
     var name: String

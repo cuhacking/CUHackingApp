@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Building {
+class Building : Codable {
     var id: Int
     var name: String
     var initials: String
@@ -18,5 +18,4 @@ class Building {
         self.name = name
         self.initials = initials
     }
-    
 }

@@ -8,14 +8,21 @@
 
 import Foundation
 
-class Company {
-    
+class Company : Codable {
     var id: Int
     var name: String
     var tier: String
     var websiteURL: String
     var logo: String
-    
+
+    enum CodingKeys : String, CodingKey {
+        case id
+        case name
+        case tier
+        case websiteURL = "website_url"
+        case logo
+    }
+
     init(id: Int, name: String, tier: String, websiteURL: String, logo: String) {
         self.id = id
         self.name = name
