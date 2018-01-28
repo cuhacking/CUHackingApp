@@ -27,21 +27,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcm-Wi-Hz0">
-                                            <rect key="frame" x="15" y="11" width="252" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWx-Wd-wha">
+                                            <rect key="frame" x="16" y="22" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="A notification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcm-Wi-Hz0">
+                                            <rect key="frame" x="16" y="-10" width="343" height="32"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="top" secondItem="S61-cx-6UL" secondAttribute="topMargin" id="8Rh-Cb-1yz"/>
-                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="centerY" secondItem="S61-cx-6UL" secondAttribute="centerY" id="Q0i-ZA-rO7"/>
-                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="leading" secondItem="S61-cx-6UL" secondAttribute="leadingMargin" constant="-1" id="gZL-Pf-wUa"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Hcm-Wi-Hz0" secondAttribute="trailing" constant="92" id="wbv-7A-a0y"/>
+                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="bottom" secondItem="SWx-Wd-wha" secondAttribute="top" id="0p8-bi-WYT"/>
+                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="leading" secondItem="S61-cx-6UL" secondAttribute="leading" constant="16" id="5FH-sE-KFE"/>
+                                        <constraint firstItem="Hcm-Wi-Hz0" firstAttribute="top" secondItem="S61-cx-6UL" secondAttribute="top" id="Gzn-sZ-6pd"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hcm-Wi-Hz0" secondAttribute="trailing" constant="16" id="UNc-sO-UNC"/>
+                                        <constraint firstItem="SWx-Wd-wha" firstAttribute="leading" secondItem="S61-cx-6UL" secondAttribute="leading" constant="16" id="X1u-IM-Z5E"/>
+                                        <constraint firstAttribute="trailing" secondItem="SWx-Wd-wha" secondAttribute="trailing" constant="16" id="a6b-cF-l8R"/>
+                                        <constraint firstAttribute="bottom" secondItem="SWx-Wd-wha" secondAttribute="bottom" constant="0.5" id="c5Y-vo-KNY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="notificationDescription" destination="SWx-Wd-wha" id="CEC-nA-fvb"/>
                                     <outlet property="notificationText" destination="Hcm-Wi-Hz0" id="zec-UC-A2f"/>
                                 </connections>
                             </tableViewCell>
@@ -55,7 +65,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5u3-9N-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-1259"/>
+            <point key="canvasLocation" x="965.60000000000002" y="-1260.7196401799101"/>
         </scene>
         <!--Get Help-->
         <scene sceneID="wg7-f3-ORb">

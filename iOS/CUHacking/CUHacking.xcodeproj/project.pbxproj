@@ -12,7 +12,7 @@
 		512046C2201D180800D62535 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C1201D180800D62535 /* Company.swift */; };
 		512046C4201D1D2E00D62535 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C3201D1D2E00D62535 /* Event.swift */; };
 		512046C6201D1DE200D62535 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C5201D1DE200D62535 /* Room.swift */; };
-		512046C8201D20E500D62535 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C7201D20E500D62535 /* Notification.swift */; };
+		512046C8201D20E500D62535 /* CUHNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C7201D20E500D62535 /* CUHNotification.swift */; };
 		512046CA201D21BD00D62535 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C9201D21BD00D62535 /* User.swift */; };
 		7248C376201CEC250070D9AE /* RequestHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7248C375201CEC250070D9AE /* RequestHelpViewController.swift */; };
 		7248C378201D24550070D9AE /* JsonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7248C377201D24550070D9AE /* JsonRequest.swift */; };
@@ -30,7 +30,7 @@
 		512046C1201D180800D62535 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		512046C3201D1D2E00D62535 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		512046C5201D1DE200D62535 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		512046C7201D20E500D62535 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		512046C7201D20E500D62535 /* CUHNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUHNotification.swift; sourceTree = "<group>"; };
 		512046C9201D21BD00D62535 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7248C375201CEC250070D9AE /* RequestHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelpViewController.swift; sourceTree = "<group>"; };
 		7248C377201D24550070D9AE /* JsonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonRequest.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				512046C1201D180800D62535 /* Company.swift */,
 				512046C3201D1D2E00D62535 /* Event.swift */,
 				512046C5201D1DE200D62535 /* Room.swift */,
-				512046C7201D20E500D62535 /* Notification.swift */,
+				512046C7201D20E500D62535 /* CUHNotification.swift */,
 				512046C9201D21BD00D62535 /* User.swift */,
 				313ACED1201D180E003B8026 /* Building.swift */,
 				313ACED3201D1DD2003B8026 /* HelpRequest.swift */,
@@ -180,7 +180,7 @@
 				313ACED4201D1DD2003B8026 /* HelpRequest.swift in Sources */,
 				313ACED2201D180E003B8026 /* Building.swift in Sources */,
 				725714AC201CE085001864E3 /* NotificationsViewController.swift in Sources */,
-				512046C8201D20E500D62535 /* Notification.swift in Sources */,
+				512046C8201D20E500D62535 /* CUHNotification.swift in Sources */,
 				512046CA201D21BD00D62535 /* User.swift in Sources */,
 				512046C2201D180800D62535 /* Company.swift in Sources */,
 				512046C4201D1D2E00D62535 /* Event.swift in Sources */,
