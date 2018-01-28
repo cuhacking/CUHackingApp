@@ -30,10 +30,7 @@ class UsersController < ApplicationController
     @user.token = params[:token]
     @user.save!
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @user.to_json }
-    end
+    render json: @user.to_json
   end
 
   def help_request
