@@ -13,7 +13,7 @@ class Notification < ApplicationRecord
         body: self.description
       },
       data: data.merge(notification: self.serializable_hash)
-    }}")
+    }} to token #{self.user.token} (ID #{self.user.id})")
 
     options = {
       notification: {
