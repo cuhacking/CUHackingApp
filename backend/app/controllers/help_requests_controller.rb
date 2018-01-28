@@ -72,6 +72,9 @@ class HelpRequestsController < ApplicationController
             description: "Mentor #{params[:mentor_name]} is coming to help you out :) Sit tight!",
             user: help_request.user)
     notif.save!
+
+    logger.info "Sending notification with help request #{help_request.serializable_hash}"
+
     notif.send_notification!({
       drawer_page: 3,
       help_request: help_request.serializable_hash
