@@ -11,7 +11,26 @@ import UIKit
 class RequestHelpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var descriptionField: UITextField!
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let helpRequest = sender as! HelpRequest
+        
+        let helpRequestInProgressVC = segue.destination as! HelpRequestInProgressViewController
+        
+        helpRequestInProgressVC.helpRequest = helpRequest
+    }
+    
+    @IBAction func getHelpButtonPressed(_ getHelpButton: UIButton) {
+        HelpRequest.create(name: nameField.text!, location: locationField.text!, description: descriptionField.text!) { (helpRequest) in
+            // Do the segue
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "HRCreated", sender: helpRequest)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

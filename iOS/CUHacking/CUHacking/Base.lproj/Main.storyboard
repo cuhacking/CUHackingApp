@@ -70,7 +70,7 @@
         <!--Get Help-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Get Help" id="8rJ-Kc-sve" customClass="RequestHelpViewController" sceneMemberID="viewController">
+                <viewController title="Get Help" id="8rJ-Kc-sve" customClass="RequestHelpViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,6 +106,9 @@
                                 <state key="normal" title="Get some help">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="getHelpButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="BHz-hK-5P4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -127,10 +130,64 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Get Help" id="fMo-KD-XDZ"/>
+                    <connections>
+                        <outlet property="descriptionField" destination="64K-jc-hjv" id="QEY-Fi-ZgI"/>
+                        <outlet property="locationField" destination="nE1-fW-Rct" id="F0k-sx-bBI"/>
+                        <outlet property="nameField" destination="xCL-M4-KX6" id="KfC-R8-mAz"/>
+                        <segue destination="nh5-TW-kMn" kind="show" identifier="HRCreated" id="xzf-QY-gTT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-274.39999999999998" y="897.30134932533736"/>
+        </scene>
+        <!--Help Request In Progress View Controller-->
+        <scene sceneID="POx-Xs-EWC">
+            <objects>
+                <viewController id="nh5-TW-kMn" customClass="HelpRequestInProgressViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a70-iX-ByE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9P3-g0-SeD">
+                                <rect key="frame" x="59" y="205" width="256" height="256"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A mentor is on their way" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6t-ZY-btu">
+                                <rect key="frame" x="38" y="92" width="299" height="72"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-Gz-DX1">
+                                <rect key="frame" x="121" y="523" width="133" height="30"/>
+                                <state key="normal" title="Mentor Has Arrived"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9P3-g0-SeD" firstAttribute="centerX" secondItem="a70-iX-ByE" secondAttribute="centerX" id="2sh-Kk-ESE"/>
+                            <constraint firstItem="B6t-ZY-btu" firstAttribute="centerX" secondItem="9P3-g0-SeD" secondAttribute="centerX" id="9eA-Ki-UF8"/>
+                            <constraint firstItem="3Vm-gc-p2N" firstAttribute="bottom" secondItem="AXb-Gz-DX1" secondAttribute="bottom" constant="65" id="BMp-np-MIw"/>
+                            <constraint firstItem="3Vm-gc-p2N" firstAttribute="trailing" secondItem="B6t-ZY-btu" secondAttribute="trailing" constant="38" id="FbS-oR-ZoS"/>
+                            <constraint firstItem="9P3-g0-SeD" firstAttribute="top" secondItem="B6t-ZY-btu" secondAttribute="bottom" constant="41" id="JVv-Tb-wTu"/>
+                            <constraint firstItem="B6t-ZY-btu" firstAttribute="leading" secondItem="3Vm-gc-p2N" secondAttribute="leading" constant="38" id="QLx-2E-xpI"/>
+                            <constraint firstItem="9P3-g0-SeD" firstAttribute="centerY" secondItem="a70-iX-ByE" secondAttribute="centerY" id="c9r-Ur-bQF"/>
+                            <constraint firstItem="9P3-g0-SeD" firstAttribute="centerX" secondItem="AXb-Gz-DX1" secondAttribute="centerX" id="hSH-jJ-413"/>
+                            <constraint firstItem="B6t-ZY-btu" firstAttribute="top" secondItem="3Vm-gc-p2N" secondAttribute="top" constant="28" id="qjP-OY-mdJ"/>
+                            <constraint firstItem="9P3-g0-SeD" firstAttribute="leading" secondItem="3Vm-gc-p2N" secondAttribute="leading" constant="59" id="r2c-6w-Ayp"/>
+                            <constraint firstItem="AXb-Gz-DX1" firstAttribute="top" secondItem="9P3-g0-SeD" secondAttribute="bottom" constant="62" id="xQA-pW-wtr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Vm-gc-p2N"/>
+                    </view>
+                    <connections>
+                        <outlet property="mentorOnWayButton" destination="AXb-Gz-DX1" id="zdr-J4-BDe"/>
+                        <outlet property="mentorOnWayText" destination="B6t-ZY-btu" id="S3G-cl-jXh"/>
+                        <outlet property="profilePicImageView" destination="9P3-g0-SeD" id="i7Y-Nw-lWu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLN-4P-SFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="902.69865067466276"/>
         </scene>
         <!--Potato-->
         <scene sceneID="yl2-sM-qoP">

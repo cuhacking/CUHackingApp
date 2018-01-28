@@ -22,9 +22,12 @@
 		725714B1201CE085001864E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 725714AF201CE085001864E3 /* Main.storyboard */; };
 		725714B3201CE085001864E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 725714B2201CE085001864E3 /* Assets.xcassets */; };
 		725714B6201CE085001864E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 725714B4201CE085001864E3 /* LaunchScreen.storyboard */; };
+		72FA2C0A201D8D400043A8CB /* HelpRequestInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FA2C09201D8D400043A8CB /* HelpRequestInProgressViewController.swift */; };
+		F5E57227B2D38A2171F6A60E /* Pods_CUHacking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B2D5315BD0FBCFA759E2E3 /* Pods_CUHacking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		116BCE388CABF5C981926CBA /* Pods-CUHacking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUHacking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CUHacking/Pods-CUHacking.release.xcconfig"; sourceTree = "<group>"; };
 		313ACED1201D180E003B8026 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		313ACED3201D1DD2003B8026 /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
 		512046C1201D180800D62535 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -42,6 +45,9 @@
 		725714B2201CE085001864E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		725714B5201CE085001864E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		725714B7201CE085001864E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72FA2C09201D8D400043A8CB /* HelpRequestInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequestInProgressViewController.swift; sourceTree = "<group>"; };
+		9E7D45119D46FCE9BB82BDA1 /* Pods-CUHacking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUHacking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CUHacking/Pods-CUHacking.debug.xcconfig"; sourceTree = "<group>"; };
+		E2B2D5315BD0FBCFA759E2E3 /* Pods_CUHacking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CUHacking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,12 +55,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E57227B2D38A2171F6A60E /* Pods_CUHacking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08FE3CC298D25313040AD84E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2B2D5315BD0FBCFA759E2E3 /* Pods_CUHacking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		512046C0201D17EE00D62535 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +89,8 @@
 			children = (
 				725714A8201CE085001864E3 /* CUHacking */,
 				725714A7201CE085001864E3 /* Products */,
+				C6EE84F6E4E077EA68939F75 /* Pods */,
+				08FE3CC298D25313040AD84E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +115,18 @@
 				725714B4201CE085001864E3 /* LaunchScreen.storyboard */,
 				725714B7201CE085001864E3 /* Info.plist */,
 				7248C377201D24550070D9AE /* JsonRequest.swift */,
+				72FA2C09201D8D400043A8CB /* HelpRequestInProgressViewController.swift */,
 			);
 			path = CUHacking;
+			sourceTree = "<group>";
+		};
+		C6EE84F6E4E077EA68939F75 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E7D45119D46FCE9BB82BDA1 /* Pods-CUHacking.debug.xcconfig */,
+				116BCE388CABF5C981926CBA /* Pods-CUHacking.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 725714BA201CE085001864E3 /* Build configuration list for PBXNativeTarget "CUHacking" */;
 			buildPhases = (
+				C1A6DB857D4043A89B20C71E /* [CP] Check Pods Manifest.lock */,
 				725714A2201CE085001864E3 /* Sources */,
 				725714A3201CE085001864E3 /* Frameworks */,
 				725714A4201CE085001864E3 /* Resources */,
+				225EEF812EC812977D468750 /* [CP] Embed Pods Frameworks */,
+				09514B0CB23E6EC0DD97A211 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,6 +199,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09514B0CB23E6EC0DD97A211 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CUHacking/Pods-CUHacking-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		225EEF812EC812977D468750 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CUHacking/Pods-CUHacking-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CUHacking/Pods-CUHacking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1A6DB857D4043A89B20C71E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CUHacking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		725714A2201CE085001864E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -179,6 +267,7 @@
 				512046C6201D1DE200D62535 /* Room.swift in Sources */,
 				313ACED4201D1DD2003B8026 /* HelpRequest.swift in Sources */,
 				313ACED2201D180E003B8026 /* Building.swift in Sources */,
+				72FA2C0A201D8D400043A8CB /* HelpRequestInProgressViewController.swift in Sources */,
 				725714AC201CE085001864E3 /* NotificationsViewController.swift in Sources */,
 				512046C8201D20E500D62535 /* CUHNotification.swift in Sources */,
 				512046CA201D21BD00D62535 /* User.swift in Sources */,
@@ -320,6 +409,7 @@
 		};
 		725714BB201CE085001864E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E7D45119D46FCE9BB82BDA1 /* Pods-CUHacking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -335,6 +425,7 @@
 		};
 		725714BC201CE085001864E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 116BCE388CABF5C981926CBA /* Pods-CUHacking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
