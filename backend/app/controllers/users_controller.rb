@@ -13,11 +13,8 @@ class UsersController < ApplicationController
 
   def notifications
     @notifications = Notification.where(user_id: [params[:id], nil]).limit(50)
-    
-    respond_to do |format|
-      format.html
-      format.json { render json: @notifications.to_json }
-    end
+
+    render json: @notifications.to_json
   end
 
   def create

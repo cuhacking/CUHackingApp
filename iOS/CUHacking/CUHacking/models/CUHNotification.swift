@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Notification : Codable {
+class CUHNotification : Codable {
     var id: Int
     var title: String
     var description: String
