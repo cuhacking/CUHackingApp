@@ -75,26 +75,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Get Help" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="120" y="312" width="136" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need some help? Just ask!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKM-8Z-6Yq" userLabel="help_label">
+                                <rect key="frame" x="0.0" y="79" width="375" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by RequestHelpViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="63" y="363" width="249" height="17"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's your name?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xCL-M4-KX6">
+                                <rect key="frame" x="39" y="145.5" width="297" height="30"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where are you on campus (room number)?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nE1-fW-Rct">
+                                <rect key="frame" x="39" y="215.5" width="297" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give brief description of your problem" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="64K-jc-hjv">
+                                <rect key="frame" x="39" y="285.5" width="297" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1S-R4-qkQ" userLabel="help_button">
+                                <rect key="frame" x="128" y="380" width="118" height="34"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Get some help">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="OEq-OL-zrZ"/>
-                            <constraint firstItem="zEq-FU-wV5" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Uhf-y0-wID"/>
-                            <constraint firstItem="zEq-FU-wV5" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="bGw-l5-bUV"/>
-                            <constraint firstItem="zEq-FU-wV5" firstAttribute="centerX" secondItem="NDk-cv-Gan" secondAttribute="centerX" id="qhK-dE-kvq"/>
+                            <constraint firstItem="nE1-fW-Rct" firstAttribute="top" secondItem="xCL-M4-KX6" secondAttribute="bottom" constant="40" id="1Ud-wI-zhR" userLabel="Where are you on campus (room number)?.top = What's your name?.bottom + 45"/>
+                            <constraint firstItem="ZKM-8Z-6Yq" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="15" id="5Z2-gK-uuq"/>
+                            <constraint firstItem="64K-jc-hjv" firstAttribute="centerX" secondItem="p1S-R4-qkQ" secondAttribute="centerX" id="7J7-Ag-rlg"/>
+                            <constraint firstItem="p1S-R4-qkQ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Bsn-Kf-AOs"/>
+                            <constraint firstItem="p1S-R4-qkQ" firstAttribute="top" secondItem="64K-jc-hjv" secondAttribute="bottom" constant="65" id="BtS-YH-Xtx"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="ZKM-8Z-6Yq" secondAttribute="trailing" id="Bv7-ZR-E65"/>
+                            <constraint firstItem="xCL-M4-KX6" firstAttribute="leading" secondItem="nE1-fW-Rct" secondAttribute="leading" id="EG2-de-fv2"/>
+                            <constraint firstItem="64K-jc-hjv" firstAttribute="top" secondItem="nE1-fW-Rct" secondAttribute="bottom" constant="40" id="FY4-U4-ERW" userLabel="Give brief description of your problem.top = Where are you on campus (room number)?.bottom + 45"/>
+                            <constraint firstItem="ZKM-8Z-6Yq" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="aCQ-kn-wF5"/>
+                            <constraint firstItem="nE1-fW-Rct" firstAttribute="trailing" secondItem="64K-jc-hjv" secondAttribute="trailing" id="e8x-hT-Mry"/>
+                            <constraint firstItem="xCL-M4-KX6" firstAttribute="top" secondItem="ZKM-8Z-6Yq" secondAttribute="bottom" constant="40" id="iS2-Wp-i8f"/>
+                            <constraint firstItem="nE1-fW-Rct" firstAttribute="leading" secondItem="64K-jc-hjv" secondAttribute="leading" id="kTE-n5-3Ec"/>
+                            <constraint firstItem="xCL-M4-KX6" firstAttribute="trailing" secondItem="nE1-fW-Rct" secondAttribute="trailing" id="tFg-BW-yDr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
@@ -102,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-274" y="898"/>
+            <point key="canvasLocation" x="-274.39999999999998" y="897.30134932533736"/>
         </scene>
         <!--Potato-->
         <scene sceneID="yl2-sM-qoP">
