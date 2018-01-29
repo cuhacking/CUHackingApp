@@ -8,18 +8,43 @@
 
 import UIKit
 
-class RequestHelpViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+class RequestHelpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
+    
+    var fields : [UITextField]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fields = [nameField, locationField, descriptionField]
+        
+        nameField.delegate = self
+        locationField.delegate = self
+        descriptionField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let helpRequest = sender as! HelpRequest
         
         let helpRequestInProgressVC = segue.destination as! HelpRequestInProgressViewController
+        
+        nameField.text = ""
+        locationField.text = ""
+        descriptionField.text = ""
         
         helpRequestInProgressVC.helpRequest = helpRequest
     }

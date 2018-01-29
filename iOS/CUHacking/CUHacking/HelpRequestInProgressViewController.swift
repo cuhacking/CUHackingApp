@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+extension Notification.Name {
+    static let helpRequestUpdated = Notification.Name("HelpRequestUpdated")
+}
+
 class HelpRequestInProgressViewController: UIViewController {
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var mentorOnWayText: UILabel!
@@ -17,9 +21,36 @@ class HelpRequestInProgressViewController: UIViewController {
     var helpRequest : HelpRequest!
     
     override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.helpRequestUpdated(_:)), name: .helpRequestUpdated, object: nil)
         loadHelpRequest()
     }
     
+    @objc func helpRequestUpdated(_ notification: NSNotification) {
+        do {
+        if let userInfo = notification.userInfo {
+            guard let helpRequestJson = userInfo["help_request"] as? String else {
+                print("Help request of wrong type")
+                return
+            }
+            
+            self.helpRequest = try JSONDecoder().decode(HelpRequest.self, from: helpRequestJson.data(using: .ascii)!)
+            loadHelpRequest()
+        }
+        } catch { print("Bad help request") }
+    }
+    
+    @IBAction func mentorHereButtonPressed(_ sender: Any) {
+        helpRequest.status = "Complete"
+
+        helpRequest.update { (helpRequest) in
+            self.helpRequest = helpRequest
+            
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+
     func loadHelpRequest() {
         if let profilePicLink = helpRequest.profilePictureURL {
             DispatchQueue.global(qos: .userInitiated).async {
@@ -29,6 +60,7 @@ class HelpRequestInProgressViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.profilePicImageView.image = image
+                        self.mentorOnWayButton.isHidden = false
                     }
                 } catch {
                     NSLog("Failed to get profile pic")

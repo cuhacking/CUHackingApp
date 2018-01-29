@@ -27,54 +27,110 @@ class HelpRequest : Codable {
     }
     
     static func create(name: String, location: String, description: String, completionHandler: @escaping (HelpRequest) -> Void) {
-        guard let url = URL(string: "https://cuhacking.herokuapp.com/help_requests") else {
-            fatalError("Problems with URL")
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        
-        urlRequest.httpMethod = "POST"
-        
-        let helpRequestJson : [String:Any] = [
-            "help_request":
-                [
-                    "location": location,
-                    "problem": description
-                ] as [String:Any],
-            "user_name": name,
-            "user_id": 1
-        ]
-
-        let session = URLSession.shared
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        do {
-            try urlRequest.httpBody = JSONSerialization.data(withJSONObject: helpRequestJson, options: .init(rawValue: 0))
-            
-            let task = session.dataTask(with: urlRequest) {
-                (data, response, error) in
-                if let error = error {
-                    NSLog(error.localizedDescription)
-                    return
-                }
-
-                do {
-                    guard let data = data else {
-                        NSLog("No data provided")
-                        return
-                    }
-
-                    let helpRequest = try JSONDecoder().decode(HelpRequest.self, from: data)
-                    
-                    completionHandler(helpRequest)
-                } catch {
-                    NSLog("Failed decode of request")
-                }
+        User.getUser { (user) in
+            guard let url = URL(string: "https://cuhacking.herokuapp.com/help_requests") else {
+                fatalError("Problems with URL")
             }
             
-            task.resume()
-        } catch {
-            NSLog("Failed request")
+            var urlRequest = URLRequest(url: url)
+            
+            urlRequest.httpMethod = "POST"
+            
+            let helpRequestJson : [String:Any] = [
+                "help_request":
+                    [
+                        "location": location,
+                        "problem": description
+                        ] as [String:Any],
+                "user_name": name,
+                "user_id": user.id
+            ]
+
+            let session = URLSession.shared
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            do {
+                try urlRequest.httpBody = JSONSerialization.data(withJSONObject: helpRequestJson, options: .init(rawValue: 0))
+                
+                let task = session.dataTask(with: urlRequest) {
+                    (data, response, error) in
+                    if let error = error {
+                        NSLog(error.localizedDescription)
+                        return
+                    }
+                    
+                    do {
+                        guard let data = data else {
+                            NSLog("No data provided")
+                            return
+                        }
+                        
+                        let helpRequest = try JSONDecoder().decode(HelpRequest.self, from: data)
+                        
+                        completionHandler(helpRequest)
+                    } catch {
+                        NSLog("Failed decode of request")
+                    }
+                }
+                
+                task.resume()
+            } catch {
+                NSLog("Failed request")
+            }
+        }
+    }
+    
+    func update(completionHandler: @escaping (HelpRequest) -> Void) {
+        User.getUser { (user) in
+            guard let url = URL(string: "https://cuhacking.herokuapp.com/help_requests/\(self.id)") else {
+                fatalError("Problems with URL")
+            }
+            
+            var urlRequest = URLRequest(url: url)
+            
+            urlRequest.httpMethod = "PUT"
+            
+            let helpRequestJson : [String:Any] = [
+                "help_request":
+                    [
+                        "location": self.location,
+                        "problem": self.problem,
+                        "status": self.status
+                    ] as [String:Any]
+            ]
+            
+            let session = URLSession.shared
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            do {
+                try urlRequest.httpBody = JSONSerialization.data(withJSONObject: helpRequestJson, options: .init(rawValue: 0))
+                
+                let task = session.dataTask(with: urlRequest) {
+                    (data, response, error) in
+                    if let error = error {
+                        NSLog(error.localizedDescription)
+                        return
+                    }
+                    
+                    do {
+                        guard let data = data else {
+                            NSLog("No data provided")
+                            return
+                        }
+                        
+                        let helpRequest = try JSONDecoder().decode(HelpRequest.self, from: data)
+                        
+                        completionHandler(helpRequest)
+                    } catch {
+                        NSLog("Failed decode of request")
+                    }
+                }
+                
+                task.resume()
+            } catch {
+                NSLog("Failed request")
+            }
         }
     }
 

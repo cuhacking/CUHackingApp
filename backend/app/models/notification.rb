@@ -7,14 +7,6 @@ class Notification < ApplicationRecord
     # Send a notif to the client
     fcm = FCM.new(Secrets[:server_key])
 
-    logger.info("Sending notification: #{{
-      notification: {
-        title: self.title,
-        body: self.description
-      },
-      data: data.merge(notification: self.serializable_hash)
-    }} to token #{self.user.token} (ID #{self.user.id})")
-
     options = {
       notification: {
         title: self.title,

@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
 
@@ -34,9 +35,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-
+        
+        Messaging.messaging().delegate = self
+        
+        if Messaging.messaging().fcmToken != nil {
+            Messaging.messaging().subscribe(toTopic: "announcements")
+        }
         
         return true
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Token: \(fcmToken)")
+        Messaging.messaging().subscribe(toTopic: "announcements")
+        User.getUser { (user) in
+            user.applyToken(token: fcmToken)
+        }
+    }
+
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        NotificationCenter.default.post(name: NSNotification.Name.helpRequestUpdated, object: nil, userInfo: remoteMessage.appData)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        NotificationCenter.default.post(name: NSNotification.Name.helpRequestUpdated, object: nil, userInfo: userInfo)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
