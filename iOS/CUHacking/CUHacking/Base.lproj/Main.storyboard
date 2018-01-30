@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -149,17 +150,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9P3-g0-SeD">
-                                <rect key="frame" x="59" y="205" width="256" height="256"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9P3-g0-SeD">
+                                <rect key="frame" x="59.5" y="213" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9P3-g0-SeD" secondAttribute="height" multiplier="1:1" id="vAa-0Y-3mN"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A mentor is on their way" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6t-ZY-btu">
-                                <rect key="frame" x="38" y="92" width="299" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A mentor is on their way" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6t-ZY-btu">
+                                <rect key="frame" x="15" y="92" width="345" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-Gz-DX1">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-Gz-DX1">
                                 <rect key="frame" x="121" y="523" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Mentor Has Arrived"/>
                                 <connections>
                                     <action selector="mentorHereButtonPressed:" destination="nh5-TW-kMn" eventType="touchUpInside" id="2rX-Ac-J3H"/>
@@ -167,19 +173,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="9P3-g0-SeD" firstAttribute="centerX" secondItem="a70-iX-ByE" secondAttribute="centerX" id="2sh-Kk-ESE"/>
-                            <constraint firstItem="B6t-ZY-btu" firstAttribute="centerX" secondItem="9P3-g0-SeD" secondAttribute="centerX" id="9eA-Ki-UF8"/>
-                            <constraint firstItem="3Vm-gc-p2N" firstAttribute="bottom" secondItem="AXb-Gz-DX1" secondAttribute="bottom" constant="65" id="BMp-np-MIw"/>
-                            <constraint firstItem="3Vm-gc-p2N" firstAttribute="trailing" secondItem="B6t-ZY-btu" secondAttribute="trailing" constant="38" id="FbS-oR-ZoS"/>
-                            <constraint firstItem="9P3-g0-SeD" firstAttribute="top" secondItem="B6t-ZY-btu" secondAttribute="bottom" constant="41" id="JVv-Tb-wTu"/>
-                            <constraint firstItem="B6t-ZY-btu" firstAttribute="leading" secondItem="3Vm-gc-p2N" secondAttribute="leading" constant="38" id="QLx-2E-xpI"/>
-                            <constraint firstItem="9P3-g0-SeD" firstAttribute="centerY" secondItem="a70-iX-ByE" secondAttribute="centerY" id="c9r-Ur-bQF"/>
-                            <constraint firstItem="9P3-g0-SeD" firstAttribute="centerX" secondItem="AXb-Gz-DX1" secondAttribute="centerX" id="hSH-jJ-413"/>
-                            <constraint firstItem="B6t-ZY-btu" firstAttribute="top" secondItem="3Vm-gc-p2N" secondAttribute="top" constant="28" id="qjP-OY-mdJ"/>
-                            <constraint firstItem="9P3-g0-SeD" firstAttribute="leading" secondItem="3Vm-gc-p2N" secondAttribute="leading" constant="59" id="r2c-6w-Ayp"/>
-                            <constraint firstItem="AXb-Gz-DX1" firstAttribute="top" secondItem="9P3-g0-SeD" secondAttribute="bottom" constant="62" id="xQA-pW-wtr"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Vm-gc-p2N"/>
                     </view>
                     <connections>
