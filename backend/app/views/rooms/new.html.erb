@@ -1,2 +1,17 @@
-<h1>Room#new</h1>
-<p>Find me in app/views/room/new.html.erb</p>
+<%= form_for @room, url: {action: "create"} do |f| %>
+  <p>
+    <%= f.label :type %>
+    <%= f.select :room_type, ["Hacking Space","Bathroom", "Workshop", "Sponsor Lounge", "Stairs", "Elevator", "Food", "Snacks", "Volunteer Lounge", "Mentor Lounge", "Theater"] %>
+  </p>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :building_id %>
+    <%= f.collection_select :building_id, Building.all, :id, :str, prompt: true %>
+  </p>
+
+  <%= f.submit "Create" %>
+<% end %>
