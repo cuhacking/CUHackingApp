@@ -264,7 +264,7 @@
         <!--More-->
         <scene sceneID="Wk9-w3-A9L">
             <objects>
-                <tableViewController title="More" id="3r2-dH-t8n" sceneMemberID="viewController">
+                <tableViewController title="More" id="3r2-dH-t8n" customClass="MoreViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9oz-Oc-oT0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,6 +301,9 @@
                                                 <constraint firstItem="zAE-3s-lEK" firstAttribute="top" secondItem="GMa-Ha-mZA" secondAttribute="topMargin" id="wb8-1z-JTq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5kI-FX-Zky" kind="show" id="PJk-vw-T8O"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="BdT-4F-Kqv">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -331,6 +334,9 @@
                                                 <constraint firstItem="cSU-bB-r3e" firstAttribute="top" secondItem="zZD-Db-xeX" secondAttribute="topMargin" constant="-5" id="zRi-Ua-dtM"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="aCB-pP-3ig" kind="show" id="Khc-5X-2gj"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6LC-pQ-2QH">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -361,6 +367,42 @@
                                                 <constraint firstItem="BzM-XU-jXl" firstAttribute="leading" secondItem="aQZ-Yc-BhB" secondAttribute="trailing" constant="12" id="Vyu-TN-j6h"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Nr7-UK-Hie" kind="show" id="B6F-Cx-4w9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lLG-bo-vS5">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lLG-bo-vS5" id="Hh7-YA-zao">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xqx-hB-HKM">
+                                                    <rect key="frame" x="15" y="5" width="33" height="33"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="33" id="ESo-bf-Ucs"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCg-JJ-9pE">
+                                                    <rect key="frame" x="60" y="10" width="33.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xqx-hB-HKM" firstAttribute="leading" secondItem="Hh7-YA-zao" secondAttribute="leadingMargin" constant="-1" id="5ZU-Dm-rpB"/>
+                                                <constraint firstItem="xqx-hB-HKM" firstAttribute="centerY" secondItem="Hh7-YA-zao" secondAttribute="centerY" id="9kf-ta-zpa"/>
+                                                <constraint firstItem="xqx-hB-HKM" firstAttribute="top" secondItem="Hh7-YA-zao" secondAttribute="topMargin" constant="-6" id="GRY-bi-0Ok"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bCg-JJ-9pE" secondAttribute="bottom" constant="2" id="Gob-zf-AOY"/>
+                                                <constraint firstItem="bCg-JJ-9pE" firstAttribute="top" secondItem="Hh7-YA-zao" secondAttribute="topMargin" constant="-1" id="UAg-5O-UVp"/>
+                                                <constraint firstItem="bCg-JJ-9pE" firstAttribute="leading" secondItem="xqx-hB-HKM" secondAttribute="trailing" constant="12" id="cOb-E3-wQS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="k0e-6B-RLa" kind="show" id="uUg-ms-euR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -375,7 +417,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvo-hN-em4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarItem systemItem="more" id="Z9Y-10-vtT"/>
             </objects>
-            <point key="canvasLocation" x="2756" y="773"/>
+            <point key="canvasLocation" x="2782" y="773"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="gJs-Ui-35p">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" title="Map" id="k0e-6B-RLa" customClass="MapViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iq4-HM-Lgq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bv1-yQ-Jug"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="BIN-Q8-xwM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ANg-V1-xw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3966" y="1575"/>
+        </scene>
+        <!--Sponsors-->
+        <scene sceneID="Twj-AV-QsC">
+            <objects>
+                <viewController title="Sponsors" id="aCB-pP-3ig" customClass="SponsorsViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G1I-Vx-l8R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Lxq-7u-jnX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nag-5H-kel" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="1575"/>
+        </scene>
+        <!--Information-->
+        <scene sceneID="TGq-wa-0Zi">
+            <objects>
+                <viewController title="Information" id="Nr7-UK-Hie" customClass="InfoViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ui5-9e-4aY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Qqu-nd-aHR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b7x-04-vzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3284" y="1575"/>
+        </scene>
+        <!--Credits-->
+        <scene sceneID="8rU-SQ-oXH">
+            <objects>
+                <viewController title="Credits" id="5kI-FX-Zky" customClass="CreditsViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0op-Mv-Cwt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ghK-Bh-5MS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rR8-Il-UkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1966" y="1575"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u47-ny-g2A">

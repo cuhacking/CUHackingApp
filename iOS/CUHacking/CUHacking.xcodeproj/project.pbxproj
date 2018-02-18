@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22484CA320398DF900D5C262 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22484CA220398DF900D5C262 /* InfoViewController.swift */; };
+		22484CA520398EED00D5C262 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22484CA420398EED00D5C262 /* CreditsViewController.swift */; };
+		22484CA720398F0B00D5C262 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22484CA620398F0B00D5C262 /* SponsorsViewController.swift */; };
+		22E8DA9C20395A2A00FDCAED /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8DA9B20395A2A00FDCAED /* MoreViewController.swift */; };
+		22E8DA9E20395D1D00FDCAED /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8DA9D20395D1D00FDCAED /* MapViewController.swift */; };
 		313ACED2201D180E003B8026 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ACED1201D180E003B8026 /* Building.swift */; };
 		313ACED4201D1DD2003B8026 /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313ACED3201D1DD2003B8026 /* HelpRequest.swift */; };
 		512046C2201D180800D62535 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512046C1201D180800D62535 /* Company.swift */; };
@@ -29,6 +34,11 @@
 
 /* Begin PBXFileReference section */
 		116BCE388CABF5C981926CBA /* Pods-CUHacking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUHacking.release.xcconfig"; path = "Pods/Target Support Files/Pods-CUHacking/Pods-CUHacking.release.xcconfig"; sourceTree = "<group>"; };
+		22484CA220398DF900D5C262 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		22484CA420398EED00D5C262 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		22484CA620398F0B00D5C262 /* SponsorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsViewController.swift; sourceTree = "<group>"; };
+		22E8DA9B20395A2A00FDCAED /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		22E8DA9D20395D1D00FDCAED /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		313ACED1201D180E003B8026 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		313ACED3201D1DD2003B8026 /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
 		512046C1201D180800D62535 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
@@ -73,6 +83,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		22484CA8203990DD00D5C262 /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				725714AB201CE085001864E3 /* NotificationsViewController.swift */,
+				725714AD201CE085001864E3 /* ScheduleViewController.swift */,
+				7248C375201CEC250070D9AE /* RequestHelpViewController.swift */,
+				72FA2C09201D8D400043A8CB /* HelpRequestInProgressViewController.swift */,
+				22E8DA9B20395A2A00FDCAED /* MoreViewController.swift */,
+				22E8DA9D20395D1D00FDCAED /* MapViewController.swift */,
+				22484CA220398DF900D5C262 /* InfoViewController.swift */,
+				22484CA420398EED00D5C262 /* CreditsViewController.swift */,
+				22484CA620398F0B00D5C262 /* SponsorsViewController.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
 		512046C0201D17EE00D62535 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,18 +135,15 @@
 			isa = PBXGroup;
 			children = (
 				72B75F64201E0A59000FC448 /* GoogleService-Info.plist */,
+				22484CA8203990DD00D5C262 /* viewcontrollers */,
 				72FA2C0B201E08320043A8CB /* CUHacking.entitlements */,
 				512046C0201D17EE00D62535 /* models */,
 				725714A9201CE085001864E3 /* AppDelegate.swift */,
-				725714AB201CE085001864E3 /* NotificationsViewController.swift */,
-				725714AD201CE085001864E3 /* ScheduleViewController.swift */,
-				7248C375201CEC250070D9AE /* RequestHelpViewController.swift */,
 				725714AF201CE085001864E3 /* Main.storyboard */,
 				725714B2201CE085001864E3 /* Assets.xcassets */,
 				725714B4201CE085001864E3 /* LaunchScreen.storyboard */,
 				725714B7201CE085001864E3 /* Info.plist */,
 				7248C377201D24550070D9AE /* JsonRequest.swift */,
-				72FA2C09201D8D400043A8CB /* HelpRequestInProgressViewController.swift */,
 			);
 			path = CUHacking;
 			sourceTree = "<group>";
@@ -279,12 +302,17 @@
 				313ACED4201D1DD2003B8026 /* HelpRequest.swift in Sources */,
 				313ACED2201D180E003B8026 /* Building.swift in Sources */,
 				72FA2C0A201D8D400043A8CB /* HelpRequestInProgressViewController.swift in Sources */,
+				22484CA520398EED00D5C262 /* CreditsViewController.swift in Sources */,
+				22484CA720398F0B00D5C262 /* SponsorsViewController.swift in Sources */,
 				725714AC201CE085001864E3 /* NotificationsViewController.swift in Sources */,
+				22E8DA9C20395A2A00FDCAED /* MoreViewController.swift in Sources */,
 				512046C8201D20E500D62535 /* CUHNotification.swift in Sources */,
 				512046CA201D21BD00D62535 /* User.swift in Sources */,
 				512046C2201D180800D62535 /* Company.swift in Sources */,
 				512046C4201D1D2E00D62535 /* Event.swift in Sources */,
 				7248C376201CEC250070D9AE /* RequestHelpViewController.swift in Sources */,
+				22E8DA9E20395D1D00FDCAED /* MapViewController.swift in Sources */,
+				22484CA320398DF900D5C262 /* InfoViewController.swift in Sources */,
 				7248C378201D24550070D9AE /* JsonRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
