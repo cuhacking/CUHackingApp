@@ -16,6 +16,9 @@ class SponsorsViewController: UITableViewController {
     
     var sponsorImages = [UIImage(named: "cse.jpg")!, UIImage(named: "foko.jpg")!, UIImage(named: "inova.jpg")!, UIImage(named: "kx.jpg")!, UIImage(named: "magmic.jpg")!, UIImage(named: "martello.jpg")!, UIImage(named: "pythian.jpg")!, UIImage(named: "stdlib.jpg")!, UIImage(named: "you.jpg")!]
     
+    var sponsorURLs = ["https://www.cse-cst.gc.ca/en/homepage", "http://fokoretail.com/", "https://innovapost.com/", "https://kx.com/", "http://magmic.com//", "http://martellotech.com/", "https://pythian.com/",  "https://stdlib.com/", "https://www.youi.tv/"]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -36,10 +39,28 @@ class SponsorsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sponsorCell = tableView.dequeueReusableCell(withIdentifier: "sponsor_cell") as! SponsorCell
-        
         sponsorCell.sponsorImage.image = sponsorImages[indexPath.row]
-        
         return sponsorCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        open(scheme: sponsorURLs[indexPath.row])
+    }
+    
+    //https://useyourloaf.com/blog/openurl-deprecated-in-ios10/
+    func open(scheme: String) {
+        if let url = URL(string: scheme) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:],
+                                          completionHandler: {
+                                            (success) in
+                                            print("Open \(scheme): \(success)")
+                })
+            } else {
+                let success = UIApplication.shared.openURL(url)
+                print("Open \(scheme): \(success)")
+            }
+        }
     }
     
 }
