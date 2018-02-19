@@ -335,7 +335,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="aCB-pP-3ig" kind="show" id="Khc-5X-2gj"/>
+                                            <segue destination="fVH-Xl-36l" kind="show" id="tBm-qF-jcJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6LC-pQ-2QH">
@@ -417,7 +417,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvo-hN-em4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarItem systemItem="more" id="Z9Y-10-vtT"/>
             </objects>
-            <point key="canvasLocation" x="2782" y="773"/>
+            <point key="canvasLocation" x="2724" y="773"/>
         </scene>
         <!--Map-->
         <scene sceneID="gJs-Ui-35p">
@@ -436,19 +436,48 @@
             <point key="canvasLocation" x="3966" y="1575"/>
         </scene>
         <!--Sponsors-->
-        <scene sceneID="Twj-AV-QsC">
+        <scene sceneID="3EX-vy-B03">
             <objects>
-                <viewController title="Sponsors" id="aCB-pP-3ig" customClass="SponsorsViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G1I-Vx-l8R">
+                <tableViewController title="Sponsors" id="fVH-Xl-36l" customClass="SponsorsViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5d6-JU-721">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Lxq-7u-jnX"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nag-5H-kel" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sponsor_cell" rowHeight="103" id="DOx-GG-Veo" customClass="SponsorCell" customModule="CUHacking" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="103"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DOx-GG-Veo" id="QMi-ih-Bg1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVl-cm-BBi">
+                                            <rect key="frame" x="146.5" y="11" width="81" height="81"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="gVl-cm-BBi" secondAttribute="height" multiplier="1:1" id="0xI-4c-dBW"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gVl-cm-BBi" firstAttribute="centerX" secondItem="QMi-ih-Bg1" secondAttribute="centerX" id="Sdn-oi-djT"/>
+                                        <constraint firstItem="gVl-cm-BBi" firstAttribute="top" secondItem="QMi-ih-Bg1" secondAttribute="topMargin" id="fc3-ru-mGm"/>
+                                        <constraint firstItem="gVl-cm-BBi" firstAttribute="centerY" secondItem="QMi-ih-Bg1" secondAttribute="centerY" id="r9h-x8-ZYY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sponsorImage" destination="gVl-cm-BBi" id="vQh-8E-ske"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fVH-Xl-36l" id="3hZ-mC-Hac"/>
+                            <outlet property="delegate" destination="fVH-Xl-36l" id="QIx-gS-R3f"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TP4-8c-Yew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="1575"/>
+            <point key="canvasLocation" x="2616.8000000000002" y="1574.6626686656673"/>
         </scene>
         <!--Information-->
         <scene sceneID="TGq-wa-0Zi">
