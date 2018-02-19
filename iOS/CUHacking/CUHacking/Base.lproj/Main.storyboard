@@ -401,7 +401,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="k0e-6B-RLa" kind="show" id="uUg-ms-euR"/>
+                                            <segue destination="kNy-U9-fGE" kind="show" id="cur-m4-q4N"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -420,20 +420,12 @@
             <point key="canvasLocation" x="2782" y="773"/>
         </scene>
         <!--Map-->
-        <scene sceneID="gJs-Ui-35p">
+        <scene sceneID="nJF-kx-TAx">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="Map" id="k0e-6B-RLa" customClass="MapViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Iq4-HM-Lgq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="bv1-yQ-Jug"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Map" id="BIN-Q8-xwM"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ANg-V1-xw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="Map" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kNy-U9-fGE" customClass="MapViewController" customModule="CUHacking" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIY-vR-cER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3966" y="1575"/>
+            <point key="canvasLocation" x="3937" y="1575"/>
         </scene>
         <!--Sponsors-->
         <scene sceneID="Twj-AV-QsC">
@@ -464,6 +456,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7x-04-vzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3284" y="1575"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="FfY-5e-tip">
+            <objects>
+                <viewController storyboardIdentifier="MapView1" title="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yQn-cM-vvM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BdJ-Cs-zcI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="gki-Mw-0sg">
+                                <rect key="frame" x="0.0" y="20" width="375" height="617"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gki-Mw-0sg" firstAttribute="top" secondItem="VaT-eF-oxR" secondAttribute="top" id="O6E-c5-Ot6"/>
+                            <constraint firstItem="gki-Mw-0sg" firstAttribute="trailing" secondItem="VaT-eF-oxR" secondAttribute="trailing" id="U1i-Y9-gFC"/>
+                            <constraint firstItem="gki-Mw-0sg" firstAttribute="leading" secondItem="VaT-eF-oxR" secondAttribute="leading" id="qeK-fo-lGW"/>
+                            <constraint firstItem="VaT-eF-oxR" firstAttribute="bottom" secondItem="gki-Mw-0sg" secondAttribute="bottom" constant="30" id="uSx-bk-NnE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VaT-eF-oxR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iiP-Yv-BGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3392" y="2268"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="uUK-3j-kP9">
+            <objects>
+                <viewController storyboardIdentifier="MapView2" title="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hKP-hZ-384" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2cD-0E-uEq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-Fh-67R">
+                                <rect key="frame" x="0.0" y="20" width="375" height="617"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UAO-9q-pZf" firstAttribute="trailing" secondItem="8Xv-Fh-67R" secondAttribute="trailing" id="6gw-tE-uOI"/>
+                            <constraint firstItem="8Xv-Fh-67R" firstAttribute="top" secondItem="UAO-9q-pZf" secondAttribute="top" id="Bfv-z8-G9h"/>
+                            <constraint firstItem="UAO-9q-pZf" firstAttribute="bottom" secondItem="8Xv-Fh-67R" secondAttribute="bottom" constant="30" id="RAA-Zl-aSk"/>
+                            <constraint firstItem="8Xv-Fh-67R" firstAttribute="leading" secondItem="UAO-9q-pZf" secondAttribute="leading" id="vXQ-fL-hyP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UAO-9q-pZf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HwU-an-5Q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4058" y="2268"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="bUu-11-b9z">
+            <objects>
+                <viewController storyboardIdentifier="MapView3" title="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pz5-CB-bxr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DRS-xM-EQP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="D1b-5i-f5f">
+                                <rect key="frame" x="0.0" y="20" width="375" height="617"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D1b-5i-f5f" firstAttribute="top" secondItem="h4H-vH-nhQ" secondAttribute="top" id="2gr-47-HX9"/>
+                            <constraint firstItem="h4H-vH-nhQ" firstAttribute="bottom" secondItem="D1b-5i-f5f" secondAttribute="bottom" constant="30" id="fCH-RP-COk"/>
+                            <constraint firstItem="h4H-vH-nhQ" firstAttribute="trailing" secondItem="D1b-5i-f5f" secondAttribute="trailing" id="lwK-dr-f2r"/>
+                            <constraint firstItem="D1b-5i-f5f" firstAttribute="leading" secondItem="h4H-vH-nhQ" secondAttribute="leading" id="mQ9-FM-41o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h4H-vH-nhQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1la-7a-9iE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4713" y="2269"/>
         </scene>
         <!--Credits-->
         <scene sceneID="8rU-SQ-oXH">
@@ -559,5 +629,6 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
     </resources>
 </document>
