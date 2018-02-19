@@ -34,15 +34,14 @@ class MapViewController: UIPageViewController, UIPageViewControllerDelegate{
     }
     
     func configurePageControl() {
-        pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50))
         self.pageControl.numberOfPages = pages.count
         self.pageControl.currentPage = 0
         self.pageControl.tintColor = UIColor.lightGray
         self.pageControl.pageIndicatorTintColor = UIColor.lightGray
         self.pageControl.currentPageIndicatorTintColor = UIColor.gray
         
-        let controlHeight: CGFloat = 60
-        let bottomSpace: CGFloat = 70
+        let controlHeight: CGFloat = self.pageControl.accessibilityFrame.size.height
+        let bottomSpace: CGFloat = self.tabBarController!.tabBar.frame.size.height + 30
         let yPosition = view.frame.size.height - (controlHeight + bottomSpace)
         let fullScreenWidth = view.frame.size.width
         let frame = CGRect(x: 0, y: yPosition, width: fullScreenWidth, height: controlHeight)
