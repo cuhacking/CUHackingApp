@@ -1,0 +1,218 @@
+@startuml
+left to right direction
+
+class MainActivity {
+  + onConfigurationChanged(newConfig : Configuration) : void
+  + onOptionsItemSelected(item : MenuItem) : boolean
+  + helpRequestSent(request : HelpRequest) : void
+  + helpRequestCompleted() : void
+  + requestUserId(listener : UserListener) : void
+  + setTitle(title : CharSequence) : void
+}
+
+class SponsorsFragment {
+  + onCreate(savedInstanceState : Bundle) : void
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+  + onClick(v : View) : void
+}
+
+class ScheduleFragment {
+  + onCreate(savedInstanceState : Bundle) : void
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+}
+
+class ScheduleDetailViewFragment {
+  + onCreate(savedInstanceState : Bundle) : void
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+}
+
+class RequestHelpSuccessfulFragment {
+  + onCreate(savedInstanceState : Bundle) : void
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+  + onAttach(context : Context) : void
+  + onDetach() : void
+}
+
+class RequestHelpFragment {
+  + userReceived(userId : int) : void
+  + onCreate(savedInstanceState : Bundle) : void
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+  + onAttach(context : Context) : void
+  + onDetach() : void
+}
+
+interface HelpRequestSentListener {
+  + helpRequestSent(request : HelpRequest) : void
+}
+
+interface HelpRequestCompletedListener {
+  + helpRequestCompleted() : void
+}
+
+class NotificationFragment {
+  + userReceived(userId : int) : void
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+  + newNotification(notif : Notification) : void
+}
+
+class MapFragment {
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+  + onAttach(context : Context) : void
+  + onTouch(v : View, event : MotionEvent) : boolean
+}
+
+class LinksFragment {
+  + onCreateView(inflater : LayoutInflater, container : ViewGroup, savedInstanceState : Bundle) : void
+  + onAttach(context : Context) : void
+  + onRequestPermissionsResult(requestCode : int, permissions : String[], grantResults : int[])
+}
+
+class NotificationAdapter {
+  + getCount() : int
+  + getItem(i : int) : Object
+  + getItemId(i : int) : long
+  + getView(position : int, convertView : View, parent : ViewGroup) : View
+  + addNotification(notif : Notification) : void
+}
+
+class Building {
+  + getName() : String
+  + getInitials() : String
+  + getId() : int
+}
+
+class Company {
+  + getId() : int
+  + getName() : String
+  + getTier() : String
+  + getWebsiteURL() : String
+  + getLogoURL() : String
+}
+
+class Event {
+  + {static} getAll(handler : JsonObjectRequest.CompletionHandler<List<Event>>) : void
+  + getId() : int
+  + getName() : String
+  + getStartTime() : Date
+  + getEndTime() : Date
+  + getType() : String
+  + getDescription() : String
+  + compareTo(event : Event) : int
+}
+
+class HelpRequest {
+  + {static} forId(id : int, handler : JsonObjectRequest.CompletionHandler<HelpRequest>) : void
+  + {static} forUser(user : User, handler : JsonObjectRequest.CompletionHandler<HelpRequest>) : void
+  + createHelpRequest(location : String, problem : String, userId : int, usersName : String, handler : JsonObjectRequest.CompletionHandler<HelpRequest>) : void
+  + getId() : int
+  + getLocation() : String
+  + getProblem() : String
+  + getMentors() : String[]
+}
+
+class Notification {
+  + {static} getAll(userId : int, handler : JsonObjectRequest.CompletionHandler<Notification>) : void
+  + {static} fromJson(obj : JSONObject) : Notification
+  + getCreatedAt() : Date
+  + getId() : int
+  + getTitle() : String
+  + getDescription() : String
+  + describeContents() : int
+  + writeToParcel(parcel : Parcel, i : int) : void
+  + compareTo(notification : Notification) : int
+}
+
+class Room {
+  + {static} railsToJava(railsRoom : JSONObject) : Room
+  + getId() : int
+  + getType() : String
+  + getName() : String
+}
+
+class User {
+  + {static} createUser(handler : JsonObjectRequest.CompletionHandler<User>) : void
+  + getId() : int
+  + getName() : String
+  + setToken(token : String) : void
+}
+
+class CUHFirebaseInstanceIDService {
+  + onTokenRefresh() : void
+}
+
+class Dates {
+  + railsToJava(railsTimestamp : String) : Date
+}
+
+class JsonArrayRequest {
+  + getHeaders() : Map<String, String>
+}
+
+class JsonObjectRequest {
+  + getHeaders() : Map<String, String>
+}
+
+interface NewNotificationListener {
+  + newNotification(notification : Notification) : void
+}
+
+class NotificationFirebaseListener {
+  + onCreate() : void
+  + onMessageReceived(remoteMessage : RemoteMessage) : void
+}
+
+class Requests {
+  + {static} getInstance() : Requests
+  + {static} getInstance(Context c) : Requests
+  + getQueue() : RequestQueue
+}
+
+class SplashActivity {
+
+}
+
+class UIHelper {
+  + {static} closeKeyboard(v : View, imm : InputMethodManager) : void
+}
+
+class UserListener {
+  + userReceived(userId : int) : void
+}
+
+class BaseAdapter {
+  + notifyDataSetChanged() : void
+  + notifyDataSetInvalidated() : void
+  + isEmpty() : boolean
+  + isEnabled(int position) : boolean
+}
+
+Activity <|-- MainActivity
+
+Fragment <|-- LinksFragment
+Fragment <|-- MapFragment
+Fragment <|-- NotificationFragment
+Fragment <|-- RequestHelpFragment
+Fragment <|-- RequestHelpSuccessfulFragment
+Fragment <|-- ScheduleDetailViewFragment
+Fragment <|-- ScheduleFragment
+Fragment <|-- SponsorsFragment
+HelpRequestSentListener <|-- MainActivity
+HelpRequestCompletedListener <|-- MainActivity
+NewNotificationListener <|-- NotificationFragment
+UserListener <|-- RequestHelpFragment
+UserListener <|-- NotificationFragment
+BaseAdapter <|-- NotificationAdapter
+
+MainActivity "1" --> "1" Fragment
+Event "1" --> "1" Room
+Event "1" --> "1" Company
+RequestHelpFragment "1" --> "1" User
+NotificationFragment "1" --> "1" User
+RequestHelpCompletedFragment "1" --> "1" HelpRequest
+NotificationFragment "1" --> "0..n" Notification
+ScheduleFragment "1" --> "0..n" Event
+ScheduleDetailViewFragment "1" --> "1" Event
+NotificationFragment "1" --> "1" NotificationAdapter
+NotificationFirebaseListener ..> MainActivity
+
+@enduml
